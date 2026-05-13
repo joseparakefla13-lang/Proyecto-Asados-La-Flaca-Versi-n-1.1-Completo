@@ -1,14 +1,14 @@
-﻿namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo
+﻿namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
-    partial class Form1
+    partial class FrmMainMenu
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,20 +23,20 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             SuspendLayout();
             // 
-            // Form1
+            // FrmMainMenu
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2246, 1186);
-            Name = "Form1";
-            Text = "Form1";
+            ClientSize = new Size(1548, 1120);
+            Name = "FrmMainMenu";
+            Text = "FrmMainMenu";
             ResumeLayout(false);
         }
 
