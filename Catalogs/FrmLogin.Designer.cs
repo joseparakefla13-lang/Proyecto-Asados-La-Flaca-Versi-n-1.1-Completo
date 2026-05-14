@@ -77,7 +77,7 @@
             // 
             // BtnLogin
             // 
-            BtnLogin.Location = new Point(442, 602);
+            BtnLogin.Location = new Point(395, 597);
             BtnLogin.Name = "BtnLogin";
             BtnLogin.Size = new Size(303, 74);
             BtnLogin.TabIndex = 9;
@@ -87,9 +87,11 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.Image = Properties.Resources.usuario;
             pictureBox2.Location = new Point(896, 226);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(90, 70);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 8;
             pictureBox2.TabStop = false;
             // 
@@ -107,7 +109,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(424, 703);
+            label4.Location = new Point(377, 705);
             label4.Name = "label4";
             label4.Size = new Size(321, 37);
             label4.TabIndex = 5;
@@ -147,6 +149,7 @@
             TxtPassword.Name = "TxtPassword";
             TxtPassword.Size = new Size(662, 70);
             TxtPassword.TabIndex = 1;
+            TxtPassword.KeyPress += TxtPassword_KeyPress;
             // 
             // TxtNameUser
             // 
@@ -155,6 +158,7 @@
             TxtNameUser.Name = "TxtNameUser";
             TxtNameUser.Size = new Size(677, 70);
             TxtNameUser.TabIndex = 0;
+            TxtNameUser.KeyPress += TxtNameUser_KeyPress;
             // 
             // FrmLogin
             // 

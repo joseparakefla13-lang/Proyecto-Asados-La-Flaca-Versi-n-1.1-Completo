@@ -61,5 +61,24 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo
                 TxtPassword.UseSystemPasswordChar = true; // oculta la contraseña
             }
         }
+
+        private void TxtNameUser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // 👉 Verificar si la tecla presionada es Enter
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true; // evita el sonido "ding"
+                TxtPassword.Focus(); // pasa el foco al TextBox de contraseña
+            }
+        }
+
+        private void TxtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                BtnLogin.Focus(); // pasa el foco al botón de login
+            }
+        }
     }
 }
