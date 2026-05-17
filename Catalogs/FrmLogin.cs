@@ -1,4 +1,5 @@
 ﻿using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs;
+using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo
         public FrmLogin()
         {
             InitializeComponent();
+            TxtPassword.UseSystemPasswordChar = true; // oculta la contraseña al iniciar
             // Usuario de prueba (predeterminado)
             registeredUsers.Add(new User("Jose", "1234"));
             registeredUsers.Add(new User("Admin", "adminpass"));
@@ -50,25 +52,33 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo
 
         private void PbHidePassword_Click(object sender, EventArgs e)
         {
-            // 👉 Alterna entre ocultar y mostrar
+            // Alterna entre ocultar y mostrar
             if (TxtPassword.UseSystemPasswordChar)
             {
                 TxtPassword.UseSystemPasswordChar = false; // muestra la contraseña
-
             }
             else
             {
                 TxtPassword.UseSystemPasswordChar = true; // oculta la contraseña
             }
+
         }
 
         private void TxtNameUser_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // 👉 Verificar si la tecla presionada es Enter
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true; // evita el sonido "ding"
-                TxtPassword.Focus(); // pasa el foco al TextBox de contraseña
+
+                if (string.IsNullOrWhiteSpace(TxtNameUser.Text))
+                {
+                    MessageBox.Show(" Por favor escriba primero el usuario ");
+                    TxtNameUser.Focus(); // vuelve al TextBox de usuario
+                }
+                else
+                {
+                    TxtPassword.Focus(); // pasa al TextBox de contraseña
+                }
             }
         }
 
@@ -77,8 +87,19 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
-                BtnLogin.Focus(); // pasa el foco al botón de login
+
+                if (string.IsNullOrWhiteSpace(TxtPassword.Text))
+                {
+                    MessageBox.Show("Please enter your password.");
+                    TxtPassword.Focus();
+                }
+                else
+                {
+                    BtnLogin.Focus(); // pasa al botón de login
+                }
             }
         }
+
+  
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo
+namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Class
 {
     public class User
     {
