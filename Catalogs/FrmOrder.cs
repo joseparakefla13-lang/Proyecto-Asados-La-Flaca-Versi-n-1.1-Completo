@@ -14,16 +14,5 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         {
             InitializeComponent();
         }
-
-        private void BtnOrder_Click(object sender, EventArgs e)
-        {
-            FrmOrder orderDetailsForm = new FrmOrder();
-            orderDetailsForm.Show();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -32,5 +32,12 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
             formulario.Show(); ;
         }
 
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+           FrmLogin frmLogin = new FrmLogin();
+            frmLogin.Show(); ;
+        }
     }
 }

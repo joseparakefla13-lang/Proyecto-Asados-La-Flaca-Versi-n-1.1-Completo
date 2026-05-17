@@ -234,6 +234,7 @@
             BtnExit.TabIndex = 10;
             BtnExit.Text = "Cerrar Sesion";
             BtnExit.UseVisualStyleBackColor = false;
+            BtnExit.Click += BtnExit_Click;
             // 
             // BtnSettings
             // 
