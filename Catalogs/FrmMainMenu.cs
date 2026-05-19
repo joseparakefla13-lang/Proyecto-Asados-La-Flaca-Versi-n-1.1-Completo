@@ -62,5 +62,10 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         {
             OpenFrm(new FrmProducts());
         }
+
+        private void BtnCategory_Click(object sender, EventArgs e)
+        {
+            OpenFrm(new FrmCategory());
+        }
     }
 }

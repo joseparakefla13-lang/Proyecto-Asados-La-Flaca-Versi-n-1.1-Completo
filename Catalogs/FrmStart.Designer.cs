@@ -57,6 +57,9 @@
             PnlSubMenuBestSellingProducts = new Panel();
             LsbUploadBestSellingProducts = new ListBox();
             label8 = new Label();
+            panel3 = new Panel();
+            label1 = new Label();
+            label2 = new Label();
             PnlSubMenuSystems.SuspendLayout();
             FlpSalesOfTheDay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
@@ -70,6 +73,7 @@
             FlpProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             PnlSubMenuBestSellingProducts.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // PnlSubMenuSystems
@@ -85,7 +89,7 @@
             PnlSubMenuSystems.Dock = DockStyle.Fill;
             PnlSubMenuSystems.Location = new Point(0, 0);
             PnlSubMenuSystems.Name = "PnlSubMenuSystems";
-            PnlSubMenuSystems.Size = new Size(2074, 1229);
+            PnlSubMenuSystems.Size = new Size(1756, 1158);
             PnlSubMenuSystems.TabIndex = 14;
             // 
             // FlpSalesOfTheDay
@@ -94,7 +98,7 @@
             FlpSalesOfTheDay.Controls.Add(label3);
             FlpSalesOfTheDay.Controls.Add(pictureBox12);
             FlpSalesOfTheDay.Controls.Add(textBox1);
-            FlpSalesOfTheDay.Location = new Point(35, 45);
+            FlpSalesOfTheDay.Location = new Point(41, 144);
             FlpSalesOfTheDay.Margin = new Padding(6);
             FlpSalesOfTheDay.Name = "FlpSalesOfTheDay";
             FlpSalesOfTheDay.Size = new Size(240, 149);
@@ -144,20 +148,23 @@
             PnlSubMenuLatestSales.BackColor = Color.Beige;
             PnlSubMenuLatestSales.Controls.Add(DgvLatestSales);
             PnlSubMenuLatestSales.Controls.Add(label9);
-            PnlSubMenuLatestSales.Location = new Point(35, 700);
+            PnlSubMenuLatestSales.Location = new Point(41, 711);
             PnlSubMenuLatestSales.Margin = new Padding(6);
             PnlSubMenuLatestSales.Name = "PnlSubMenuLatestSales";
-            PnlSubMenuLatestSales.Size = new Size(1668, 443);
+            PnlSubMenuLatestSales.Size = new Size(1668, 405);
             PnlSubMenuLatestSales.TabIndex = 12;
             // 
             // DgvLatestSales
             // 
+            DgvLatestSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvLatestSales.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             DgvLatestSales.BackgroundColor = Color.Beige;
             DgvLatestSales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvLatestSales.Columns.AddRange(new DataGridViewColumn[] { IdVenta, Empleado, Total, Fecha });
             DgvLatestSales.Location = new Point(24, 43);
             DgvLatestSales.Margin = new Padding(6);
             DgvLatestSales.Name = "DgvLatestSales";
+            DgvLatestSales.ReadOnly = true;
             DgvLatestSales.RowHeadersWidth = 82;
             DgvLatestSales.Size = new Size(1625, 342);
             DgvLatestSales.TabIndex = 2;
@@ -167,28 +174,28 @@
             IdVenta.HeaderText = "IdVenta";
             IdVenta.MinimumWidth = 10;
             IdVenta.Name = "IdVenta";
-            IdVenta.Width = 200;
+            IdVenta.ReadOnly = true;
             // 
             // Empleado
             // 
             Empleado.HeaderText = "Empleado";
             Empleado.MinimumWidth = 10;
             Empleado.Name = "Empleado";
-            Empleado.Width = 200;
+            Empleado.ReadOnly = true;
             // 
             // Total
             // 
             Total.HeaderText = "Total";
             Total.MinimumWidth = 10;
             Total.Name = "Total";
-            Total.Width = 200;
+            Total.ReadOnly = true;
             // 
             // Fecha
             // 
             Fecha.HeaderText = "Fecha";
             Fecha.MinimumWidth = 10;
             Fecha.Name = "Fecha";
-            Fecha.Width = 200;
+            Fecha.ReadOnly = true;
             // 
             // label9
             // 
@@ -208,10 +215,10 @@
             // 
             PnlSubMenuSalesPerDay.BackColor = Color.Beige;
             PnlSubMenuSalesPerDay.Controls.Add(label7);
-            PnlSubMenuSalesPerDay.Location = new Point(35, 249);
+            PnlSubMenuSalesPerDay.Location = new Point(41, 343);
             PnlSubMenuSalesPerDay.Margin = new Padding(6);
             PnlSubMenuSalesPerDay.Name = "PnlSubMenuSalesPerDay";
-            PnlSubMenuSalesPerDay.Size = new Size(700, 400);
+            PnlSubMenuSalesPerDay.Size = new Size(700, 326);
             PnlSubMenuSalesPerDay.TabIndex = 10;
             // 
             // label7
@@ -232,7 +239,7 @@
             FlpLowStock.Controls.Add(label6);
             FlpLowStock.Controls.Add(pictureBox15);
             FlpLowStock.Controls.Add(textBox4);
-            FlpLowStock.Location = new Point(1447, 45);
+            FlpLowStock.Location = new Point(1453, 144);
             FlpLowStock.Margin = new Padding(6);
             FlpLowStock.Name = "FlpLowStock";
             FlpLowStock.Size = new Size(256, 149);
@@ -284,7 +291,7 @@
             FlpBillsOfTheDay.Controls.Add(label4);
             FlpBillsOfTheDay.Controls.Add(pictureBox13);
             FlpBillsOfTheDay.Controls.Add(textBox2);
-            FlpBillsOfTheDay.Location = new Point(490, 45);
+            FlpBillsOfTheDay.Location = new Point(496, 144);
             FlpBillsOfTheDay.Margin = new Padding(6);
             FlpBillsOfTheDay.Name = "FlpBillsOfTheDay";
             FlpBillsOfTheDay.Size = new Size(245, 149);
@@ -336,7 +343,7 @@
             FlpProducts.Controls.Add(label5);
             FlpProducts.Controls.Add(pictureBox14);
             FlpProducts.Controls.Add(textBox3);
-            FlpProducts.Location = new Point(1003, 45);
+            FlpProducts.Location = new Point(1009, 144);
             FlpProducts.Margin = new Padding(6);
             FlpProducts.Name = "FlpProducts";
             FlpProducts.Size = new Size(215, 149);
@@ -387,10 +394,10 @@
             PnlSubMenuBestSellingProducts.BackColor = Color.Beige;
             PnlSubMenuBestSellingProducts.Controls.Add(LsbUploadBestSellingProducts);
             PnlSubMenuBestSellingProducts.Controls.Add(label8);
-            PnlSubMenuBestSellingProducts.Location = new Point(1003, 249);
+            PnlSubMenuBestSellingProducts.Location = new Point(1009, 343);
             PnlSubMenuBestSellingProducts.Margin = new Padding(6);
             PnlSubMenuBestSellingProducts.Name = "PnlSubMenuBestSellingProducts";
-            PnlSubMenuBestSellingProducts.Size = new Size(700, 400);
+            PnlSubMenuBestSellingProducts.Size = new Size(700, 326);
             PnlSubMenuBestSellingProducts.TabIndex = 11;
             // 
             // LsbUploadBestSellingProducts
@@ -399,10 +406,10 @@
             LsbUploadBestSellingProducts.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LsbUploadBestSellingProducts.ForeColor = Color.White;
             LsbUploadBestSellingProducts.FormattingEnabled = true;
-            LsbUploadBestSellingProducts.Location = new Point(24, 62);
+            LsbUploadBestSellingProducts.Location = new Point(25, 49);
             LsbUploadBestSellingProducts.Margin = new Padding(6);
             LsbUploadBestSellingProducts.Name = "LsbUploadBestSellingProducts";
-            LsbUploadBestSellingProducts.Size = new Size(657, 304);
+            LsbUploadBestSellingProducts.Size = new Size(618, 244);
             LsbUploadBestSellingProducts.TabIndex = 2;
             // 
             // label8
@@ -417,11 +424,50 @@
             label8.TabIndex = 1;
             label8.Text = "Productos más Vendidos";
             // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Goldenrod;
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(label2);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 0);
+            panel3.Margin = new Padding(6);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1756, 98);
+            panel3.TabIndex = 15;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Georgia", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(30, 26);
+            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(332, 43);
+            label1.TabIndex = 2;
+            label1.Text = "Asados La Flaca";
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(8985, -81);
+            label2.Margin = new Padding(6, 0, 6, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(183, 30);
+            label2.TabIndex = 1;
+            label2.Text = "Guillermina ";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // FrmStart
             // 
             AutoScaleDimensions = new SizeF(192F, 192F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(2074, 1229);
+            ClientSize = new Size(1756, 1158);
+            Controls.Add(panel3);
             Controls.Add(PnlSubMenuSystems);
             Name = "FrmStart";
             StartPosition = FormStartPosition.CenterScreen;
@@ -446,6 +492,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             PnlSubMenuBestSellingProducts.ResumeLayout(false);
             PnlSubMenuBestSellingProducts.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -480,5 +528,8 @@
         private Panel PnlSubMenuBestSellingProducts;
         private ListBox LsbUploadBestSellingProducts;
         private Label label8;
+        private Panel panel3;
+        private Label label1;
+        private Label label2;
     }
 }

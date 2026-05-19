@@ -89,7 +89,7 @@
             tableLayoutPanel1.Controls.Add(textBox5, 3, 1);
             tableLayoutPanel1.Controls.Add(textBox6, 4, 1);
             tableLayoutPanel1.Controls.Add(textBox1, 0, 1);
-            tableLayoutPanel1.Location = new Point(12, 614);
+            tableLayoutPanel1.Location = new Point(12, 478);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
@@ -98,12 +98,12 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1732, 260);
+            tableLayoutPanel1.Size = new Size(1732, 396);
             tableLayoutPanel1.TabIndex = 15;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(302, 162);
+            textBox3.Location = new Point(302, 230);
             textBox3.Margin = new Padding(32);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
@@ -168,7 +168,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(595, 162);
+            dateTimePicker1.Location = new Point(595, 230);
             dateTimePicker1.Margin = new Padding(32);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(421, 39);
@@ -176,7 +176,7 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(1080, 162);
+            textBox5.Location = new Point(1080, 230);
             textBox5.Margin = new Padding(32);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
@@ -186,7 +186,7 @@
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(1360, 162);
+            textBox6.Location = new Point(1360, 230);
             textBox6.Margin = new Padding(32);
             textBox6.Name = "textBox6";
             textBox6.ReadOnly = true;
@@ -196,7 +196,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(32, 162);
+            textBox1.Location = new Point(32, 230);
             textBox1.Margin = new Padding(32);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
@@ -220,7 +220,7 @@
             textBox2.BackColor = Color.White;
             textBox2.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBox2.ForeColor = Color.Black;
-            textBox2.Location = new Point(1317, 335);
+            textBox2.Location = new Point(733, 161);
             textBox2.Margin = new Padding(6);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
@@ -234,7 +234,7 @@
             button14.Font = new Font("Georgia", 8F, FontStyle.Bold);
             button14.ForeColor = Color.White;
             button14.ImageAlign = ContentAlignment.MiddleLeft;
-            button14.Location = new Point(696, 322);
+            button14.Location = new Point(1045, 311);
             button14.Margin = new Padding(6);
             button14.Name = "button14";
             button14.Size = new Size(214, 85);
@@ -249,7 +249,7 @@
             button13.Font = new Font("Georgia", 8F, FontStyle.Bold);
             button13.ForeColor = Color.White;
             button13.ImageAlign = ContentAlignment.MiddleLeft;
-            button13.Location = new Point(1035, 322);
+            button13.Location = new Point(1527, 322);
             button13.Margin = new Padding(6);
             button13.Name = "button13";
             button13.Size = new Size(214, 85);
@@ -264,7 +264,7 @@
             button12.Font = new Font("Georgia", 8F, FontStyle.Bold);
             button12.ForeColor = Color.White;
             button12.ImageAlign = ContentAlignment.MiddleLeft;
-            button12.Location = new Point(394, 312);
+            button12.Location = new Point(589, 311);
             button12.Margin = new Padding(6);
             button12.Name = "button12";
             button12.Size = new Size(180, 85);
@@ -278,7 +278,7 @@
             button11.BackColor = Color.Green;
             button11.Font = new Font("Georgia", 8F, FontStyle.Bold);
             button11.ForeColor = Color.White;
-            button11.Location = new Point(40, 309);
+            button11.Location = new Point(44, 311);
             button11.Margin = new Padding(6);
             button11.Name = "button11";
             button11.Size = new Size(214, 85);

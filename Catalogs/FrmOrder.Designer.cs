@@ -50,11 +50,15 @@
             label3 = new Label();
             pictureBox11 = new PictureBox();
             button11 = new Button();
+            panel3 = new Panel();
+            label1 = new Label();
+            label2 = new Label();
             PnlSubMenuOrder.SuspendLayout();
             GbOrderDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvLoadCart).BeginInit();
             PnlProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // PnlSubMenuOrder
@@ -318,12 +322,51 @@
             button11.TextAlign = ContentAlignment.MiddleRight;
             button11.UseVisualStyleBackColor = false;
             // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Goldenrod;
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(label2);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 0);
+            panel3.Margin = new Padding(6);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1756, 98);
+            panel3.TabIndex = 7;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Georgia", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(30, 26);
+            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(332, 43);
+            label1.TabIndex = 2;
+            label1.Text = "Asados La Flaca";
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(8985, -81);
+            label2.Margin = new Padding(6, 0, 6, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(183, 30);
+            label2.TabIndex = 1;
+            label2.Text = "Guillermina ";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // FrmOrder
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Maroon;
             ClientSize = new Size(1756, 1158);
+            Controls.Add(panel3);
             Controls.Add(PnlSubMenuOrder);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmOrder";
@@ -337,6 +380,8 @@
             PnlProducts.ResumeLayout(false);
             PnlProducts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -364,5 +409,8 @@
         private Label label3;
         private PictureBox pictureBox11;
         private Button button11;
+        private Panel panel3;
+        private Label label1;
+        private Label label2;
     }
 }
