@@ -8,14 +8,16 @@ using System.Windows.Forms;
 
 namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
-    public partial class FrmOrder : Form
+    public partial class FrmProducts : Form
     {
-        public FrmOrder()
+        public FrmProducts()
         {
             InitializeComponent();
-
         }
 
-    
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

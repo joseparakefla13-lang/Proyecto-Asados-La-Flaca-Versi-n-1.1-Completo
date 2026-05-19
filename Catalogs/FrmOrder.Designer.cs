@@ -40,7 +40,7 @@
             Cantidad = new DataGridViewTextBoxColumn();
             Precio = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
-            panel6 = new Panel();
+            PnlProducts = new Panel();
             LsbUploadProductsToOrder = new ListBox();
             button12 = new Button();
             label5 = new Label();
@@ -53,7 +53,7 @@
             PnlSubMenuOrder.SuspendLayout();
             GbOrderDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvLoadCart).BeginInit();
-            panel6.SuspendLayout();
+            PnlProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             SuspendLayout();
             // 
@@ -62,7 +62,7 @@
             PnlSubMenuOrder.BackColor = Color.Maroon;
             PnlSubMenuOrder.Controls.Add(label7);
             PnlSubMenuOrder.Controls.Add(GbOrderDetail);
-            PnlSubMenuOrder.Controls.Add(panel6);
+            PnlSubMenuOrder.Controls.Add(PnlProducts);
             PnlSubMenuOrder.Controls.Add(dateTimePicker1);
             PnlSubMenuOrder.Controls.Add(label4);
             PnlSubMenuOrder.Controls.Add(label3);
@@ -72,7 +72,7 @@
             PnlSubMenuOrder.Location = new Point(0, 0);
             PnlSubMenuOrder.Margin = new Padding(6);
             PnlSubMenuOrder.Name = "PnlSubMenuOrder";
-            PnlSubMenuOrder.Size = new Size(2074, 1229);
+            PnlSubMenuOrder.Size = new Size(1756, 1158);
             PnlSubMenuOrder.TabIndex = 3;
             // 
             // label7
@@ -98,7 +98,7 @@
             GbOrderDetail.Controls.Add(DgvLoadCart);
             GbOrderDetail.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             GbOrderDetail.ForeColor = Color.Black;
-            GbOrderDetail.Location = new Point(694, 309);
+            GbOrderDetail.Location = new Point(698, 309);
             GbOrderDetail.Margin = new Padding(6);
             GbOrderDetail.Name = "GbOrderDetail";
             GbOrderDetail.Padding = new Padding(6);
@@ -142,7 +142,6 @@
             TxtTotalPriceToPay.Name = "TxtTotalPriceToPay";
             TxtTotalPriceToPay.Size = new Size(192, 37);
             TxtTotalPriceToPay.TabIndex = 2;
-            TxtTotalPriceToPay.Text = "C$ 500.00";
             TxtTotalPriceToPay.TextAlign = HorizontalAlignment.Center;
             // 
             // label6
@@ -157,14 +156,15 @@
             // 
             // DgvLoadCart
             // 
-            DgvLoadCart.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            DgvLoadCart.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvLoadCart.BackgroundColor = Color.Beige;
             DgvLoadCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvLoadCart.Columns.AddRange(new DataGridViewColumn[] { Producto, Cantidad, Precio, Total });
             DgvLoadCart.GridColor = Color.Black;
-            DgvLoadCart.Location = new Point(19, 66);
+            DgvLoadCart.Location = new Point(0, 66);
             DgvLoadCart.Margin = new Padding(6);
             DgvLoadCart.Name = "DgvLoadCart";
+            DgvLoadCart.ReadOnly = true;
             DgvLoadCart.RowHeadersWidth = 82;
             DgvLoadCart.Size = new Size(982, 412);
             DgvLoadCart.TabIndex = 0;
@@ -174,42 +174,42 @@
             Producto.HeaderText = "Producto";
             Producto.MinimumWidth = 10;
             Producto.Name = "Producto";
-            Producto.Width = 200;
+            Producto.ReadOnly = true;
             // 
             // Cantidad
             // 
             Cantidad.HeaderText = "Cantidad";
             Cantidad.MinimumWidth = 10;
             Cantidad.Name = "Cantidad";
-            Cantidad.Width = 200;
+            Cantidad.ReadOnly = true;
             // 
             // Precio
             // 
             Precio.HeaderText = "Precio";
             Precio.MinimumWidth = 10;
             Precio.Name = "Precio";
-            Precio.Width = 200;
+            Precio.ReadOnly = true;
             // 
             // Total
             // 
             Total.HeaderText = "Total";
             Total.MinimumWidth = 10;
             Total.Name = "Total";
-            Total.Width = 200;
+            Total.ReadOnly = true;
             // 
-            // panel6
+            // PnlProducts
             // 
-            panel6.BackColor = Color.Beige;
-            panel6.Controls.Add(LsbUploadProductsToOrder);
-            panel6.Controls.Add(button12);
-            panel6.Controls.Add(label5);
-            panel6.Controls.Add(TxtSelectedProductsForTheOrder);
-            panel6.ForeColor = Color.Black;
-            panel6.Location = new Point(50, 309);
-            panel6.Margin = new Padding(6);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(543, 746);
-            panel6.TabIndex = 17;
+            PnlProducts.BackColor = Color.Beige;
+            PnlProducts.Controls.Add(LsbUploadProductsToOrder);
+            PnlProducts.Controls.Add(button12);
+            PnlProducts.Controls.Add(label5);
+            PnlProducts.Controls.Add(TxtSelectedProductsForTheOrder);
+            PnlProducts.ForeColor = Color.Black;
+            PnlProducts.Location = new Point(50, 309);
+            PnlProducts.Margin = new Padding(6);
+            PnlProducts.Name = "PnlProducts";
+            PnlProducts.Size = new Size(543, 746);
+            PnlProducts.TabIndex = 17;
             // 
             // LsbUploadProductsToOrder
             // 
@@ -263,7 +263,7 @@
             // 
             dateTimePicker1.CalendarMonthBackground = Color.Beige;
             dateTimePicker1.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dateTimePicker1.Location = new Point(1025, 146);
+            dateTimePicker1.Location = new Point(1197, 146);
             dateTimePicker1.Margin = new Padding(6);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(514, 37);
@@ -274,7 +274,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(794, 130);
+            label4.Location = new Point(958, 153);
             label4.Margin = new Padding(6, 0, 6, 0);
             label4.Name = "label4";
             label4.Size = new Size(102, 30);
@@ -286,7 +286,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(433, 122);
+            label3.Location = new Point(541, 153);
             label3.Margin = new Padding(6, 0, 6, 0);
             label3.Name = "label3";
             label3.Size = new Size(160, 30);
@@ -296,7 +296,7 @@
             // pictureBox11
             // 
             pictureBox11.BackColor = Color.DarkGoldenrod;
-            pictureBox11.Location = new Point(70, 122);
+            pictureBox11.Location = new Point(84, 146);
             pictureBox11.Margin = new Padding(6);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(37, 43);
@@ -309,7 +309,7 @@
             button11.BackColor = Color.Goldenrod;
             button11.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button11.ForeColor = Color.White;
-            button11.Location = new Point(50, 108);
+            button11.Location = new Point(70, 131);
             button11.Margin = new Padding(6);
             button11.Name = "button11";
             button11.Size = new Size(288, 75);
@@ -320,12 +320,12 @@
             // 
             // FrmOrder
             // 
-            AutoScaleDimensions = new SizeF(192F, 192F);
-            AutoScaleMode = AutoScaleMode.Dpi;
-            AutoSize = true;
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Maroon;
-            ClientSize = new Size(2074, 1229);
+            ClientSize = new Size(1756, 1158);
             Controls.Add(PnlSubMenuOrder);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FrmOrder";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmOrder";
@@ -334,8 +334,8 @@
             GbOrderDetail.ResumeLayout(false);
             GbOrderDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DgvLoadCart).EndInit();
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
+            PnlProducts.ResumeLayout(false);
+            PnlProducts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             ResumeLayout(false);
         }
@@ -354,7 +354,7 @@
         private DataGridViewTextBoxColumn Cantidad;
         private DataGridViewTextBoxColumn Precio;
         private DataGridViewTextBoxColumn Total;
-        private Panel panel6;
+        private Panel PnlProducts;
         private ListBox LsbUploadProductsToOrder;
         private Button button12;
         private Label label5;

@@ -8,14 +8,13 @@ using System.Windows.Forms;
 
 namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
-    public partial class FrmOrder : Form
+    public partial class FrmBilling : Form
     {
-        public FrmOrder()
+        public FrmBilling()
         {
             InitializeComponent();
-
         }
 
-    
+     
     }
 }
