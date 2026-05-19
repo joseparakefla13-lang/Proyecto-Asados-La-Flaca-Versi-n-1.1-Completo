@@ -313,6 +313,7 @@
             // pictureBox13
             // 
             pictureBox13.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox13.Image = Properties.Resources.Factura;
             pictureBox13.Location = new Point(6, 36);
             pictureBox13.Margin = new Padding(6);
             pictureBox13.Name = "pictureBox13";

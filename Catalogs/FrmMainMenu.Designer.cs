@@ -49,9 +49,6 @@
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             PnlSubMenuSystems = new Panel();
-            panel3 = new Panel();
-            label1 = new Label();
-            label2 = new Label();
             FlpSalesOfTheDay = new FlowLayoutPanel();
             label3 = new Label();
             pictureBox12 = new PictureBox();
@@ -80,6 +77,9 @@
             PnlSubMenuBestSellingProducts = new Panel();
             LsbUploadBestSellingProducts = new ListBox();
             label8 = new Label();
+            panel3 = new Panel();
+            label1 = new Label();
+            label2 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
@@ -92,7 +92,6 @@
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             PnlSubMenuSystems.SuspendLayout();
-            panel3.SuspendLayout();
             FlpSalesOfTheDay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
             PnlSubMenuLatestSales.SuspendLayout();
@@ -105,6 +104,7 @@
             FlpProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             PnlSubMenuBestSellingProducts.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -404,44 +404,6 @@
             PnlSubMenuSystems.Size = new Size(1782, 1229);
             PnlSubMenuSystems.TabIndex = 13;
             // 
-            // panel3
-            // 
-            panel3.BackColor = Color.Goldenrod;
-            panel3.Controls.Add(label1);
-            panel3.Controls.Add(label2);
-            panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(292, 0);
-            panel3.Margin = new Padding(6);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1782, 98);
-            panel3.TabIndex = 16;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Georgia", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(30, 26);
-            label1.Margin = new Padding(6, 0, 6, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(332, 43);
-            label1.TabIndex = 2;
-            label1.Text = "Asados La Flaca";
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(10567, -82);
-            label2.Margin = new Padding(6, 0, 6, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(183, 30);
-            label2.TabIndex = 1;
-            label2.Text = "Guillermina ";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // FlpSalesOfTheDay
             // 
             FlpSalesOfTheDay.BackColor = Color.Beige;
@@ -663,6 +625,7 @@
             // pictureBox13
             // 
             pictureBox13.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox13.Image = Properties.Resources.Factura;
             pictureBox13.Location = new Point(6, 36);
             pictureBox13.Margin = new Padding(6);
             pictureBox13.Name = "pictureBox13";
@@ -774,6 +737,44 @@
             label8.TabIndex = 1;
             label8.Text = "Productos más Vendidos";
             // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Goldenrod;
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(label2);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(292, 0);
+            panel3.Margin = new Padding(6);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1782, 98);
+            panel3.TabIndex = 16;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Georgia", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(30, 26);
+            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(332, 43);
+            label1.TabIndex = 2;
+            label1.Text = "Asados La Flaca";
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(10567, -82);
+            label2.Margin = new Padding(6, 0, 6, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(183, 30);
+            label2.TabIndex = 1;
+            label2.Text = "Guillermina ";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // FrmMainMenu
             // 
             AutoScaleDimensions = new SizeF(192F, 192F);
@@ -799,8 +800,6 @@
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             PnlSubMenuSystems.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             FlpSalesOfTheDay.ResumeLayout(false);
             FlpSalesOfTheDay.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
@@ -820,6 +819,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             PnlSubMenuBestSellingProducts.ResumeLayout(false);
             PnlSubMenuBestSellingProducts.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
