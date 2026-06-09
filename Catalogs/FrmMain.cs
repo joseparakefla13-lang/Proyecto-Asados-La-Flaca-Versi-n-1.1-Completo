@@ -8,22 +8,11 @@ using System.Windows.Forms;
 
 namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
-    public partial class FrmOrder : Form
+    public partial class FrmMain : Form
     {
-        public FrmOrder()
+        public FrmMain()
         {
             InitializeComponent();
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void GbxPedido_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

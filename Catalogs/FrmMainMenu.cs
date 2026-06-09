@@ -15,14 +15,10 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
             InitializeComponent();
         }
 
-        private void BtnOrder_Click(object sender, EventArgs e)
-        {
-            OpenFrm(new FrmOrder());
-        }
         public void OpenFrm(Form formulario)
         {
             // Limpiar panel antes de cargar nuevo formulario
-            PnlSubMenuSystems.Controls.Clear();
+            PnlMainContainer.Controls.Clear();
 
             // Configuración del formulario embebido
             formulario.TopLevel = false;
@@ -30,42 +26,14 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
             formulario.Dock = DockStyle.Fill; // Se ajusta automáticamente al panel
 
             // Agregar al panel
-            PnlSubMenuSystems.Controls.Add(formulario);
-            PnlSubMenuSystems.Tag = formulario;
+            PnlMainContainer.Controls.Add(formulario);
+            PnlMainContainer.Tag = formulario;
             formulario.Show();
         }
 
-        private void BtnExit_Click(object sender, EventArgs e)
+        private void BtnEmployee_Click(object sender, EventArgs e)
         {
-            this.Close();
-
-            FrmLogin frmLogin = new FrmLogin();
-            frmLogin.Show(); ;
-        }
-
-        private void BtnInventory_Click(object sender, EventArgs e)
-        {
-            OpenFrm(new FrmInventory());
-        }
-
-        private void BtnStart_Click(object sender, EventArgs e)
-        {
-            OpenFrm(new FrmStart());
-        }
-
-        private void BtnBilling_Click(object sender, EventArgs e)
-        {
-            OpenFrm(new FrmBilling());
-        }
-
-        private void BtnProducts_Click(object sender, EventArgs e)
-        {
-            OpenFrm(new FrmProducts());
-        }
-
-        private void BtnCategory_Click(object sender, EventArgs e)
-        {
-            OpenFrm(new FrmCategory());
+            OpenFrm(new FrmEmployee());
         }
     }
 }

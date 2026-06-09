@@ -28,752 +28,538 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            pictureBox7 = new PictureBox();
-            pictureBox9 = new PictureBox();
-            pictureBox8 = new PictureBox();
-            pictureBox6 = new PictureBox();
-            pictureBox5 = new PictureBox();
-            pictureBox4 = new PictureBox();
+            pc_UserLogin = new PictureBox();
+            lblUserLogIn = new Label();
+            pnlHeaderTopMain = new Panel();
+            BtnMenu = new Button();
             pictureBox3 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            BtnExit = new Button();
-            BtnSettings = new Button();
-            BtnReports = new Button();
-            BtnCategory = new Button();
-            BtnInventory = new Button();
-            BtnProducts = new Button();
-            BtnBilling = new Button();
-            BtnOrder = new Button();
-            BtnStart = new Button();
-            panel2 = new Panel();
-            pictureBox1 = new PictureBox();
-            PnlSubMenuSystems = new Panel();
-            FlpSalesOfTheDay = new FlowLayoutPanel();
-            label3 = new Label();
-            pictureBox12 = new PictureBox();
-            textBox1 = new TextBox();
-            PnlSubMenuLatestSales = new Panel();
-            DgvLatestSales = new DataGridView();
-            IdVenta = new DataGridViewTextBoxColumn();
-            Empleado = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
-            Fecha = new DataGridViewTextBoxColumn();
-            label9 = new Label();
-            PnlSubMenuSalesPerDay = new Panel();
-            label7 = new Label();
-            FlpLowStock = new FlowLayoutPanel();
-            label6 = new Label();
-            pictureBox15 = new PictureBox();
-            textBox4 = new TextBox();
-            FlpBillsOfTheDay = new FlowLayoutPanel();
-            label4 = new Label();
-            pictureBox13 = new PictureBox();
-            textBox2 = new TextBox();
-            FlpProducts = new FlowLayoutPanel();
-            label5 = new Label();
-            pictureBox14 = new PictureBox();
-            textBox3 = new TextBox();
-            PnlSubMenuBestSellingProducts = new Panel();
-            LsbUploadBestSellingProducts = new ListBox();
-            label8 = new Label();
-            panel3 = new Panel();
             label1 = new Label();
-            label2 = new Label();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            pnlHeaderNav = new Panel();
+            pictureBox1 = new PictureBox();
+            label5 = new Label();
+            btnCatalog = new Button();
+            pnlCatalogSubMenu = new Panel();
+            button1 = new Button();
+            btnMunicipality = new Button();
+            btnDepartment = new Button();
+            BtnEmployee = new Button();
+            btnEmployees = new Button();
+            pnlSubMenuEmployee = new Panel();
+            btnTrainingManagement = new Button();
+            btnEmployeeFile = new Button();
+            btnContract = new Button();
+            pnlSubMenuContract = new Panel();
+            button2 = new Button();
+            btnPromoter = new Button();
+            btnActiveContracts = new Button();
+            btnPayroll = new Button();
+            btnReport = new Button();
+            pnlSubMenuReport = new Panel();
+            btnReport1 = new Button();
+            pnlSideBar = new Panel();
+            PnlMainContainer = new Panel();
+            pnlContainer = new Panel();
+            ((System.ComponentModel.ISupportInitialize)pc_UserLogin).BeginInit();
+            pnlHeaderTopMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel2.SuspendLayout();
+            pnlHeaderNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            PnlSubMenuSystems.SuspendLayout();
-            FlpSalesOfTheDay.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
-            PnlSubMenuLatestSales.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)DgvLatestSales).BeginInit();
-            PnlSubMenuSalesPerDay.SuspendLayout();
-            FlpLowStock.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
-            FlpBillsOfTheDay.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
-            FlpProducts.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
-            PnlSubMenuBestSellingProducts.SuspendLayout();
-            panel3.SuspendLayout();
+            pnlCatalogSubMenu.SuspendLayout();
+            pnlSubMenuEmployee.SuspendLayout();
+            pnlSubMenuContract.SuspendLayout();
+            pnlSubMenuReport.SuspendLayout();
+            pnlSideBar.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // pc_UserLogin
             // 
-            panel1.BackColor = Color.Beige;
-            panel1.Controls.Add(pictureBox7);
-            panel1.Controls.Add(pictureBox9);
-            panel1.Controls.Add(pictureBox8);
-            panel1.Controls.Add(pictureBox6);
-            panel1.Controls.Add(pictureBox5);
-            panel1.Controls.Add(pictureBox4);
-            panel1.Controls.Add(pictureBox3);
-            panel1.Controls.Add(pictureBox2);
-            panel1.Controls.Add(BtnExit);
-            panel1.Controls.Add(BtnSettings);
-            panel1.Controls.Add(BtnReports);
-            panel1.Controls.Add(BtnCategory);
-            panel1.Controls.Add(BtnInventory);
-            panel1.Controls.Add(BtnProducts);
-            panel1.Controls.Add(BtnBilling);
-            panel1.Controls.Add(BtnOrder);
-            panel1.Controls.Add(BtnStart);
-            panel1.Controls.Add(panel2);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(6);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(292, 1229);
-            panel1.TabIndex = 2;
+            pc_UserLogin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pc_UserLogin.Cursor = Cursors.Hand;
+            pc_UserLogin.Location = new Point(3866, 19);
+            pc_UserLogin.Margin = new Padding(4, 5, 4, 5);
+            pc_UserLogin.Name = "pc_UserLogin";
+            pc_UserLogin.Size = new Size(88, 101);
+            pc_UserLogin.TabIndex = 2;
+            pc_UserLogin.TabStop = false;
             // 
-            // pictureBox7
+            // lblUserLogIn
             // 
-            pictureBox7.BackColor = Color.Goldenrod;
-            pictureBox7.Location = new Point(20, 606);
-            pictureBox7.Margin = new Padding(6);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(37, 43);
-            pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox7.TabIndex = 1;
-            pictureBox7.TabStop = false;
+            lblUserLogIn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblUserLogIn.AutoSize = true;
+            lblUserLogIn.ForeColor = Color.FromArgb(251, 251, 251);
+            lblUserLogIn.Location = new Point(3974, 52);
+            lblUserLogIn.Margin = new Padding(13, 19, 60, 19);
+            lblUserLogIn.Name = "lblUserLogIn";
+            lblUserLogIn.Size = new Size(216, 32);
+            lblUserLogIn.TabIndex = 3;
+            lblUserLogIn.Text = "Usuario Conectado";
             // 
-            // pictureBox9
+            // pnlHeaderTopMain
             // 
-            pictureBox9.BackColor = Color.Goldenrod;
-            pictureBox9.Location = new Point(20, 749);
-            pictureBox9.Margin = new Padding(6);
-            pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(37, 43);
-            pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox9.TabIndex = 13;
-            pictureBox9.TabStop = false;
+            pnlHeaderTopMain.BackColor = Color.FromArgb(109, 15, 15);
+            pnlHeaderTopMain.BorderStyle = BorderStyle.FixedSingle;
+            pnlHeaderTopMain.Controls.Add(BtnMenu);
+            pnlHeaderTopMain.Controls.Add(pictureBox3);
+            pnlHeaderTopMain.Controls.Add(label1);
+            pnlHeaderTopMain.Controls.Add(lblUserLogIn);
+            pnlHeaderTopMain.Controls.Add(pc_UserLogin);
+            pnlHeaderTopMain.Dock = DockStyle.Top;
+            pnlHeaderTopMain.Location = new Point(0, 0);
+            pnlHeaderTopMain.Margin = new Padding(4);
+            pnlHeaderTopMain.Name = "pnlHeaderTopMain";
+            pnlHeaderTopMain.Size = new Size(2074, 126);
+            pnlHeaderTopMain.TabIndex = 16;
             // 
-            // pictureBox8
+            // BtnMenu
             // 
-            pictureBox8.BackColor = Color.Goldenrod;
-            pictureBox8.Location = new Point(20, 674);
-            pictureBox8.Margin = new Padding(6);
-            pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(37, 43);
-            pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox8.TabIndex = 13;
-            pictureBox8.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            pictureBox6.BackColor = Color.Goldenrod;
-            pictureBox6.Location = new Point(20, 525);
-            pictureBox6.Margin = new Padding(6);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(37, 43);
-            pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox6.TabIndex = 15;
-            pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            pictureBox5.BackColor = Color.Goldenrod;
-            pictureBox5.Location = new Point(20, 450);
-            pictureBox5.Margin = new Padding(6);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(37, 43);
-            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox5.TabIndex = 14;
-            pictureBox5.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.BackColor = Color.Goldenrod;
-            pictureBox4.Location = new Point(20, 375);
-            pictureBox4.Margin = new Padding(6);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(37, 43);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 13;
-            pictureBox4.TabStop = false;
+            BtnMenu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            BtnMenu.Cursor = Cursors.Hand;
+            BtnMenu.Image = Properties.Resources.menu_principal;
+            BtnMenu.Location = new Point(43, 11);
+            BtnMenu.Name = "BtnMenu";
+            BtnMenu.Size = new Size(85, 89);
+            BtnMenu.TabIndex = 7;
+            BtnMenu.UseVisualStyleBackColor = true;
             // 
             // pictureBox3
             // 
-            pictureBox3.BackColor = Color.Goldenrod;
-            pictureBox3.Location = new Point(20, 301);
-            pictureBox3.Margin = new Padding(6);
+            pictureBox3.Image = Properties.Resources.Copilot_20260602_134910;
+            pictureBox3.Location = new Point(324, -1);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(37, 43);
+            pictureBox3.Size = new Size(183, 124);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 12;
+            pictureBox3.TabIndex = 6;
             pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.Goldenrod;
-            pictureBox2.Location = new Point(20, 230);
-            pictureBox2.Margin = new Padding(6);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(37, 43);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 11;
-            pictureBox2.TabStop = false;
-            // 
-            // BtnExit
-            // 
-            BtnExit.BackColor = Color.Maroon;
-            BtnExit.Dock = DockStyle.Bottom;
-            BtnExit.FlatAppearance.BorderSize = 2;
-            BtnExit.FlatStyle = FlatStyle.Flat;
-            BtnExit.Font = new Font("Georgia", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnExit.ForeColor = Color.White;
-            BtnExit.Location = new Point(0, 1146);
-            BtnExit.Margin = new Padding(6);
-            BtnExit.Name = "BtnExit";
-            BtnExit.Size = new Size(292, 83);
-            BtnExit.TabIndex = 10;
-            BtnExit.Text = "Cerrar Sesion";
-            BtnExit.UseVisualStyleBackColor = false;
-            BtnExit.Click += BtnExit_Click;
-            // 
-            // BtnSettings
-            // 
-            BtnSettings.BackColor = Color.Goldenrod;
-            BtnSettings.Dock = DockStyle.Top;
-            BtnSettings.FlatStyle = FlatStyle.Flat;
-            BtnSettings.Font = new Font("Georgia", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnSettings.ForeColor = Color.White;
-            BtnSettings.Location = new Point(0, 738);
-            BtnSettings.Margin = new Padding(6);
-            BtnSettings.Name = "BtnSettings";
-            BtnSettings.Size = new Size(292, 75);
-            BtnSettings.TabIndex = 9;
-            BtnSettings.Text = "Configuracion";
-            BtnSettings.UseVisualStyleBackColor = false;
-            // 
-            // BtnReports
-            // 
-            BtnReports.BackColor = Color.Goldenrod;
-            BtnReports.Dock = DockStyle.Top;
-            BtnReports.FlatStyle = FlatStyle.Flat;
-            BtnReports.Font = new Font("Georgia", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnReports.ForeColor = Color.White;
-            BtnReports.Location = new Point(0, 663);
-            BtnReports.Margin = new Padding(6);
-            BtnReports.Name = "BtnReports";
-            BtnReports.Size = new Size(292, 75);
-            BtnReports.TabIndex = 8;
-            BtnReports.Text = "Reportes";
-            BtnReports.UseVisualStyleBackColor = false;
-            // 
-            // BtnCategory
-            // 
-            BtnCategory.BackColor = Color.Goldenrod;
-            BtnCategory.Dock = DockStyle.Top;
-            BtnCategory.FlatStyle = FlatStyle.Flat;
-            BtnCategory.Font = new Font("Georgia", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnCategory.ForeColor = Color.White;
-            BtnCategory.Location = new Point(0, 588);
-            BtnCategory.Margin = new Padding(6);
-            BtnCategory.Name = "BtnCategory";
-            BtnCategory.Size = new Size(292, 75);
-            BtnCategory.TabIndex = 6;
-            BtnCategory.Text = "Categoria";
-            BtnCategory.UseVisualStyleBackColor = false;
-            BtnCategory.Click += BtnCategory_Click;
-            // 
-            // BtnInventory
-            // 
-            BtnInventory.BackColor = Color.Goldenrod;
-            BtnInventory.Dock = DockStyle.Top;
-            BtnInventory.FlatStyle = FlatStyle.Flat;
-            BtnInventory.Font = new Font("Georgia", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnInventory.ForeColor = Color.White;
-            BtnInventory.Location = new Point(0, 513);
-            BtnInventory.Margin = new Padding(6);
-            BtnInventory.Name = "BtnInventory";
-            BtnInventory.Size = new Size(292, 75);
-            BtnInventory.TabIndex = 5;
-            BtnInventory.Text = "Inventario";
-            BtnInventory.UseVisualStyleBackColor = false;
-            BtnInventory.Click += BtnInventory_Click;
-            // 
-            // BtnProducts
-            // 
-            BtnProducts.BackColor = Color.Goldenrod;
-            BtnProducts.Dock = DockStyle.Top;
-            BtnProducts.FlatStyle = FlatStyle.Flat;
-            BtnProducts.Font = new Font("Georgia", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnProducts.ForeColor = Color.White;
-            BtnProducts.Location = new Point(0, 438);
-            BtnProducts.Margin = new Padding(6);
-            BtnProducts.Name = "BtnProducts";
-            BtnProducts.Size = new Size(292, 75);
-            BtnProducts.TabIndex = 4;
-            BtnProducts.Text = "Productos";
-            BtnProducts.UseVisualStyleBackColor = false;
-            BtnProducts.Click += BtnProducts_Click;
-            // 
-            // BtnBilling
-            // 
-            BtnBilling.BackColor = Color.Goldenrod;
-            BtnBilling.Dock = DockStyle.Top;
-            BtnBilling.FlatStyle = FlatStyle.Flat;
-            BtnBilling.Font = new Font("Georgia", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnBilling.ForeColor = Color.White;
-            BtnBilling.Location = new Point(0, 363);
-            BtnBilling.Margin = new Padding(6);
-            BtnBilling.Name = "BtnBilling";
-            BtnBilling.Size = new Size(292, 75);
-            BtnBilling.TabIndex = 3;
-            BtnBilling.Text = "Facturacion";
-            BtnBilling.UseVisualStyleBackColor = false;
-            BtnBilling.Click += BtnBilling_Click;
-            // 
-            // BtnOrder
-            // 
-            BtnOrder.BackColor = Color.Goldenrod;
-            BtnOrder.Dock = DockStyle.Top;
-            BtnOrder.FlatStyle = FlatStyle.Flat;
-            BtnOrder.Font = new Font("Georgia", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnOrder.ForeColor = Color.White;
-            BtnOrder.Location = new Point(0, 288);
-            BtnOrder.Margin = new Padding(6);
-            BtnOrder.Name = "BtnOrder";
-            BtnOrder.Size = new Size(292, 75);
-            BtnOrder.TabIndex = 2;
-            BtnOrder.Text = "Pedido";
-            BtnOrder.UseVisualStyleBackColor = false;
-            BtnOrder.Click += BtnOrder_Click;
-            // 
-            // BtnStart
-            // 
-            BtnStart.BackColor = Color.Goldenrod;
-            BtnStart.Dock = DockStyle.Top;
-            BtnStart.FlatStyle = FlatStyle.Flat;
-            BtnStart.Font = new Font("Georgia", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnStart.ForeColor = Color.White;
-            BtnStart.ImageKey = "(ninguna)";
-            BtnStart.Location = new Point(0, 213);
-            BtnStart.Margin = new Padding(6);
-            BtnStart.Name = "BtnStart";
-            BtnStart.Size = new Size(292, 75);
-            BtnStart.TabIndex = 1;
-            BtnStart.Text = "Inicio";
-            BtnStart.UseVisualStyleBackColor = false;
-            BtnStart.Click += BtnStart_Click;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(pictureBox1);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(6);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(292, 213);
-            panel2.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = Properties.Resources.logo;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Margin = new Padding(6);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(292, 213);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // PnlSubMenuSystems
-            // 
-            PnlSubMenuSystems.Controls.Add(FlpSalesOfTheDay);
-            PnlSubMenuSystems.Controls.Add(PnlSubMenuLatestSales);
-            PnlSubMenuSystems.Controls.Add(PnlSubMenuSalesPerDay);
-            PnlSubMenuSystems.Controls.Add(FlpLowStock);
-            PnlSubMenuSystems.Controls.Add(FlpBillsOfTheDay);
-            PnlSubMenuSystems.Controls.Add(FlpProducts);
-            PnlSubMenuSystems.Controls.Add(PnlSubMenuBestSellingProducts);
-            PnlSubMenuSystems.Dock = DockStyle.Fill;
-            PnlSubMenuSystems.Location = new Point(292, 0);
-            PnlSubMenuSystems.Name = "PnlSubMenuSystems";
-            PnlSubMenuSystems.Size = new Size(1782, 1229);
-            PnlSubMenuSystems.TabIndex = 13;
-            // 
-            // FlpSalesOfTheDay
-            // 
-            FlpSalesOfTheDay.BackColor = Color.Beige;
-            FlpSalesOfTheDay.Controls.Add(label3);
-            FlpSalesOfTheDay.Controls.Add(pictureBox12);
-            FlpSalesOfTheDay.Controls.Add(textBox1);
-            FlpSalesOfTheDay.Location = new Point(57, 128);
-            FlpSalesOfTheDay.Margin = new Padding(6);
-            FlpSalesOfTheDay.Name = "FlpSalesOfTheDay";
-            FlpSalesOfTheDay.Size = new Size(240, 149);
-            FlpSalesOfTheDay.TabIndex = 13;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Dock = DockStyle.Top;
-            label3.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.FromArgb(64, 64, 64);
-            label3.Location = new Point(6, 0);
-            label3.Margin = new Padding(6, 0, 6, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(200, 30);
-            label3.TabIndex = 0;
-            label3.Text = "Ventas del dia";
-            // 
-            // pictureBox12
-            // 
-            pictureBox12.Location = new Point(6, 36);
-            pictureBox12.Margin = new Padding(6);
-            pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(74, 64);
-            pictureBox12.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox12.TabIndex = 4;
-            pictureBox12.TabStop = false;
-            // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox1.BackColor = Color.Beige;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Georgia", 10F, FontStyle.Bold);
-            textBox1.ForeColor = Color.FromArgb(0, 192, 0);
-            textBox1.Location = new Point(92, 66);
-            textBox1.Margin = new Padding(6);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(108, 34);
-            textBox1.TabIndex = 3;
-            textBox1.Text = "$11,800";
-            textBox1.TextAlign = HorizontalAlignment.Center;
-            // 
-            // PnlSubMenuLatestSales
-            // 
-            PnlSubMenuLatestSales.BackColor = Color.Beige;
-            PnlSubMenuLatestSales.Controls.Add(DgvLatestSales);
-            PnlSubMenuLatestSales.Controls.Add(label9);
-            PnlSubMenuLatestSales.Location = new Point(57, 695);
-            PnlSubMenuLatestSales.Margin = new Padding(6);
-            PnlSubMenuLatestSales.Name = "PnlSubMenuLatestSales";
-            PnlSubMenuLatestSales.Size = new Size(1668, 405);
-            PnlSubMenuLatestSales.TabIndex = 19;
-            // 
-            // DgvLatestSales
-            // 
-            DgvLatestSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DgvLatestSales.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            DgvLatestSales.BackgroundColor = Color.Beige;
-            DgvLatestSales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvLatestSales.Columns.AddRange(new DataGridViewColumn[] { IdVenta, Empleado, Total, Fecha });
-            DgvLatestSales.Location = new Point(24, 43);
-            DgvLatestSales.Margin = new Padding(6);
-            DgvLatestSales.Name = "DgvLatestSales";
-            DgvLatestSales.ReadOnly = true;
-            DgvLatestSales.RowHeadersWidth = 82;
-            DgvLatestSales.Size = new Size(1625, 342);
-            DgvLatestSales.TabIndex = 2;
-            // 
-            // IdVenta
-            // 
-            IdVenta.HeaderText = "IdVenta";
-            IdVenta.MinimumWidth = 10;
-            IdVenta.Name = "IdVenta";
-            IdVenta.ReadOnly = true;
-            // 
-            // Empleado
-            // 
-            Empleado.HeaderText = "Empleado";
-            Empleado.MinimumWidth = 10;
-            Empleado.Name = "Empleado";
-            Empleado.ReadOnly = true;
-            // 
-            // Total
-            // 
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 10;
-            Total.Name = "Total";
-            Total.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            Fecha.HeaderText = "Fecha";
-            Fecha.MinimumWidth = 10;
-            Fecha.Name = "Fecha";
-            Fecha.ReadOnly = true;
-            // 
-            // label9
-            // 
-            label9.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label9.AutoSize = true;
-            label9.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.FromArgb(64, 64, 64);
-            label9.Location = new Point(0, 0);
-            label9.Margin = new Padding(6, 0, 6, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(215, 30);
-            label9.TabIndex = 1;
-            label9.Text = "Ultimas Ventas";
-            label9.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // PnlSubMenuSalesPerDay
-            // 
-            PnlSubMenuSalesPerDay.BackColor = Color.Beige;
-            PnlSubMenuSalesPerDay.Controls.Add(label7);
-            PnlSubMenuSalesPerDay.Location = new Point(57, 327);
-            PnlSubMenuSalesPerDay.Margin = new Padding(6);
-            PnlSubMenuSalesPerDay.Name = "PnlSubMenuSalesPerDay";
-            PnlSubMenuSalesPerDay.Size = new Size(700, 326);
-            PnlSubMenuSalesPerDay.TabIndex = 17;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.FromArgb(64, 64, 64);
-            label7.Location = new Point(0, 0);
-            label7.Margin = new Padding(6, 0, 6, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(225, 30);
-            label7.TabIndex = 0;
-            label7.Text = "Ventas por Dias";
-            // 
-            // FlpLowStock
-            // 
-            FlpLowStock.BackColor = Color.Beige;
-            FlpLowStock.Controls.Add(label6);
-            FlpLowStock.Controls.Add(pictureBox15);
-            FlpLowStock.Controls.Add(textBox4);
-            FlpLowStock.Location = new Point(1469, 128);
-            FlpLowStock.Margin = new Padding(6);
-            FlpLowStock.Name = "FlpLowStock";
-            FlpLowStock.Size = new Size(256, 149);
-            FlpLowStock.TabIndex = 16;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Dock = DockStyle.Top;
-            label6.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.FromArgb(64, 64, 64);
-            label6.Location = new Point(6, 0);
-            label6.Margin = new Padding(6, 0, 6, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(168, 30);
-            label6.TabIndex = 1;
-            label6.Text = "Stock Bajos";
-            // 
-            // pictureBox15
-            // 
-            pictureBox15.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox15.Location = new Point(6, 36);
-            pictureBox15.Margin = new Padding(6);
-            pictureBox15.Name = "pictureBox15";
-            pictureBox15.Size = new Size(74, 64);
-            pictureBox15.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox15.TabIndex = 6;
-            pictureBox15.TabStop = false;
-            // 
-            // textBox4
-            // 
-            textBox4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox4.BackColor = Color.Beige;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Font = new Font("Georgia", 10F, FontStyle.Bold);
-            textBox4.ForeColor = Color.Red;
-            textBox4.Location = new Point(92, 66);
-            textBox4.Margin = new Padding(6);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(108, 34);
-            textBox4.TabIndex = 7;
-            textBox4.Text = "8";
-            textBox4.TextAlign = HorizontalAlignment.Center;
-            // 
-            // FlpBillsOfTheDay
-            // 
-            FlpBillsOfTheDay.BackColor = Color.Beige;
-            FlpBillsOfTheDay.Controls.Add(label4);
-            FlpBillsOfTheDay.Controls.Add(pictureBox13);
-            FlpBillsOfTheDay.Controls.Add(textBox2);
-            FlpBillsOfTheDay.Location = new Point(512, 128);
-            FlpBillsOfTheDay.Margin = new Padding(6);
-            FlpBillsOfTheDay.Name = "FlpBillsOfTheDay";
-            FlpBillsOfTheDay.Size = new Size(245, 149);
-            FlpBillsOfTheDay.TabIndex = 15;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Dock = DockStyle.Top;
-            label4.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.FromArgb(64, 64, 64);
-            label4.Location = new Point(6, 0);
-            label4.Margin = new Padding(6, 0, 6, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(225, 30);
-            label4.TabIndex = 1;
-            label4.Text = "Facturas del dia";
-            // 
-            // pictureBox13
-            // 
-            pictureBox13.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox13.Image = Properties.Resources.Factura;
-            pictureBox13.Location = new Point(6, 36);
-            pictureBox13.Margin = new Padding(6);
-            pictureBox13.Name = "pictureBox13";
-            pictureBox13.Size = new Size(74, 64);
-            pictureBox13.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox13.TabIndex = 5;
-            pictureBox13.TabStop = false;
-            // 
-            // textBox2
-            // 
-            textBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox2.BackColor = Color.Beige;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Georgia", 10F, FontStyle.Bold);
-            textBox2.ForeColor = Color.Green;
-            textBox2.Location = new Point(92, 40);
-            textBox2.Margin = new Padding(6);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(108, 60);
-            textBox2.TabIndex = 6;
-            textBox2.Text = "50";
-            textBox2.TextAlign = HorizontalAlignment.Center;
-            // 
-            // FlpProducts
-            // 
-            FlpProducts.BackColor = Color.Beige;
-            FlpProducts.Controls.Add(label5);
-            FlpProducts.Controls.Add(pictureBox14);
-            FlpProducts.Controls.Add(textBox3);
-            FlpProducts.Location = new Point(1025, 128);
-            FlpProducts.Margin = new Padding(6);
-            FlpProducts.Name = "FlpProducts";
-            FlpProducts.Size = new Size(215, 149);
-            FlpProducts.TabIndex = 14;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Dock = DockStyle.Top;
-            label5.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.FromArgb(64, 64, 64);
-            label5.Location = new Point(6, 0);
-            label5.Margin = new Padding(6, 0, 6, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(151, 30);
-            label5.TabIndex = 1;
-            label5.Text = "Productos";
-            // 
-            // pictureBox14
-            // 
-            pictureBox14.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox14.Location = new Point(6, 36);
-            pictureBox14.Margin = new Padding(6);
-            pictureBox14.Name = "pictureBox14";
-            pictureBox14.Size = new Size(74, 64);
-            pictureBox14.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox14.TabIndex = 6;
-            pictureBox14.TabStop = false;
-            // 
-            // textBox3
-            // 
-            textBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox3.BackColor = Color.Beige;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Font = new Font("Georgia", 10F, FontStyle.Bold);
-            textBox3.ForeColor = Color.Red;
-            textBox3.Location = new Point(92, 66);
-            textBox3.Margin = new Padding(6);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(108, 34);
-            textBox3.TabIndex = 7;
-            textBox3.Text = "140";
-            textBox3.TextAlign = HorizontalAlignment.Center;
-            // 
-            // PnlSubMenuBestSellingProducts
-            // 
-            PnlSubMenuBestSellingProducts.BackColor = Color.Beige;
-            PnlSubMenuBestSellingProducts.Controls.Add(LsbUploadBestSellingProducts);
-            PnlSubMenuBestSellingProducts.Controls.Add(label8);
-            PnlSubMenuBestSellingProducts.Location = new Point(1025, 327);
-            PnlSubMenuBestSellingProducts.Margin = new Padding(6);
-            PnlSubMenuBestSellingProducts.Name = "PnlSubMenuBestSellingProducts";
-            PnlSubMenuBestSellingProducts.Size = new Size(700, 326);
-            PnlSubMenuBestSellingProducts.TabIndex = 18;
-            // 
-            // LsbUploadBestSellingProducts
-            // 
-            LsbUploadBestSellingProducts.BackColor = Color.Maroon;
-            LsbUploadBestSellingProducts.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LsbUploadBestSellingProducts.ForeColor = Color.White;
-            LsbUploadBestSellingProducts.FormattingEnabled = true;
-            LsbUploadBestSellingProducts.Location = new Point(25, 49);
-            LsbUploadBestSellingProducts.Margin = new Padding(6);
-            LsbUploadBestSellingProducts.Name = "LsbUploadBestSellingProducts";
-            LsbUploadBestSellingProducts.Size = new Size(618, 244);
-            LsbUploadBestSellingProducts.TabIndex = 2;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.FromArgb(64, 64, 64);
-            label8.Location = new Point(0, 0);
-            label8.Margin = new Padding(6, 0, 6, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(345, 30);
-            label8.TabIndex = 1;
-            label8.Text = "Productos más Vendidos";
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.Goldenrod;
-            panel3.Controls.Add(label1);
-            panel3.Controls.Add(label2);
-            panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(292, 0);
-            panel3.Margin = new Padding(6);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1782, 98);
-            panel3.TabIndex = 16;
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Font = new Font("Georgia", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(30, 26);
+            label1.BackColor = Color.FromArgb(109, 15, 15);
+            label1.Font = new Font("Segoe UI", 16.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(246, 246, 247);
+            label1.Location = new Point(665, 33);
             label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(332, 43);
-            label1.TabIndex = 2;
-            label1.Text = "Asados La Flaca";
+            label1.Size = new Size(743, 59);
+            label1.TabIndex = 4;
+            label1.Text = "Sistema de Facturacion e Inventario";
             // 
-            // label2
+            // pnlHeaderNav
             // 
-            label2.Anchor = AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(10567, -82);
-            label2.Margin = new Padding(6, 0, 6, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(183, 30);
-            label2.TabIndex = 1;
-            label2.Text = "Guillermina ";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
+            pnlHeaderNav.BackColor = Color.FromArgb(109, 15, 15);
+            pnlHeaderNav.Controls.Add(pictureBox1);
+            pnlHeaderNav.Controls.Add(label5);
+            pnlHeaderNav.Dock = DockStyle.Top;
+            pnlHeaderNav.Location = new Point(0, 0);
+            pnlHeaderNav.Margin = new Padding(0);
+            pnlHeaderNav.Name = "pnlHeaderNav";
+            pnlHeaderNav.Size = new Size(476, 120);
+            pnlHeaderNav.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.parrilla;
+            pictureBox1.Location = new Point(355, -1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(122, 108);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(246, 246, 247);
+            label5.Location = new Point(91, 34);
+            label5.Margin = new Padding(6, 0, 6, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(196, 45);
+            label5.TabIndex = 6;
+            label5.Text = "Navegación";
+            label5.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // btnCatalog
+            // 
+            btnCatalog.AutoSize = true;
+            btnCatalog.BackColor = Color.FromArgb(200, 170, 80);
+            btnCatalog.Cursor = Cursors.Hand;
+            btnCatalog.Dock = DockStyle.Top;
+            btnCatalog.FlatAppearance.BorderSize = 0;
+            btnCatalog.FlatStyle = FlatStyle.Flat;
+            btnCatalog.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCatalog.ForeColor = Color.FromArgb(235, 236, 238);
+            btnCatalog.Location = new Point(0, 120);
+            btnCatalog.Margin = new Padding(0);
+            btnCatalog.Name = "btnCatalog";
+            btnCatalog.Padding = new Padding(44, 0, 0, 0);
+            btnCatalog.Size = new Size(476, 84);
+            btnCatalog.TabIndex = 1;
+            btnCatalog.Text = "Catálogos";
+            btnCatalog.TextAlign = ContentAlignment.MiddleLeft;
+            btnCatalog.UseVisualStyleBackColor = false;
+            // 
+            // pnlCatalogSubMenu
+            // 
+            pnlCatalogSubMenu.BackColor = Color.FromArgb(89, 93, 112);
+            pnlCatalogSubMenu.Controls.Add(button1);
+            pnlCatalogSubMenu.Controls.Add(btnMunicipality);
+            pnlCatalogSubMenu.Controls.Add(btnDepartment);
+            pnlCatalogSubMenu.Controls.Add(BtnEmployee);
+            pnlCatalogSubMenu.Dock = DockStyle.Top;
+            pnlCatalogSubMenu.Location = new Point(0, 204);
+            pnlCatalogSubMenu.Margin = new Padding(0);
+            pnlCatalogSubMenu.Name = "pnlCatalogSubMenu";
+            pnlCatalogSubMenu.Size = new Size(476, 363);
+            pnlCatalogSubMenu.TabIndex = 2;
+            // 
+            // button1
+            // 
+            button1.Cursor = Cursors.Hand;
+            button1.Dock = DockStyle.Top;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.FromArgb(246, 246, 247);
+            button1.Location = new Point(0, 252);
+            button1.Margin = new Padding(4);
+            button1.Name = "button1";
+            button1.Padding = new Padding(64, 0, 0, 0);
+            button1.Size = new Size(476, 84);
+            button1.TabIndex = 3;
+            button1.Text = "Productos";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // btnMunicipality
+            // 
+            btnMunicipality.Cursor = Cursors.Hand;
+            btnMunicipality.Dock = DockStyle.Top;
+            btnMunicipality.FlatAppearance.BorderSize = 0;
+            btnMunicipality.FlatStyle = FlatStyle.Flat;
+            btnMunicipality.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMunicipality.ForeColor = Color.FromArgb(246, 246, 247);
+            btnMunicipality.Location = new Point(0, 168);
+            btnMunicipality.Margin = new Padding(4);
+            btnMunicipality.Name = "btnMunicipality";
+            btnMunicipality.Padding = new Padding(64, 0, 0, 0);
+            btnMunicipality.Size = new Size(476, 84);
+            btnMunicipality.TabIndex = 2;
+            btnMunicipality.Text = "Categorias";
+            btnMunicipality.TextAlign = ContentAlignment.MiddleLeft;
+            btnMunicipality.UseVisualStyleBackColor = true;
+            // 
+            // btnDepartment
+            // 
+            btnDepartment.Cursor = Cursors.Hand;
+            btnDepartment.Dock = DockStyle.Top;
+            btnDepartment.FlatAppearance.BorderSize = 0;
+            btnDepartment.FlatStyle = FlatStyle.Flat;
+            btnDepartment.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDepartment.ForeColor = Color.FromArgb(246, 246, 248);
+            btnDepartment.Location = new Point(0, 84);
+            btnDepartment.Margin = new Padding(4);
+            btnDepartment.Name = "btnDepartment";
+            btnDepartment.Padding = new Padding(64, 0, 0, 0);
+            btnDepartment.Size = new Size(476, 84);
+            btnDepartment.TabIndex = 1;
+            btnDepartment.Text = "Clientes";
+            btnDepartment.TextAlign = ContentAlignment.MiddleLeft;
+            btnDepartment.UseVisualStyleBackColor = true;
+            // 
+            // BtnEmployee
+            // 
+            BtnEmployee.Cursor = Cursors.Hand;
+            BtnEmployee.Dock = DockStyle.Top;
+            BtnEmployee.FlatAppearance.BorderSize = 0;
+            BtnEmployee.FlatStyle = FlatStyle.Flat;
+            BtnEmployee.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnEmployee.ForeColor = Color.FromArgb(246, 247, 248);
+            BtnEmployee.Location = new Point(0, 0);
+            BtnEmployee.Margin = new Padding(0);
+            BtnEmployee.Name = "BtnEmployee";
+            BtnEmployee.Padding = new Padding(64, 0, 0, 0);
+            BtnEmployee.Size = new Size(476, 84);
+            BtnEmployee.TabIndex = 0;
+            BtnEmployee.Text = "Empleados";
+            BtnEmployee.TextAlign = ContentAlignment.MiddleLeft;
+            BtnEmployee.UseVisualStyleBackColor = true;
+            BtnEmployee.Click += BtnEmployee_Click;
+            // 
+            // btnEmployees
+            // 
+            btnEmployees.BackColor = Color.FromArgb(200, 170, 80);
+            btnEmployees.Cursor = Cursors.Hand;
+            btnEmployees.Dock = DockStyle.Top;
+            btnEmployees.FlatAppearance.BorderSize = 0;
+            btnEmployees.FlatStyle = FlatStyle.Flat;
+            btnEmployees.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEmployees.ForeColor = Color.FromArgb(235, 236, 238);
+            btnEmployees.Location = new Point(0, 567);
+            btnEmployees.Margin = new Padding(4);
+            btnEmployees.Name = "btnEmployees";
+            btnEmployees.Padding = new Padding(56, 0, 0, 0);
+            btnEmployees.Size = new Size(476, 84);
+            btnEmployees.TabIndex = 3;
+            btnEmployees.Text = "Ventas";
+            btnEmployees.TextAlign = ContentAlignment.MiddleLeft;
+            btnEmployees.UseVisualStyleBackColor = false;
+            // 
+            // pnlSubMenuEmployee
+            // 
+            pnlSubMenuEmployee.BackColor = Color.FromArgb(89, 93, 112);
+            pnlSubMenuEmployee.Controls.Add(btnTrainingManagement);
+            pnlSubMenuEmployee.Controls.Add(btnEmployeeFile);
+            pnlSubMenuEmployee.Dock = DockStyle.Top;
+            pnlSubMenuEmployee.Location = new Point(0, 651);
+            pnlSubMenuEmployee.Margin = new Padding(0);
+            pnlSubMenuEmployee.Name = "pnlSubMenuEmployee";
+            pnlSubMenuEmployee.Size = new Size(476, 168);
+            pnlSubMenuEmployee.TabIndex = 4;
+            // 
+            // btnTrainingManagement
+            // 
+            btnTrainingManagement.Cursor = Cursors.Hand;
+            btnTrainingManagement.Dock = DockStyle.Top;
+            btnTrainingManagement.FlatAppearance.BorderSize = 0;
+            btnTrainingManagement.FlatStyle = FlatStyle.Flat;
+            btnTrainingManagement.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTrainingManagement.ForeColor = Color.FromArgb(246, 246, 247);
+            btnTrainingManagement.Location = new Point(0, 64);
+            btnTrainingManagement.Margin = new Padding(4);
+            btnTrainingManagement.MaximumSize = new Size(384, 64);
+            btnTrainingManagement.MinimumSize = new Size(380, 64);
+            btnTrainingManagement.Name = "btnTrainingManagement";
+            btnTrainingManagement.Padding = new Padding(64, 0, 0, 0);
+            btnTrainingManagement.Size = new Size(384, 64);
+            btnTrainingManagement.TabIndex = 1;
+            btnTrainingManagement.Text = "Facturación y Pago";
+            btnTrainingManagement.TextAlign = ContentAlignment.MiddleLeft;
+            btnTrainingManagement.UseVisualStyleBackColor = true;
+            // 
+            // btnEmployeeFile
+            // 
+            btnEmployeeFile.Cursor = Cursors.Hand;
+            btnEmployeeFile.Dock = DockStyle.Top;
+            btnEmployeeFile.FlatAppearance.BorderSize = 0;
+            btnEmployeeFile.FlatStyle = FlatStyle.Flat;
+            btnEmployeeFile.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEmployeeFile.ForeColor = Color.FromArgb(246, 246, 247);
+            btnEmployeeFile.Location = new Point(0, 0);
+            btnEmployeeFile.Margin = new Padding(4);
+            btnEmployeeFile.MaximumSize = new Size(384, 64);
+            btnEmployeeFile.MinimumSize = new Size(380, 64);
+            btnEmployeeFile.Name = "btnEmployeeFile";
+            btnEmployeeFile.Padding = new Padding(64, 0, 0, 0);
+            btnEmployeeFile.Size = new Size(384, 64);
+            btnEmployeeFile.TabIndex = 0;
+            btnEmployeeFile.Text = "Pedido";
+            btnEmployeeFile.TextAlign = ContentAlignment.MiddleLeft;
+            btnEmployeeFile.UseVisualStyleBackColor = true;
+            // 
+            // btnContract
+            // 
+            btnContract.BackColor = Color.FromArgb(200, 170, 80);
+            btnContract.Cursor = Cursors.Hand;
+            btnContract.Dock = DockStyle.Top;
+            btnContract.FlatAppearance.BorderSize = 0;
+            btnContract.FlatStyle = FlatStyle.Flat;
+            btnContract.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnContract.ForeColor = Color.FromArgb(235, 236, 238);
+            btnContract.Location = new Point(0, 819);
+            btnContract.Margin = new Padding(4);
+            btnContract.Name = "btnContract";
+            btnContract.Padding = new Padding(56, 0, 0, 0);
+            btnContract.Size = new Size(476, 84);
+            btnContract.TabIndex = 5;
+            btnContract.Text = "Inventario";
+            btnContract.TextAlign = ContentAlignment.MiddleLeft;
+            btnContract.UseVisualStyleBackColor = false;
+            // 
+            // pnlSubMenuContract
+            // 
+            pnlSubMenuContract.BackColor = Color.FromArgb(89, 93, 112);
+            pnlSubMenuContract.Controls.Add(button2);
+            pnlSubMenuContract.Controls.Add(btnPromoter);
+            pnlSubMenuContract.Controls.Add(btnActiveContracts);
+            pnlSubMenuContract.Dock = DockStyle.Top;
+            pnlSubMenuContract.Location = new Point(0, 903);
+            pnlSubMenuContract.Margin = new Padding(0);
+            pnlSubMenuContract.Name = "pnlSubMenuContract";
+            pnlSubMenuContract.Size = new Size(476, 220);
+            pnlSubMenuContract.TabIndex = 6;
+            // 
+            // button2
+            // 
+            button2.Cursor = Cursors.Hand;
+            button2.Dock = DockStyle.Top;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.FromArgb(246, 246, 247);
+            button2.Location = new Point(0, 128);
+            button2.Margin = new Padding(4);
+            button2.MaximumSize = new Size(384, 64);
+            button2.MinimumSize = new Size(380, 64);
+            button2.Name = "button2";
+            button2.Padding = new Padding(64, 0, 0, 0);
+            button2.Size = new Size(384, 64);
+            button2.TabIndex = 2;
+            button2.Text = "Movimientos";
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // btnPromoter
+            // 
+            btnPromoter.Cursor = Cursors.Hand;
+            btnPromoter.Dock = DockStyle.Top;
+            btnPromoter.FlatAppearance.BorderSize = 0;
+            btnPromoter.FlatStyle = FlatStyle.Flat;
+            btnPromoter.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPromoter.ForeColor = Color.FromArgb(246, 246, 247);
+            btnPromoter.Location = new Point(0, 64);
+            btnPromoter.Margin = new Padding(4);
+            btnPromoter.MaximumSize = new Size(384, 64);
+            btnPromoter.MinimumSize = new Size(380, 64);
+            btnPromoter.Name = "btnPromoter";
+            btnPromoter.Padding = new Padding(64, 0, 0, 0);
+            btnPromoter.Size = new Size(384, 64);
+            btnPromoter.TabIndex = 1;
+            btnPromoter.Text = "Recetas";
+            btnPromoter.TextAlign = ContentAlignment.MiddleLeft;
+            btnPromoter.UseVisualStyleBackColor = true;
+            // 
+            // btnActiveContracts
+            // 
+            btnActiveContracts.Cursor = Cursors.Hand;
+            btnActiveContracts.Dock = DockStyle.Top;
+            btnActiveContracts.FlatAppearance.BorderSize = 0;
+            btnActiveContracts.FlatStyle = FlatStyle.Flat;
+            btnActiveContracts.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnActiveContracts.ForeColor = Color.FromArgb(246, 246, 247);
+            btnActiveContracts.Location = new Point(0, 0);
+            btnActiveContracts.Margin = new Padding(4);
+            btnActiveContracts.MaximumSize = new Size(384, 64);
+            btnActiveContracts.MinimumSize = new Size(380, 64);
+            btnActiveContracts.Name = "btnActiveContracts";
+            btnActiveContracts.Padding = new Padding(64, 0, 0, 0);
+            btnActiveContracts.Size = new Size(384, 64);
+            btnActiveContracts.TabIndex = 0;
+            btnActiveContracts.Text = "Ingredientes";
+            btnActiveContracts.TextAlign = ContentAlignment.MiddleLeft;
+            btnActiveContracts.UseVisualStyleBackColor = true;
+            // 
+            // btnPayroll
+            // 
+            btnPayroll.BackColor = Color.FromArgb(200, 170, 80);
+            btnPayroll.Cursor = Cursors.Hand;
+            btnPayroll.Dock = DockStyle.Top;
+            btnPayroll.FlatAppearance.BorderSize = 0;
+            btnPayroll.FlatStyle = FlatStyle.Flat;
+            btnPayroll.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPayroll.ForeColor = Color.FromArgb(235, 236, 238);
+            btnPayroll.Location = new Point(0, 1123);
+            btnPayroll.Margin = new Padding(4, 5, 4, 5);
+            btnPayroll.Name = "btnPayroll";
+            btnPayroll.Padding = new Padding(56, 0, 0, 0);
+            btnPayroll.Size = new Size(476, 84);
+            btnPayroll.TabIndex = 7;
+            btnPayroll.Text = "Reportes";
+            btnPayroll.TextAlign = ContentAlignment.MiddleLeft;
+            btnPayroll.UseVisualStyleBackColor = false;
+            // 
+            // btnReport
+            // 
+            btnReport.BackColor = Color.FromArgb(200, 170, 80);
+            btnReport.Cursor = Cursors.Hand;
+            btnReport.Dock = DockStyle.Top;
+            btnReport.FlatAppearance.BorderSize = 0;
+            btnReport.FlatStyle = FlatStyle.Flat;
+            btnReport.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnReport.ForeColor = Color.FromArgb(235, 236, 238);
+            btnReport.Location = new Point(0, 1207);
+            btnReport.Margin = new Padding(0);
+            btnReport.Name = "btnReport";
+            btnReport.Padding = new Padding(56, 0, 0, 0);
+            btnReport.Size = new Size(476, 84);
+            btnReport.TabIndex = 9;
+            btnReport.Text = "Administrador";
+            btnReport.TextAlign = ContentAlignment.MiddleLeft;
+            btnReport.UseVisualStyleBackColor = false;
+            // 
+            // pnlSubMenuReport
+            // 
+            pnlSubMenuReport.BackColor = Color.FromArgb(89, 93, 112);
+            pnlSubMenuReport.Controls.Add(btnReport1);
+            pnlSubMenuReport.Dock = DockStyle.Top;
+            pnlSubMenuReport.Location = new Point(0, 1291);
+            pnlSubMenuReport.Margin = new Padding(0);
+            pnlSubMenuReport.Name = "pnlSubMenuReport";
+            pnlSubMenuReport.Size = new Size(476, 91);
+            pnlSubMenuReport.TabIndex = 10;
+            // 
+            // btnReport1
+            // 
+            btnReport1.Cursor = Cursors.Hand;
+            btnReport1.Dock = DockStyle.Top;
+            btnReport1.FlatAppearance.BorderSize = 0;
+            btnReport1.FlatStyle = FlatStyle.Flat;
+            btnReport1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnReport1.ForeColor = Color.FromArgb(246, 246, 247);
+            btnReport1.Location = new Point(0, 0);
+            btnReport1.Margin = new Padding(4);
+            btnReport1.MaximumSize = new Size(384, 64);
+            btnReport1.MinimumSize = new Size(384, 64);
+            btnReport1.Name = "btnReport1";
+            btnReport1.Padding = new Padding(64, 0, 0, 0);
+            btnReport1.Size = new Size(384, 64);
+            btnReport1.TabIndex = 0;
+            btnReport1.Text = "Usuario";
+            btnReport1.TextAlign = ContentAlignment.MiddleLeft;
+            btnReport1.UseVisualStyleBackColor = true;
+            // 
+            // pnlSideBar
+            // 
+            pnlSideBar.BackColor = Color.FromArgb(34, 37, 51);
+            pnlSideBar.BorderStyle = BorderStyle.FixedSingle;
+            pnlSideBar.Controls.Add(pnlSubMenuReport);
+            pnlSideBar.Controls.Add(btnReport);
+            pnlSideBar.Controls.Add(btnPayroll);
+            pnlSideBar.Controls.Add(pnlSubMenuContract);
+            pnlSideBar.Controls.Add(btnContract);
+            pnlSideBar.Controls.Add(pnlSubMenuEmployee);
+            pnlSideBar.Controls.Add(btnEmployees);
+            pnlSideBar.Controls.Add(pnlCatalogSubMenu);
+            pnlSideBar.Controls.Add(btnCatalog);
+            pnlSideBar.Controls.Add(pnlHeaderNav);
+            pnlSideBar.Dock = DockStyle.Left;
+            pnlSideBar.Location = new Point(0, 126);
+            pnlSideBar.Margin = new Padding(0);
+            pnlSideBar.Name = "pnlSideBar";
+            pnlSideBar.Size = new Size(478, 1386);
+            pnlSideBar.TabIndex = 17;
+            // 
+            // PnlMainContainer
+            // 
+            PnlMainContainer.BackColor = Color.FromArgb(243, 231, 211);
+            PnlMainContainer.Dock = DockStyle.Fill;
+            PnlMainContainer.Location = new Point(478, 126);
+            PnlMainContainer.Name = "PnlMainContainer";
+            PnlMainContainer.Size = new Size(1596, 1386);
+            PnlMainContainer.TabIndex = 19;
+            // 
+            // pnlContainer
+            // 
+            pnlContainer.AutoScroll = true;
+            pnlContainer.BackColor = Color.FromArgb(246, 246, 247);
+            pnlContainer.Dock = DockStyle.Fill;
+            pnlContainer.Location = new Point(478, 126);
+            pnlContainer.Margin = new Padding(8, 5, 8, 5);
+            pnlContainer.Name = "pnlContainer";
+            pnlContainer.Size = new Size(1596, 1386);
+            pnlContainer.TabIndex = 18;
             // 
             // FrmMainMenu
             // 
@@ -781,102 +567,61 @@
             AutoScaleMode = AutoScaleMode.Dpi;
             AutoSize = true;
             BackColor = Color.Maroon;
-            ClientSize = new Size(2074, 1229);
-            Controls.Add(panel3);
-            Controls.Add(PnlSubMenuSystems);
-            Controls.Add(panel1);
+            ClientSize = new Size(2074, 1512);
+            Controls.Add(PnlMainContainer);
+            Controls.Add(pnlContainer);
+            Controls.Add(pnlSideBar);
+            Controls.Add(pnlHeaderTopMain);
             Name = "FrmMainMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmMainMenu";
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pc_UserLogin).EndInit();
+            pnlHeaderTopMain.ResumeLayout(false);
+            pnlHeaderTopMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel2.ResumeLayout(false);
+            pnlHeaderNav.ResumeLayout(false);
+            pnlHeaderNav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            PnlSubMenuSystems.ResumeLayout(false);
-            FlpSalesOfTheDay.ResumeLayout(false);
-            FlpSalesOfTheDay.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
-            PnlSubMenuLatestSales.ResumeLayout(false);
-            PnlSubMenuLatestSales.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)DgvLatestSales).EndInit();
-            PnlSubMenuSalesPerDay.ResumeLayout(false);
-            PnlSubMenuSalesPerDay.PerformLayout();
-            FlpLowStock.ResumeLayout(false);
-            FlpLowStock.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
-            FlpBillsOfTheDay.ResumeLayout(false);
-            FlpBillsOfTheDay.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
-            FlpProducts.ResumeLayout(false);
-            FlpProducts.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
-            PnlSubMenuBestSellingProducts.ResumeLayout(false);
-            PnlSubMenuBestSellingProducts.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            pnlCatalogSubMenu.ResumeLayout(false);
+            pnlSubMenuEmployee.ResumeLayout(false);
+            pnlSubMenuContract.ResumeLayout(false);
+            pnlSubMenuReport.ResumeLayout(false);
+            pnlSideBar.ResumeLayout(false);
+            pnlSideBar.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel1;
-        private PictureBox pictureBox7;
-        private PictureBox pictureBox9;
-        private PictureBox pictureBox8;
-        private PictureBox pictureBox6;
-        private PictureBox pictureBox5;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox2;
-        private Button BtnExit;
-        private Button BtnSettings;
-        private Button BtnReports;
-        private Button BtnCategory;
-        private Button BtnInventory;
-        private Button BtnProducts;
-        private Button BtnBilling;
-        private Button BtnOrder;
-        private Button BtnStart;
-        private Panel panel2;
-        private PictureBox pictureBox1;
-        private Panel PnlSubMenuSystems;
-        private Panel panel3;
-        private Label label1;
-        private Label label2;
-        private FlowLayoutPanel FlpSalesOfTheDay;
-        private Label label3;
-        private PictureBox pictureBox12;
-        private TextBox textBox1;
-        private Panel PnlSubMenuLatestSales;
-        private DataGridView DgvLatestSales;
-        private DataGridViewTextBoxColumn IdVenta;
-        private DataGridViewTextBoxColumn Empleado;
-        private DataGridViewTextBoxColumn Total;
-        private DataGridViewTextBoxColumn Fecha;
-        private Label label9;
-        private Panel PnlSubMenuSalesPerDay;
-        private Label label7;
-        private FlowLayoutPanel FlpLowStock;
-        private Label label6;
-        private PictureBox pictureBox15;
-        private TextBox textBox4;
-        private FlowLayoutPanel FlpBillsOfTheDay;
-        private Label label4;
-        private PictureBox pictureBox13;
-        private TextBox textBox2;
-        private FlowLayoutPanel FlpProducts;
+        private PictureBox pc_UserLogin;
+        private Label lblUserLogIn;
+        private Panel pnlHeaderTopMain;
+        private Panel pnlHeaderNav;
+        private Button btnCatalog;
+        private Panel pnlCatalogSubMenu;
+        private Button btnMunicipality;
+        private Button btnDepartment;
+        private Button BtnEmployee;
+        private Button btnEmployees;
+        private Panel pnlSubMenuEmployee;
+        private Button btnTrainingManagement;
+        private Button btnEmployeeFile;
+        private Button btnContract;
+        private Panel pnlSubMenuContract;
+        private Button btnPromoter;
+        private Button btnActiveContracts;
+        private Button btnPayroll;
+        private Button btnReport;
+        private Panel pnlSubMenuReport;
+        private Button btnReport1;
+        private Panel pnlSideBar;
+        private Panel PnlMainContainer;
+        private Panel pnlContainer;
         private Label label5;
-        private PictureBox pictureBox14;
-        private TextBox textBox3;
-        private Panel PnlSubMenuBestSellingProducts;
-        private ListBox LsbUploadBestSellingProducts;
-        private Label label8;
+        private PictureBox pictureBox1;
+        private Button button1;
+        private Button button2;
+        private Label label1;
+        private PictureBox pictureBox3;
+        private Button BtnMenu;
     }
 }

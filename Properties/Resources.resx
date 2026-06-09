@@ -118,16 +118,94 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ojo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ojo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="side-menu1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\side-menu1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="escoba" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\escoba.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="catalogar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\catalogar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="marcador" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\marcador.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ventas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ventas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Copilot_20260602_134910" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Copilot_20260602_134910.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="boy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="agregar-producto (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\agregar-producto (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="privacidad (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\privacidad (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="privacidad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\privacidad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="basura" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\basura.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Copilot_20260602_134413" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Copilot_20260602_134413.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gestion-de-materiales" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gestion-de-materiales.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="parrilla" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\parrilla.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ojo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ojo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="computer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\computer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="agregar-producto1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\agregar-producto1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cerrar-ventana" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cerrar-ventana.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="agregar-producto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\agregar-producto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="menu-principal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu-principal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="side-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\side-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reporte" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reporte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Factura" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Factura.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="boy (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boy (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="catalogar (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\catalogar (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="abajo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\abajo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ajustes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ajustes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

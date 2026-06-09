@@ -24,10 +24,25 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo
             registeredUsers.Add(new User("Admin", "adminpass"));
         }
 
-
-        private void BtnLogin_Click(object sender, EventArgs e)
+        private void PnlLogin_Paint(object sender, PaintEventArgs e)
         {
-            string enteredUsername = TxtNameUser.Text;   // ⚠️ Verifica que el TextBox se llame así en el diseñador
+            using (Pen p = new Pen(Color.FromArgb(198, 40, 40), 2)) // rojo principal
+            {
+                e.Graphics.DrawRectangle(p, 0, 0, PnlLogin.Width - 1, PnlLogin.Height - 1);
+            }
+        }
+
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnLogin_Click_1(object sender, EventArgs e)
+        {
+
+
+            string enteredUsername = TxtUserName.Text;   // ⚠️ Verifica que el TextBox se llame así en el diseñador
             string enteredPassword = TxtPassword.Text;   // ⚠️ Verifica que el TextBox se llame así en el diseñador
 
             // Busca si existe un usuario con esas credenciales
@@ -50,30 +65,16 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo
             }
         }
 
-        private void PbHidePassword_Click(object sender, EventArgs e)
-        {
-            // Alterna entre ocultar y mostrar
-            if (TxtPassword.UseSystemPasswordChar)
-            {
-                TxtPassword.UseSystemPasswordChar = false; // muestra la contraseña
-            }
-            else
-            {
-                TxtPassword.UseSystemPasswordChar = true; // oculta la contraseña
-            }
-
-        }
-
-        private void TxtNameUser_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtUserName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true; // evita el sonido "ding"
 
-                if (string.IsNullOrWhiteSpace(TxtNameUser.Text))
+                if (string.IsNullOrWhiteSpace(TxtUserName.Text))
                 {
                     MessageBox.Show(" Por favor escriba primero el usuario ");
-                    TxtNameUser.Focus(); // vuelve al TextBox de usuario
+                    TxtUserName.Focus(); // vuelve al TextBox de usuario
                 }
                 else
                 {
@@ -99,7 +100,5 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo
                 }
             }
         }
-
-  
     }
 }
