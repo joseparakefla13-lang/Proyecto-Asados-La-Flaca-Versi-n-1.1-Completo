@@ -41,7 +41,7 @@
             pnlCatalogSubMenu = new Panel();
             button1 = new Button();
             btnMunicipality = new Button();
-            btnDepartment = new Button();
+            BtnCustomers = new Button();
             BtnEmployee = new Button();
             btnEmployees = new Button();
             pnlSubMenuEmployee = new Panel();
@@ -206,7 +206,7 @@
             pnlCatalogSubMenu.BackColor = Color.FromArgb(89, 93, 112);
             pnlCatalogSubMenu.Controls.Add(button1);
             pnlCatalogSubMenu.Controls.Add(btnMunicipality);
-            pnlCatalogSubMenu.Controls.Add(btnDepartment);
+            pnlCatalogSubMenu.Controls.Add(BtnCustomers);
             pnlCatalogSubMenu.Controls.Add(BtnEmployee);
             pnlCatalogSubMenu.Dock = DockStyle.Top;
             pnlCatalogSubMenu.Location = new Point(0, 204);
@@ -251,23 +251,24 @@
             btnMunicipality.TextAlign = ContentAlignment.MiddleLeft;
             btnMunicipality.UseVisualStyleBackColor = true;
             // 
-            // btnDepartment
+            // BtnCustomers
             // 
-            btnDepartment.Cursor = Cursors.Hand;
-            btnDepartment.Dock = DockStyle.Top;
-            btnDepartment.FlatAppearance.BorderSize = 0;
-            btnDepartment.FlatStyle = FlatStyle.Flat;
-            btnDepartment.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDepartment.ForeColor = Color.FromArgb(246, 246, 248);
-            btnDepartment.Location = new Point(0, 84);
-            btnDepartment.Margin = new Padding(4);
-            btnDepartment.Name = "btnDepartment";
-            btnDepartment.Padding = new Padding(64, 0, 0, 0);
-            btnDepartment.Size = new Size(476, 84);
-            btnDepartment.TabIndex = 1;
-            btnDepartment.Text = "Clientes";
-            btnDepartment.TextAlign = ContentAlignment.MiddleLeft;
-            btnDepartment.UseVisualStyleBackColor = true;
+            BtnCustomers.Cursor = Cursors.Hand;
+            BtnCustomers.Dock = DockStyle.Top;
+            BtnCustomers.FlatAppearance.BorderSize = 0;
+            BtnCustomers.FlatStyle = FlatStyle.Flat;
+            BtnCustomers.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnCustomers.ForeColor = Color.FromArgb(246, 246, 248);
+            BtnCustomers.Location = new Point(0, 84);
+            BtnCustomers.Margin = new Padding(4);
+            BtnCustomers.Name = "BtnCustomers";
+            BtnCustomers.Padding = new Padding(64, 0, 0, 0);
+            BtnCustomers.Size = new Size(476, 84);
+            BtnCustomers.TabIndex = 1;
+            BtnCustomers.Text = "Clientes";
+            BtnCustomers.TextAlign = ContentAlignment.MiddleLeft;
+            BtnCustomers.UseVisualStyleBackColor = true;
+            BtnCustomers.Click += BtnCustomers_Click;
             // 
             // BtnEmployee
             // 
@@ -599,7 +600,7 @@
         private Button btnCatalog;
         private Panel pnlCatalogSubMenu;
         private Button btnMunicipality;
-        private Button btnDepartment;
+        private Button BtnCustomers;
         private Button BtnEmployee;
         private Button btnEmployees;
         private Panel pnlSubMenuEmployee;

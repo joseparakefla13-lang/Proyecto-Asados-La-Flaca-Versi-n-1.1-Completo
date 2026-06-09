@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
-    partial class FrmClientes
+    partial class FrmCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -83,7 +83,7 @@
             GbxCliente.ForeColor = Color.FromArgb(45, 45, 45);
             GbxCliente.Location = new Point(0, 0);
             GbxCliente.Name = "GbxCliente";
-            GbxCliente.Size = new Size(1481, 684);
+            GbxCliente.Size = new Size(1748, 851);
             GbxCliente.TabIndex = 1;
             GbxCliente.TabStop = false;
             GbxCliente.Text = "Registro de Cliente";
@@ -94,11 +94,12 @@
             DtmFecha.CalendarForeColor = Color.FromArgb(45, 45, 45);
             DtmFecha.CalendarMonthBackground = Color.FromArgb(109, 15, 15);
             DtmFecha.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DtmFecha.Location = new Point(324, 418);
+            DtmFecha.Location = new Point(363, 510);
             DtmFecha.MinDate = new DateTime(2026, 6, 5, 0, 0, 0, 0);
             DtmFecha.Name = "DtmFecha";
-            DtmFecha.Size = new Size(365, 50);
+            DtmFecha.Size = new Size(547, 50);
             DtmFecha.TabIndex = 29;
+            DtmFecha.ValueChanged += DtmFecha_ValueChanged;
             // 
             // TxtTipoCliente
             // 
@@ -106,7 +107,7 @@
             TxtTipoCliente.BorderStyle = BorderStyle.None;
             TxtTipoCliente.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtTipoCliente.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtTipoCliente.Location = new Point(324, 340);
+            TxtTipoCliente.Location = new Point(1233, 330);
             TxtTipoCliente.Name = "TxtTipoCliente";
             TxtTipoCliente.Size = new Size(365, 43);
             TxtTipoCliente.TabIndex = 28;
@@ -117,7 +118,7 @@
             TxtTelefono.BorderStyle = BorderStyle.None;
             TxtTelefono.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtTelefono.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtTelefono.Location = new Point(324, 259);
+            TxtTelefono.Location = new Point(458, 330);
             TxtTelefono.Name = "TxtTelefono";
             TxtTelefono.Size = new Size(365, 43);
             TxtTelefono.TabIndex = 27;
@@ -129,7 +130,7 @@
             TxtNombre.BorderStyle = BorderStyle.None;
             TxtNombre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtNombre.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtNombre.Location = new Point(324, 177);
+            TxtNombre.Location = new Point(1233, 150);
             TxtNombre.Name = "TxtNombre";
             TxtNombre.Size = new Size(365, 43);
             TxtNombre.TabIndex = 26;
@@ -138,7 +139,7 @@
             // 
             LblFecha.AutoSize = true;
             LblFecha.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblFecha.Location = new Point(31, 418);
+            LblFecha.Location = new Point(40, 510);
             LblFecha.Name = "LblFecha";
             LblFecha.Size = new Size(287, 45);
             LblFecha.TabIndex = 25;
@@ -152,7 +153,7 @@
             BtnCerrarClient.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnCerrarClient.Image = Properties.Resources.cerrar_ventana;
             BtnCerrarClient.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnCerrarClient.Location = new Point(1251, 587);
+            BtnCerrarClient.Location = new Point(1370, 670);
             BtnCerrarClient.Name = "BtnCerrarClient";
             BtnCerrarClient.Size = new Size(201, 70);
             BtnCerrarClient.TabIndex = 24;
@@ -168,7 +169,7 @@
             BtnLimpiarClient.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnLimpiarClient.Image = Properties.Resources.escoba;
             BtnLimpiarClient.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnLimpiarClient.Location = new Point(1022, 587);
+            BtnLimpiarClient.Location = new Point(1107, 670);
             BtnLimpiarClient.Name = "BtnLimpiarClient";
             BtnLimpiarClient.Size = new Size(201, 70);
             BtnLimpiarClient.TabIndex = 23;
@@ -184,7 +185,7 @@
             BtnEliminarClient.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnEliminarClient.Image = Properties.Resources.basura;
             BtnEliminarClient.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnEliminarClient.Location = new Point(794, 587);
+            BtnEliminarClient.Location = new Point(845, 670);
             BtnEliminarClient.Name = "BtnEliminarClient";
             BtnEliminarClient.Size = new Size(201, 70);
             BtnEliminarClient.TabIndex = 22;
@@ -200,7 +201,7 @@
             BtnGuardarClient.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnGuardarClient.Image = Properties.Resources.abajo;
             BtnGuardarClient.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnGuardarClient.Location = new Point(570, 587);
+            BtnGuardarClient.Location = new Point(554, 670);
             BtnGuardarClient.Name = "BtnGuardarClient";
             BtnGuardarClient.Size = new Size(201, 70);
             BtnGuardarClient.TabIndex = 21;
@@ -216,7 +217,7 @@
             BtnAgregarClient.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnAgregarClient.Image = Properties.Resources.agregar_producto__1_;
             BtnAgregarClient.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnAgregarClient.Location = new Point(341, 587);
+            BtnAgregarClient.Location = new Point(249, 670);
             BtnAgregarClient.Name = "BtnAgregarClient";
             BtnAgregarClient.Size = new Size(201, 70);
             BtnAgregarClient.TabIndex = 20;
@@ -229,7 +230,7 @@
             ChebxEstadoCliente.AutoSize = true;
             ChebxEstadoCliente.FlatStyle = FlatStyle.Flat;
             ChebxEstadoCliente.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ChebxEstadoCliente.Location = new Point(324, 490);
+            ChebxEstadoCliente.Location = new Point(1334, 510);
             ChebxEstadoCliente.Name = "ChebxEstadoCliente";
             ChebxEstadoCliente.Size = new Size(136, 49);
             ChebxEstadoCliente.TabIndex = 9;
@@ -242,7 +243,7 @@
             TxtCodigoCliente.BorderStyle = BorderStyle.None;
             TxtCodigoCliente.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtCodigoCliente.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtCodigoCliente.Location = new Point(324, 79);
+            TxtCodigoCliente.Location = new Point(500, 150);
             TxtCodigoCliente.Name = "TxtCodigoCliente";
             TxtCodigoCliente.Size = new Size(278, 43);
             TxtCodigoCliente.TabIndex = 5;
@@ -251,7 +252,7 @@
             // 
             LblDisponibleCliente.AutoSize = true;
             LblDisponibleCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblDisponibleCliente.Location = new Point(31, 490);
+            LblDisponibleCliente.Location = new Point(1037, 510);
             LblDisponibleCliente.Name = "LblDisponibleCliente";
             LblDisponibleCliente.Size = new Size(190, 45);
             LblDisponibleCliente.TabIndex = 4;
@@ -261,7 +262,7 @@
             // 
             LblTipoDeCliente.AutoSize = true;
             LblTipoDeCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblTipoDeCliente.Location = new Point(31, 340);
+            LblTipoDeCliente.Location = new Point(977, 330);
             LblTipoDeCliente.Name = "LblTipoDeCliente";
             LblTipoDeCliente.Size = new Size(250, 45);
             LblTipoDeCliente.TabIndex = 3;
@@ -271,7 +272,7 @@
             // 
             LblTeléfono.AutoSize = true;
             LblTeléfono.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblTeléfono.Location = new Point(31, 259);
+            LblTeléfono.Location = new Point(1037, 150);
             LblTeléfono.Name = "LblTeléfono";
             LblTeléfono.Size = new Size(159, 45);
             LblTeléfono.TabIndex = 2;
@@ -281,7 +282,7 @@
             // 
             LblNombreCliente.AutoSize = true;
             LblNombreCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblNombreCliente.Location = new Point(31, 177);
+            LblNombreCliente.Location = new Point(174, 330);
             LblNombreCliente.Name = "LblNombreCliente";
             LblNombreCliente.Size = new Size(153, 45);
             LblNombreCliente.TabIndex = 1;
@@ -291,7 +292,7 @@
             // 
             LblCodigoCliente.AutoSize = true;
             LblCodigoCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblCodigoCliente.Location = new Point(31, 79);
+            LblCodigoCliente.Location = new Point(77, 150);
             LblCodigoCliente.Name = "LblCodigoCliente";
             LblCodigoCliente.Size = new Size(250, 45);
             LblCodigoCliente.TabIndex = 0;
@@ -305,10 +306,10 @@
             DtgCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DtgCliente.Columns.AddRange(new DataGridViewColumn[] { Codigo, Nombres, Teléfono, TipoCliente, FechaRegistro, Estado });
             DtgCliente.Dock = DockStyle.Top;
-            DtgCliente.Location = new Point(0, 684);
+            DtgCliente.Location = new Point(0, 851);
             DtgCliente.Name = "DtgCliente";
             DtgCliente.RowHeadersWidth = 82;
-            DtgCliente.Size = new Size(1481, 397);
+            DtgCliente.Size = new Size(1748, 703);
             DtgCliente.TabIndex = 2;
             // 
             // Codigo
@@ -353,16 +354,17 @@
             Estado.MinimumWidth = 10;
             Estado.Name = "Estado";
             // 
-            // FrmClientes
+            // FrmCustomer
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(109, 15, 15);
-            ClientSize = new Size(1481, 1129);
+            ClientSize = new Size(1748, 1386);
             Controls.Add(DtgCliente);
             Controls.Add(GbxCliente);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FrmClientes";
+            Name = "FrmCustomer";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmClientes";
             GbxCliente.ResumeLayout(false);
             GbxCliente.PerformLayout();
