@@ -75,7 +75,7 @@
             // 
             pc_UserLogin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pc_UserLogin.Cursor = Cursors.Hand;
-            pc_UserLogin.Location = new Point(3866, 19);
+            pc_UserLogin.Location = new Point(4018, 19);
             pc_UserLogin.Margin = new Padding(4, 5, 4, 5);
             pc_UserLogin.Name = "pc_UserLogin";
             pc_UserLogin.Size = new Size(88, 101);
@@ -87,7 +87,7 @@
             lblUserLogIn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblUserLogIn.AutoSize = true;
             lblUserLogIn.ForeColor = Color.FromArgb(251, 251, 251);
-            lblUserLogIn.Location = new Point(3974, 52);
+            lblUserLogIn.Location = new Point(4126, 52);
             lblUserLogIn.Margin = new Padding(13, 19, 60, 19);
             lblUserLogIn.Name = "lblUserLogIn";
             lblUserLogIn.Size = new Size(216, 32);
@@ -107,7 +107,7 @@
             pnlHeaderTopMain.Location = new Point(0, 0);
             pnlHeaderTopMain.Margin = new Padding(4);
             pnlHeaderTopMain.Name = "pnlHeaderTopMain";
-            pnlHeaderTopMain.Size = new Size(2074, 126);
+            pnlHeaderTopMain.Size = new Size(2226, 126);
             pnlHeaderTopMain.TabIndex = 16;
             // 
             // BtnMenu
@@ -547,7 +547,7 @@
             PnlMainContainer.Dock = DockStyle.Fill;
             PnlMainContainer.Location = new Point(478, 126);
             PnlMainContainer.Name = "PnlMainContainer";
-            PnlMainContainer.Size = new Size(1596, 1386);
+            PnlMainContainer.Size = new Size(1748, 1386);
             PnlMainContainer.TabIndex = 19;
             // 
             // pnlContainer
@@ -558,7 +558,7 @@
             pnlContainer.Location = new Point(478, 126);
             pnlContainer.Margin = new Padding(8, 5, 8, 5);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(1596, 1386);
+            pnlContainer.Size = new Size(1748, 1386);
             pnlContainer.TabIndex = 18;
             // 
             // FrmMainMenu
@@ -567,7 +567,7 @@
             AutoScaleMode = AutoScaleMode.Dpi;
             AutoSize = true;
             BackColor = Color.Maroon;
-            ClientSize = new Size(2074, 1512);
+            ClientSize = new Size(2226, 1512);
             Controls.Add(PnlMainContainer);
             Controls.Add(pnlContainer);
             Controls.Add(pnlSideBar);

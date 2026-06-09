@@ -83,7 +83,7 @@
             GbxEmpleado.ForeColor = Color.FromArgb(45, 45, 45);
             GbxEmpleado.Location = new Point(0, 0);
             GbxEmpleado.Name = "GbxEmpleado";
-            GbxEmpleado.Size = new Size(1481, 684);
+            GbxEmpleado.Size = new Size(1748, 848);
             GbxEmpleado.TabIndex = 0;
             GbxEmpleado.TabStop = false;
             GbxEmpleado.Text = "Registrar Empleado";
@@ -94,7 +94,7 @@
             TxtTelefono.BorderStyle = BorderStyle.None;
             TxtTelefono.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtTelefono.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtTelefono.Location = new Point(962, 180);
+            TxtTelefono.Location = new Point(1157, 336);
             TxtTelefono.Name = "TxtTelefono";
             TxtTelefono.Size = new Size(365, 43);
             TxtTelefono.TabIndex = 29;
@@ -103,7 +103,7 @@
             // 
             LblTeléfono.AutoSize = true;
             LblTeléfono.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblTeléfono.Location = new Point(731, 180);
+            LblTeléfono.Location = new Point(829, 334);
             LblTeléfono.Name = "LblTeléfono";
             LblTeléfono.Size = new Size(159, 45);
             LblTeléfono.TabIndex = 28;
@@ -117,7 +117,7 @@
             BtnCerrarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnCerrarEmpl.Image = Properties.Resources.cerrar_ventana;
             BtnCerrarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnCerrarEmpl.Location = new Point(1251, 587);
+            BtnCerrarEmpl.Location = new Point(1450, 681);
             BtnCerrarEmpl.Name = "BtnCerrarEmpl";
             BtnCerrarEmpl.Size = new Size(201, 70);
             BtnCerrarEmpl.TabIndex = 24;
@@ -133,7 +133,7 @@
             BtnLimpiarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnLimpiarEmpl.Image = Properties.Resources.escoba;
             BtnLimpiarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnLimpiarEmpl.Location = new Point(1022, 587);
+            BtnLimpiarEmpl.Location = new Point(1157, 681);
             BtnLimpiarEmpl.Name = "BtnLimpiarEmpl";
             BtnLimpiarEmpl.Size = new Size(201, 70);
             BtnLimpiarEmpl.TabIndex = 23;
@@ -149,7 +149,7 @@
             BtnEliminarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnEliminarEmpl.Image = Properties.Resources.basura;
             BtnEliminarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnEliminarEmpl.Location = new Point(794, 587);
+            BtnEliminarEmpl.Location = new Point(855, 681);
             BtnEliminarEmpl.Name = "BtnEliminarEmpl";
             BtnEliminarEmpl.Size = new Size(201, 70);
             BtnEliminarEmpl.TabIndex = 22;
@@ -165,7 +165,7 @@
             BtnGuardarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnGuardarEmpl.Image = Properties.Resources.abajo;
             BtnGuardarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnGuardarEmpl.Location = new Point(570, 587);
+            BtnGuardarEmpl.Location = new Point(564, 681);
             BtnGuardarEmpl.Name = "BtnGuardarEmpl";
             BtnGuardarEmpl.Size = new Size(201, 70);
             BtnGuardarEmpl.TabIndex = 21;
@@ -181,7 +181,7 @@
             BtnAgregarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnAgregarEmpl.Image = Properties.Resources.agregar_producto__1_;
             BtnAgregarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnAgregarEmpl.Location = new Point(341, 587);
+            BtnAgregarEmpl.Location = new Point(300, 681);
             BtnAgregarEmpl.Name = "BtnAgregarEmpl";
             BtnAgregarEmpl.Size = new Size(201, 70);
             BtnAgregarEmpl.TabIndex = 20;
@@ -194,7 +194,7 @@
             checkBox1.AutoSize = true;
             checkBox1.FlatStyle = FlatStyle.Flat;
             checkBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            checkBox1.Location = new Point(238, 490);
+            checkBox1.Location = new Point(1279, 491);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(136, 49);
             checkBox1.TabIndex = 9;
@@ -208,7 +208,7 @@
             comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBox1.ForeColor = Color.FromArgb(45, 45, 45);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(238, 390);
+            comboBox1.Location = new Point(1157, 189);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(365, 53);
             comboBox1.TabIndex = 8;
@@ -220,7 +220,7 @@
             textBox3.BorderStyle = BorderStyle.None;
             textBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox3.ForeColor = Color.FromArgb(45, 45, 45);
-            textBox3.Location = new Point(238, 291);
+            textBox3.Location = new Point(259, 497);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(365, 43);
             textBox3.TabIndex = 7;
@@ -231,9 +231,9 @@
             textBox2.BorderStyle = BorderStyle.None;
             textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBox2.ForeColor = Color.FromArgb(45, 45, 45);
-            textBox2.Location = new Point(238, 180);
+            textBox2.Location = new Point(259, 336);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(365, 43);
+            textBox2.Size = new Size(373, 43);
             textBox2.TabIndex = 6;
             // 
             // textBox1
@@ -242,16 +242,16 @@
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox1.ForeColor = Color.FromArgb(45, 45, 45);
-            textBox1.Location = new Point(238, 79);
+            textBox1.Location = new Point(265, 194);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(278, 43);
+            textBox1.Size = new Size(367, 43);
             textBox1.TabIndex = 5;
             // 
             // LblDisponible
             // 
             LblDisponible.AutoSize = true;
             LblDisponible.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblDisponible.Location = new Point(31, 490);
+            LblDisponible.Location = new Point(798, 495);
             LblDisponible.Name = "LblDisponible";
             LblDisponible.Size = new Size(190, 45);
             LblDisponible.TabIndex = 4;
@@ -261,7 +261,7 @@
             // 
             LblCargo.AutoSize = true;
             LblCargo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblCargo.Location = new Point(31, 390);
+            LblCargo.Location = new Point(869, 192);
             LblCargo.Name = "LblCargo";
             LblCargo.Size = new Size(119, 45);
             LblCargo.TabIndex = 3;
@@ -271,7 +271,7 @@
             // 
             LblApellidos.AutoSize = true;
             LblApellidos.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblApellidos.Location = new Point(31, 291);
+            LblApellidos.Location = new Point(44, 497);
             LblApellidos.Name = "LblApellidos";
             LblApellidos.Size = new Size(170, 45);
             LblApellidos.TabIndex = 2;
@@ -281,7 +281,7 @@
             // 
             LblNombre.AutoSize = true;
             LblNombre.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblNombre.Location = new Point(31, 180);
+            LblNombre.Location = new Point(44, 334);
             LblNombre.Name = "LblNombre";
             LblNombre.Size = new Size(167, 45);
             LblNombre.TabIndex = 1;
@@ -291,7 +291,7 @@
             // 
             LblCodigo.AutoSize = true;
             LblCodigo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblCodigo.Location = new Point(31, 79);
+            LblCodigo.Location = new Point(73, 192);
             LblCodigo.Name = "LblCodigo";
             LblCodigo.Size = new Size(138, 45);
             LblCodigo.TabIndex = 0;
@@ -305,10 +305,10 @@
             DtgEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DtgEmpleado.Columns.AddRange(new DataGridViewColumn[] { Codigo, Teléfono, Nombres, Apellido, Cargo, Estado });
             DtgEmpleado.Dock = DockStyle.Top;
-            DtgEmpleado.Location = new Point(0, 684);
+            DtgEmpleado.Location = new Point(0, 848);
             DtgEmpleado.Name = "DtgEmpleado";
             DtgEmpleado.RowHeadersWidth = 82;
-            DtgEmpleado.Size = new Size(1481, 397);
+            DtgEmpleado.Size = new Size(1748, 540);
             DtgEmpleado.TabIndex = 1;
             // 
             // Codigo
@@ -353,16 +353,17 @@
             Estado.MinimumWidth = 10;
             Estado.Name = "Estado";
             // 
-            // FrmEmpleado
+            // FrmEmployee
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(109, 15, 15);
-            ClientSize = new Size(1481, 1129);
+            ClientSize = new Size(1748, 1386);
             Controls.Add(DtgEmpleado);
             Controls.Add(GbxEmpleado);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FrmEmpleado";
+            Name = "FrmEmployee";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmEmpleado";
             GbxEmpleado.ResumeLayout(false);
             GbxEmpleado.PerformLayout();

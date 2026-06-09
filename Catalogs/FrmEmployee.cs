@@ -14,5 +14,10 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         {
             InitializeComponent();
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
