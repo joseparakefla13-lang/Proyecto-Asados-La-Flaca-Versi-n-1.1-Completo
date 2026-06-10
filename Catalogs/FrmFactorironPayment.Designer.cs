@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
-    partial class FrmFacturacionPago
+    partial class FrmFactorironPayment
     {
         /// <summary>
         /// Required designer variable.

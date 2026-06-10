@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
-    public partial class FrmFacturacionPago : Form
+    public partial class FrmFactorironPayment : Form
     {
-        public FrmFacturacionPago()
+        public FrmFactorironPayment()
         {
             InitializeComponent();
         }

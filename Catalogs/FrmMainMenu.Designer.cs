@@ -39,19 +39,19 @@
             label5 = new Label();
             btnCatalog = new Button();
             pnlCatalogSubMenu = new Panel();
-            button1 = new Button();
-            btnMunicipality = new Button();
+            BtnProducts = new Button();
+            BtnCategory = new Button();
             BtnCustomers = new Button();
             BtnEmployee = new Button();
             btnEmployees = new Button();
             pnlSubMenuEmployee = new Panel();
-            btnTrainingManagement = new Button();
-            btnEmployeeFile = new Button();
+            BtnFactorironPayment = new Button();
+            BtnOrder = new Button();
             btnContract = new Button();
             pnlSubMenuContract = new Panel();
             button2 = new Button();
             btnPromoter = new Button();
-            btnActiveContracts = new Button();
+            BtnIngredients = new Button();
             btnPayroll = new Button();
             btnReport = new Button();
             pnlSubMenuReport = new Panel();
@@ -204,8 +204,8 @@
             // pnlCatalogSubMenu
             // 
             pnlCatalogSubMenu.BackColor = Color.FromArgb(89, 93, 112);
-            pnlCatalogSubMenu.Controls.Add(button1);
-            pnlCatalogSubMenu.Controls.Add(btnMunicipality);
+            pnlCatalogSubMenu.Controls.Add(BtnProducts);
+            pnlCatalogSubMenu.Controls.Add(BtnCategory);
             pnlCatalogSubMenu.Controls.Add(BtnCustomers);
             pnlCatalogSubMenu.Controls.Add(BtnEmployee);
             pnlCatalogSubMenu.Dock = DockStyle.Top;
@@ -215,41 +215,43 @@
             pnlCatalogSubMenu.Size = new Size(476, 363);
             pnlCatalogSubMenu.TabIndex = 2;
             // 
-            // button1
+            // BtnProducts
             // 
-            button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Top;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.FromArgb(246, 246, 247);
-            button1.Location = new Point(0, 252);
-            button1.Margin = new Padding(4);
-            button1.Name = "button1";
-            button1.Padding = new Padding(64, 0, 0, 0);
-            button1.Size = new Size(476, 84);
-            button1.TabIndex = 3;
-            button1.Text = "Productos";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = true;
+            BtnProducts.Cursor = Cursors.Hand;
+            BtnProducts.Dock = DockStyle.Top;
+            BtnProducts.FlatAppearance.BorderSize = 0;
+            BtnProducts.FlatStyle = FlatStyle.Flat;
+            BtnProducts.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnProducts.ForeColor = Color.FromArgb(246, 246, 247);
+            BtnProducts.Location = new Point(0, 252);
+            BtnProducts.Margin = new Padding(4);
+            BtnProducts.Name = "BtnProducts";
+            BtnProducts.Padding = new Padding(64, 0, 0, 0);
+            BtnProducts.Size = new Size(476, 84);
+            BtnProducts.TabIndex = 3;
+            BtnProducts.Text = "Productos";
+            BtnProducts.TextAlign = ContentAlignment.MiddleLeft;
+            BtnProducts.UseVisualStyleBackColor = true;
+            BtnProducts.Click += BtnProducts_Click;
             // 
-            // btnMunicipality
+            // BtnCategory
             // 
-            btnMunicipality.Cursor = Cursors.Hand;
-            btnMunicipality.Dock = DockStyle.Top;
-            btnMunicipality.FlatAppearance.BorderSize = 0;
-            btnMunicipality.FlatStyle = FlatStyle.Flat;
-            btnMunicipality.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnMunicipality.ForeColor = Color.FromArgb(246, 246, 247);
-            btnMunicipality.Location = new Point(0, 168);
-            btnMunicipality.Margin = new Padding(4);
-            btnMunicipality.Name = "btnMunicipality";
-            btnMunicipality.Padding = new Padding(64, 0, 0, 0);
-            btnMunicipality.Size = new Size(476, 84);
-            btnMunicipality.TabIndex = 2;
-            btnMunicipality.Text = "Categorias";
-            btnMunicipality.TextAlign = ContentAlignment.MiddleLeft;
-            btnMunicipality.UseVisualStyleBackColor = true;
+            BtnCategory.Cursor = Cursors.Hand;
+            BtnCategory.Dock = DockStyle.Top;
+            BtnCategory.FlatAppearance.BorderSize = 0;
+            BtnCategory.FlatStyle = FlatStyle.Flat;
+            BtnCategory.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnCategory.ForeColor = Color.FromArgb(246, 246, 247);
+            BtnCategory.Location = new Point(0, 168);
+            BtnCategory.Margin = new Padding(4);
+            BtnCategory.Name = "BtnCategory";
+            BtnCategory.Padding = new Padding(64, 0, 0, 0);
+            BtnCategory.Size = new Size(476, 84);
+            BtnCategory.TabIndex = 2;
+            BtnCategory.Text = "Categorias";
+            BtnCategory.TextAlign = ContentAlignment.MiddleLeft;
+            BtnCategory.UseVisualStyleBackColor = true;
+            BtnCategory.Click += BtnCategory_Click;
             // 
             // BtnCustomers
             // 
@@ -311,8 +313,8 @@
             // pnlSubMenuEmployee
             // 
             pnlSubMenuEmployee.BackColor = Color.FromArgb(89, 93, 112);
-            pnlSubMenuEmployee.Controls.Add(btnTrainingManagement);
-            pnlSubMenuEmployee.Controls.Add(btnEmployeeFile);
+            pnlSubMenuEmployee.Controls.Add(BtnFactorironPayment);
+            pnlSubMenuEmployee.Controls.Add(BtnOrder);
             pnlSubMenuEmployee.Dock = DockStyle.Top;
             pnlSubMenuEmployee.Location = new Point(0, 651);
             pnlSubMenuEmployee.Margin = new Padding(0);
@@ -320,45 +322,47 @@
             pnlSubMenuEmployee.Size = new Size(476, 168);
             pnlSubMenuEmployee.TabIndex = 4;
             // 
-            // btnTrainingManagement
+            // BtnFactorironPayment
             // 
-            btnTrainingManagement.Cursor = Cursors.Hand;
-            btnTrainingManagement.Dock = DockStyle.Top;
-            btnTrainingManagement.FlatAppearance.BorderSize = 0;
-            btnTrainingManagement.FlatStyle = FlatStyle.Flat;
-            btnTrainingManagement.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnTrainingManagement.ForeColor = Color.FromArgb(246, 246, 247);
-            btnTrainingManagement.Location = new Point(0, 64);
-            btnTrainingManagement.Margin = new Padding(4);
-            btnTrainingManagement.MaximumSize = new Size(384, 64);
-            btnTrainingManagement.MinimumSize = new Size(380, 64);
-            btnTrainingManagement.Name = "btnTrainingManagement";
-            btnTrainingManagement.Padding = new Padding(64, 0, 0, 0);
-            btnTrainingManagement.Size = new Size(384, 64);
-            btnTrainingManagement.TabIndex = 1;
-            btnTrainingManagement.Text = "Facturación y Pago";
-            btnTrainingManagement.TextAlign = ContentAlignment.MiddleLeft;
-            btnTrainingManagement.UseVisualStyleBackColor = true;
+            BtnFactorironPayment.Cursor = Cursors.Hand;
+            BtnFactorironPayment.Dock = DockStyle.Top;
+            BtnFactorironPayment.FlatAppearance.BorderSize = 0;
+            BtnFactorironPayment.FlatStyle = FlatStyle.Flat;
+            BtnFactorironPayment.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnFactorironPayment.ForeColor = Color.FromArgb(246, 246, 247);
+            BtnFactorironPayment.Location = new Point(0, 64);
+            BtnFactorironPayment.Margin = new Padding(4);
+            BtnFactorironPayment.MaximumSize = new Size(384, 64);
+            BtnFactorironPayment.MinimumSize = new Size(380, 64);
+            BtnFactorironPayment.Name = "BtnFactorironPayment";
+            BtnFactorironPayment.Padding = new Padding(64, 0, 0, 0);
+            BtnFactorironPayment.Size = new Size(384, 64);
+            BtnFactorironPayment.TabIndex = 1;
+            BtnFactorironPayment.Text = "Facturación y Pago";
+            BtnFactorironPayment.TextAlign = ContentAlignment.MiddleLeft;
+            BtnFactorironPayment.UseVisualStyleBackColor = true;
+            BtnFactorironPayment.Click += BtnFactorironPayment_Click;
             // 
-            // btnEmployeeFile
+            // BtnOrder
             // 
-            btnEmployeeFile.Cursor = Cursors.Hand;
-            btnEmployeeFile.Dock = DockStyle.Top;
-            btnEmployeeFile.FlatAppearance.BorderSize = 0;
-            btnEmployeeFile.FlatStyle = FlatStyle.Flat;
-            btnEmployeeFile.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEmployeeFile.ForeColor = Color.FromArgb(246, 246, 247);
-            btnEmployeeFile.Location = new Point(0, 0);
-            btnEmployeeFile.Margin = new Padding(4);
-            btnEmployeeFile.MaximumSize = new Size(384, 64);
-            btnEmployeeFile.MinimumSize = new Size(380, 64);
-            btnEmployeeFile.Name = "btnEmployeeFile";
-            btnEmployeeFile.Padding = new Padding(64, 0, 0, 0);
-            btnEmployeeFile.Size = new Size(384, 64);
-            btnEmployeeFile.TabIndex = 0;
-            btnEmployeeFile.Text = "Pedido";
-            btnEmployeeFile.TextAlign = ContentAlignment.MiddleLeft;
-            btnEmployeeFile.UseVisualStyleBackColor = true;
+            BtnOrder.Cursor = Cursors.Hand;
+            BtnOrder.Dock = DockStyle.Top;
+            BtnOrder.FlatAppearance.BorderSize = 0;
+            BtnOrder.FlatStyle = FlatStyle.Flat;
+            BtnOrder.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnOrder.ForeColor = Color.FromArgb(246, 246, 247);
+            BtnOrder.Location = new Point(0, 0);
+            BtnOrder.Margin = new Padding(4);
+            BtnOrder.MaximumSize = new Size(384, 64);
+            BtnOrder.MinimumSize = new Size(380, 64);
+            BtnOrder.Name = "BtnOrder";
+            BtnOrder.Padding = new Padding(64, 0, 0, 0);
+            BtnOrder.Size = new Size(384, 64);
+            BtnOrder.TabIndex = 0;
+            BtnOrder.Text = "Pedido";
+            BtnOrder.TextAlign = ContentAlignment.MiddleLeft;
+            BtnOrder.UseVisualStyleBackColor = true;
+            BtnOrder.Click += BtnOrder_Click;
             // 
             // btnContract
             // 
@@ -384,7 +388,7 @@
             pnlSubMenuContract.BackColor = Color.FromArgb(89, 93, 112);
             pnlSubMenuContract.Controls.Add(button2);
             pnlSubMenuContract.Controls.Add(btnPromoter);
-            pnlSubMenuContract.Controls.Add(btnActiveContracts);
+            pnlSubMenuContract.Controls.Add(BtnIngredients);
             pnlSubMenuContract.Dock = DockStyle.Top;
             pnlSubMenuContract.Location = new Point(0, 903);
             pnlSubMenuContract.Margin = new Padding(0);
@@ -432,25 +436,26 @@
             btnPromoter.TextAlign = ContentAlignment.MiddleLeft;
             btnPromoter.UseVisualStyleBackColor = true;
             // 
-            // btnActiveContracts
+            // BtnIngredients
             // 
-            btnActiveContracts.Cursor = Cursors.Hand;
-            btnActiveContracts.Dock = DockStyle.Top;
-            btnActiveContracts.FlatAppearance.BorderSize = 0;
-            btnActiveContracts.FlatStyle = FlatStyle.Flat;
-            btnActiveContracts.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnActiveContracts.ForeColor = Color.FromArgb(246, 246, 247);
-            btnActiveContracts.Location = new Point(0, 0);
-            btnActiveContracts.Margin = new Padding(4);
-            btnActiveContracts.MaximumSize = new Size(384, 64);
-            btnActiveContracts.MinimumSize = new Size(380, 64);
-            btnActiveContracts.Name = "btnActiveContracts";
-            btnActiveContracts.Padding = new Padding(64, 0, 0, 0);
-            btnActiveContracts.Size = new Size(384, 64);
-            btnActiveContracts.TabIndex = 0;
-            btnActiveContracts.Text = "Ingredientes";
-            btnActiveContracts.TextAlign = ContentAlignment.MiddleLeft;
-            btnActiveContracts.UseVisualStyleBackColor = true;
+            BtnIngredients.Cursor = Cursors.Hand;
+            BtnIngredients.Dock = DockStyle.Top;
+            BtnIngredients.FlatAppearance.BorderSize = 0;
+            BtnIngredients.FlatStyle = FlatStyle.Flat;
+            BtnIngredients.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnIngredients.ForeColor = Color.FromArgb(246, 246, 247);
+            BtnIngredients.Location = new Point(0, 0);
+            BtnIngredients.Margin = new Padding(4);
+            BtnIngredients.MaximumSize = new Size(384, 64);
+            BtnIngredients.MinimumSize = new Size(380, 64);
+            BtnIngredients.Name = "BtnIngredients";
+            BtnIngredients.Padding = new Padding(64, 0, 0, 0);
+            BtnIngredients.Size = new Size(384, 64);
+            BtnIngredients.TabIndex = 0;
+            BtnIngredients.Text = "Ingredientes";
+            BtnIngredients.TextAlign = ContentAlignment.MiddleLeft;
+            BtnIngredients.UseVisualStyleBackColor = true;
+            BtnIngredients.Click += BtnIngredients_Click;
             // 
             // btnPayroll
             // 
@@ -599,17 +604,17 @@
         private Panel pnlHeaderNav;
         private Button btnCatalog;
         private Panel pnlCatalogSubMenu;
-        private Button btnMunicipality;
+        private Button BtnCategory;
         private Button BtnCustomers;
         private Button BtnEmployee;
         private Button btnEmployees;
         private Panel pnlSubMenuEmployee;
-        private Button btnTrainingManagement;
-        private Button btnEmployeeFile;
+        private Button BtnFactorironPayment;
+        private Button BtnOrder;
         private Button btnContract;
         private Panel pnlSubMenuContract;
         private Button btnPromoter;
-        private Button btnActiveContracts;
+        private Button BtnIngredients;
         private Button btnPayroll;
         private Button btnReport;
         private Panel pnlSubMenuReport;
@@ -619,7 +624,7 @@
         private Panel pnlContainer;
         private Label label5;
         private PictureBox pictureBox1;
-        private Button button1;
+        private Button BtnProducts;
         private Button button2;
         private Label label1;
         private PictureBox pictureBox3;

@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
-    partial class FrmCategoria
+    partial class FrmCategory
     {
         /// <summary>
         /// Required designer variable.

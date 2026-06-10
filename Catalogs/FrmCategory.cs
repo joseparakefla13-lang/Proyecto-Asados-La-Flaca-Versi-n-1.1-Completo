@@ -8,16 +8,11 @@ using System.Windows.Forms;
 
 namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
-    public partial class FrmIngredientes : Form
+    public partial class FrmCategory : Form
     {
-        public FrmIngredientes()
+        public FrmCategory()
         {
             InitializeComponent();
-        }
-
-        private void GbxIngredientes_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }
