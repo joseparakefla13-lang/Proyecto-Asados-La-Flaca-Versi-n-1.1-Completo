@@ -73,7 +73,7 @@
             GbxCategoria.ForeColor = Color.FromArgb(45, 45, 45);
             GbxCategoria.Location = new Point(0, 0);
             GbxCategoria.Name = "GbxCategoria";
-            GbxCategoria.Size = new Size(1481, 684);
+            GbxCategoria.Size = new Size(1748, 839);
             GbxCategoria.TabIndex = 2;
             GbxCategoria.TabStop = false;
             GbxCategoria.Text = "Categoria de Productos";
@@ -84,7 +84,7 @@
             TxtDescripcion.BorderStyle = BorderStyle.None;
             TxtDescripcion.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtDescripcion.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtDescripcion.Location = new Point(324, 259);
+            TxtDescripcion.Location = new Point(812, 378);
             TxtDescripcion.Multiline = true;
             TxtDescripcion.Name = "TxtDescripcion";
             TxtDescripcion.Size = new Size(365, 133);
@@ -96,7 +96,7 @@
             TxtCategoria.BorderStyle = BorderStyle.None;
             TxtCategoria.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtCategoria.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtCategoria.Location = new Point(324, 177);
+            TxtCategoria.Location = new Point(812, 265);
             TxtCategoria.Name = "TxtCategoria";
             TxtCategoria.Size = new Size(365, 43);
             TxtCategoria.TabIndex = 26;
@@ -109,7 +109,7 @@
             BtnCerrar.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnCerrar.Image = Properties.Resources.cerrar_ventana;
             BtnCerrar.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnCerrar.Location = new Point(1251, 587);
+            BtnCerrar.Location = new Point(1369, 699);
             BtnCerrar.Name = "BtnCerrar";
             BtnCerrar.Size = new Size(201, 70);
             BtnCerrar.TabIndex = 24;
@@ -125,7 +125,7 @@
             BtnLimpiar.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnLimpiar.Image = Properties.Resources.escoba;
             BtnLimpiar.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnLimpiar.Location = new Point(1022, 587);
+            BtnLimpiar.Location = new Point(1077, 699);
             BtnLimpiar.Name = "BtnLimpiar";
             BtnLimpiar.Size = new Size(201, 70);
             BtnLimpiar.TabIndex = 23;
@@ -141,7 +141,7 @@
             BtnEliminar.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnEliminar.Image = Properties.Resources.basura;
             BtnEliminar.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnEliminar.Location = new Point(794, 587);
+            BtnEliminar.Location = new Point(790, 699);
             BtnEliminar.Name = "BtnEliminar";
             BtnEliminar.Size = new Size(201, 70);
             BtnEliminar.TabIndex = 22;
@@ -157,7 +157,7 @@
             BtnGuardar.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnGuardar.Image = Properties.Resources.abajo;
             BtnGuardar.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnGuardar.Location = new Point(570, 587);
+            BtnGuardar.Location = new Point(492, 699);
             BtnGuardar.Name = "BtnGuardar";
             BtnGuardar.Size = new Size(201, 70);
             BtnGuardar.TabIndex = 21;
@@ -173,7 +173,7 @@
             BtnAgregar.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnAgregar.Image = Properties.Resources.agregar_producto__1_;
             BtnAgregar.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnAgregar.Location = new Point(341, 587);
+            BtnAgregar.Location = new Point(215, 699);
             BtnAgregar.Name = "BtnAgregar";
             BtnAgregar.Size = new Size(201, 70);
             BtnAgregar.TabIndex = 20;
@@ -186,7 +186,7 @@
             ChebxEstado.AutoSize = true;
             ChebxEstado.FlatStyle = FlatStyle.Flat;
             ChebxEstado.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ChebxEstado.Location = new Point(324, 421);
+            ChebxEstado.Location = new Point(812, 556);
             ChebxEstado.Name = "ChebxEstado";
             ChebxEstado.Size = new Size(136, 49);
             ChebxEstado.TabIndex = 9;
@@ -199,7 +199,7 @@
             TxtCodigo.BorderStyle = BorderStyle.None;
             TxtCodigo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtCodigo.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtCodigo.Location = new Point(324, 79);
+            TxtCodigo.Location = new Point(812, 159);
             TxtCodigo.Name = "TxtCodigo";
             TxtCodigo.Size = new Size(278, 43);
             TxtCodigo.TabIndex = 5;
@@ -208,7 +208,7 @@
             // 
             LblDisponibleCliente.AutoSize = true;
             LblDisponibleCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblDisponibleCliente.Location = new Point(31, 421);
+            LblDisponibleCliente.Location = new Point(519, 560);
             LblDisponibleCliente.Name = "LblDisponibleCliente";
             LblDisponibleCliente.Size = new Size(190, 45);
             LblDisponibleCliente.TabIndex = 4;
@@ -218,7 +218,7 @@
             // 
             LblDescripcion.AutoSize = true;
             LblDescripcion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblDescripcion.Location = new Point(31, 259);
+            LblDescripcion.Location = new Point(519, 378);
             LblDescripcion.Name = "LblDescripcion";
             LblDescripcion.Size = new Size(204, 45);
             LblDescripcion.TabIndex = 2;
@@ -228,7 +228,7 @@
             // 
             LblCategoria.AutoSize = true;
             LblCategoria.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblCategoria.Location = new Point(31, 177);
+            LblCategoria.Location = new Point(535, 265);
             LblCategoria.Name = "LblCategoria";
             LblCategoria.Size = new Size(174, 45);
             LblCategoria.TabIndex = 1;
@@ -238,7 +238,7 @@
             // 
             LblCodig0.AutoSize = true;
             LblCodig0.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblCodig0.Location = new Point(31, 79);
+            LblCodig0.Location = new Point(571, 157);
             LblCodig0.Name = "LblCodig0";
             LblCodig0.Size = new Size(138, 45);
             LblCodig0.TabIndex = 0;
@@ -250,10 +250,10 @@
             DtgCategoria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DtgCategoria.Columns.AddRange(new DataGridViewColumn[] { Codigo, Categoria, Descripcion, Estado });
             DtgCategoria.Dock = DockStyle.Top;
-            DtgCategoria.Location = new Point(0, 684);
+            DtgCategoria.Location = new Point(0, 839);
             DtgCategoria.Name = "DtgCategoria";
             DtgCategoria.RowHeadersWidth = 82;
-            DtgCategoria.Size = new Size(1481, 382);
+            DtgCategoria.Size = new Size(1748, 704);
             DtgCategoria.TabIndex = 3;
             // 
             // Codigo
@@ -284,16 +284,17 @@
             Estado.MinimumWidth = 10;
             Estado.Name = "Estado";
             // 
-            // FrmCategoria
+            // FrmCategory
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(109, 15, 15);
-            ClientSize = new Size(1481, 1129);
+            ClientSize = new Size(1748, 1386);
             Controls.Add(DtgCategoria);
             Controls.Add(GbxCategoria);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FrmCategoria";
+            Name = "FrmCategory";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmCategoria";
             GbxCategoria.ResumeLayout(false);
             GbxCategoria.PerformLayout();

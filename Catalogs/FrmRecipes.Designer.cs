@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             GbxReceta = new GroupBox();
+            CmbxIngredientes = new ComboBox();
+            CmbxProductos = new ComboBox();
             TxtExActual = new TextBox();
             BtnCerrar = new Button();
             BtnLimpiar = new Button();
@@ -40,8 +42,6 @@
             LblCantidad = new Label();
             LblIngredientes = new Label();
             LblProducto = new Label();
-            CmbxProductos = new ComboBox();
-            CmbxIngredientes = new ComboBox();
             DtgRecetas = new DataGridView();
             Producto = new DataGridViewTextBoxColumn();
             Ingredientes = new DataGridViewTextBoxColumn();
@@ -73,17 +73,39 @@
             GbxReceta.ForeColor = Color.FromArgb(45, 45, 45);
             GbxReceta.Location = new Point(0, 0);
             GbxReceta.Name = "GbxReceta";
-            GbxReceta.Size = new Size(1481, 684);
+            GbxReceta.Size = new Size(1748, 767);
             GbxReceta.TabIndex = 4;
             GbxReceta.TabStop = false;
             GbxReceta.Text = "Receta de Productos";
+            // 
+            // CmbxIngredientes
+            // 
+            CmbxIngredientes.FlatStyle = FlatStyle.Flat;
+            CmbxIngredientes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CmbxIngredientes.FormattingEnabled = true;
+            CmbxIngredientes.Location = new Point(593, 299);
+            CmbxIngredientes.Name = "CmbxIngredientes";
+            CmbxIngredientes.Size = new Size(365, 53);
+            CmbxIngredientes.TabIndex = 33;
+            CmbxIngredientes.Text = "Selecciona Ingrediente";
+            // 
+            // CmbxProductos
+            // 
+            CmbxProductos.FlatStyle = FlatStyle.Flat;
+            CmbxProductos.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CmbxProductos.FormattingEnabled = true;
+            CmbxProductos.Location = new Point(593, 170);
+            CmbxProductos.Name = "CmbxProductos";
+            CmbxProductos.Size = new Size(365, 53);
+            CmbxProductos.TabIndex = 32;
+            CmbxProductos.Text = "Selecciona Producto";
             // 
             // TxtExActual
             // 
             TxtExActual.BorderStyle = BorderStyle.None;
             TxtExActual.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtExActual.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtExActual.Location = new Point(356, 259);
+            TxtExActual.Location = new Point(593, 423);
             TxtExActual.Name = "TxtExActual";
             TxtExActual.Size = new Size(365, 43);
             TxtExActual.TabIndex = 27;
@@ -96,7 +118,7 @@
             BtnCerrar.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnCerrar.Image = Properties.Resources.cerrar_ventana;
             BtnCerrar.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnCerrar.Location = new Point(1251, 587);
+            BtnCerrar.Location = new Point(1247, 651);
             BtnCerrar.Name = "BtnCerrar";
             BtnCerrar.Size = new Size(201, 70);
             BtnCerrar.TabIndex = 24;
@@ -112,7 +134,7 @@
             BtnLimpiar.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnLimpiar.Image = Properties.Resources.escoba;
             BtnLimpiar.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnLimpiar.Location = new Point(1022, 587);
+            BtnLimpiar.Location = new Point(1018, 651);
             BtnLimpiar.Name = "BtnLimpiar";
             BtnLimpiar.Size = new Size(201, 70);
             BtnLimpiar.TabIndex = 23;
@@ -128,7 +150,7 @@
             BtnEliminar.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnEliminar.Image = Properties.Resources.basura;
             BtnEliminar.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnEliminar.Location = new Point(794, 587);
+            BtnEliminar.Location = new Point(790, 651);
             BtnEliminar.Name = "BtnEliminar";
             BtnEliminar.Size = new Size(201, 70);
             BtnEliminar.TabIndex = 22;
@@ -144,7 +166,7 @@
             BtnGuardar.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnGuardar.Image = Properties.Resources.abajo;
             BtnGuardar.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnGuardar.Location = new Point(570, 587);
+            BtnGuardar.Location = new Point(566, 651);
             BtnGuardar.Name = "BtnGuardar";
             BtnGuardar.Size = new Size(201, 70);
             BtnGuardar.TabIndex = 21;
@@ -160,7 +182,7 @@
             BtnAgregar.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnAgregar.Image = Properties.Resources.agregar_producto__1_;
             BtnAgregar.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnAgregar.Location = new Point(341, 587);
+            BtnAgregar.Location = new Point(337, 651);
             BtnAgregar.Name = "BtnAgregar";
             BtnAgregar.Size = new Size(201, 70);
             BtnAgregar.TabIndex = 20;
@@ -173,7 +195,7 @@
             ChebxEstado.AutoSize = true;
             ChebxEstado.FlatStyle = FlatStyle.Flat;
             ChebxEstado.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ChebxEstado.Location = new Point(356, 356);
+            ChebxEstado.Location = new Point(806, 534);
             ChebxEstado.Name = "ChebxEstado";
             ChebxEstado.Size = new Size(136, 49);
             ChebxEstado.TabIndex = 9;
@@ -184,7 +206,7 @@
             // 
             LblDisponibleCliente.AutoSize = true;
             LblDisponibleCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblDisponibleCliente.Location = new Point(31, 360);
+            LblDisponibleCliente.Location = new Point(541, 534);
             LblDisponibleCliente.Name = "LblDisponibleCliente";
             LblDisponibleCliente.Size = new Size(190, 45);
             LblDisponibleCliente.TabIndex = 4;
@@ -194,7 +216,7 @@
             // 
             LblCantidad.AutoSize = true;
             LblCantidad.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblCantidad.Location = new Point(31, 259);
+            LblCantidad.Location = new Point(391, 421);
             LblCantidad.Name = "LblCantidad";
             LblCantidad.Size = new Size(163, 45);
             LblCantidad.TabIndex = 2;
@@ -204,7 +226,7 @@
             // 
             LblIngredientes.AutoSize = true;
             LblIngredientes.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblIngredientes.Location = new Point(31, 177);
+            LblIngredientes.Location = new Point(338, 299);
             LblIngredientes.Name = "LblIngredientes";
             LblIngredientes.Size = new Size(216, 45);
             LblIngredientes.TabIndex = 1;
@@ -214,33 +236,11 @@
             // 
             LblProducto.AutoSize = true;
             LblProducto.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblProducto.Location = new Point(31, 79);
+            LblProducto.Location = new Point(386, 170);
             LblProducto.Name = "LblProducto";
             LblProducto.Size = new Size(168, 45);
             LblProducto.TabIndex = 0;
             LblProducto.Text = "Producto:";
-            // 
-            // CmbxProductos
-            // 
-            CmbxProductos.FlatStyle = FlatStyle.Flat;
-            CmbxProductos.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CmbxProductos.FormattingEnabled = true;
-            CmbxProductos.Location = new Point(356, 79);
-            CmbxProductos.Name = "CmbxProductos";
-            CmbxProductos.Size = new Size(365, 53);
-            CmbxProductos.TabIndex = 32;
-            CmbxProductos.Text = "Selecciona Producto";
-            // 
-            // CmbxIngredientes
-            // 
-            CmbxIngredientes.FlatStyle = FlatStyle.Flat;
-            CmbxIngredientes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CmbxIngredientes.FormattingEnabled = true;
-            CmbxIngredientes.Location = new Point(356, 177);
-            CmbxIngredientes.Name = "CmbxIngredientes";
-            CmbxIngredientes.Size = new Size(365, 53);
-            CmbxIngredientes.TabIndex = 33;
-            CmbxIngredientes.Text = "Selecciona Ingrediente";
             // 
             // DtgRecetas
             // 
@@ -248,10 +248,10 @@
             DtgRecetas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DtgRecetas.Columns.AddRange(new DataGridViewColumn[] { Producto, Ingredientes, Cantidad, Estado });
             DtgRecetas.Dock = DockStyle.Top;
-            DtgRecetas.Location = new Point(0, 684);
+            DtgRecetas.Location = new Point(0, 767);
             DtgRecetas.Name = "DtgRecetas";
             DtgRecetas.RowHeadersWidth = 82;
-            DtgRecetas.Size = new Size(1481, 385);
+            DtgRecetas.Size = new Size(1748, 785);
             DtgRecetas.TabIndex = 5;
             // 
             // Producto
@@ -287,11 +287,12 @@
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(109, 15, 15);
-            ClientSize = new Size(1481, 1129);
+            ClientSize = new Size(1748, 1386);
             Controls.Add(DtgRecetas);
             Controls.Add(GbxReceta);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmReceta";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmReceta";
             GbxReceta.ResumeLayout(false);
             GbxReceta.PerformLayout();
