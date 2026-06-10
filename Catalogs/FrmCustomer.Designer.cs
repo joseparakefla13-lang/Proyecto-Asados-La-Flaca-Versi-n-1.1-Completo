@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             GbxCliente = new GroupBox();
+            lblErrorCode = new Label();
             DtmRegistrationDate = new DateTimePicker();
             TxtTypeOfCustomer = new TextBox();
             TxtName = new TextBox();
@@ -53,6 +54,7 @@
             TipoCliente = new DataGridViewTextBoxColumn();
             FechaRegistro = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
+            LblErrorPhone = new Label();
             GbxCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvCustomer).BeginInit();
             SuspendLayout();
@@ -60,6 +62,8 @@
             // GbxCliente
             // 
             GbxCliente.BackColor = Color.FromArgb(243, 231, 211);
+            GbxCliente.Controls.Add(LblErrorPhone);
+            GbxCliente.Controls.Add(lblErrorCode);
             GbxCliente.Controls.Add(DtmRegistrationDate);
             GbxCliente.Controls.Add(TxtTypeOfCustomer);
             GbxCliente.Controls.Add(TxtName);
@@ -87,6 +91,18 @@
             GbxCliente.TabIndex = 1;
             GbxCliente.TabStop = false;
             GbxCliente.Text = "Registro de Cliente";
+            // 
+            // lblErrorCode
+            // 
+            lblErrorCode.AutoSize = true;
+            lblErrorCode.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblErrorCode.ForeColor = Color.Red;
+            lblErrorCode.Location = new Point(379, 238);
+            lblErrorCode.Name = "lblErrorCode";
+            lblErrorCode.Size = new Size(506, 37);
+            lblErrorCode.TabIndex = 30;
+            lblErrorCode.Text = "\"El código debe tener formato CL001\"";
+            lblErrorCode.Visible = false;
             // 
             // DtmRegistrationDate
             // 
@@ -134,6 +150,7 @@
             TxtPhone.Name = "TxtPhone";
             TxtPhone.Size = new Size(365, 43);
             TxtPhone.TabIndex = 26;
+            TxtPhone.Validating += TxtPhone_Validating;
             // 
             // LblFecha
             // 
@@ -248,6 +265,7 @@
             TxtCustomerCode.Name = "TxtCustomerCode";
             TxtCustomerCode.Size = new Size(278, 43);
             TxtCustomerCode.TabIndex = 5;
+            TxtCustomerCode.Validating += TxtCustomerCode_Validating;
             // 
             // LblDisponibleCliente
             // 
@@ -355,6 +373,18 @@
             Estado.MinimumWidth = 10;
             Estado.Name = "Estado";
             // 
+            // LblErrorPhone
+            // 
+            LblErrorPhone.AutoSize = true;
+            LblErrorPhone.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblErrorPhone.ForeColor = Color.Red;
+            LblErrorPhone.Location = new Point(1201, 238);
+            LblErrorPhone.Name = "LblErrorPhone";
+            LblErrorPhone.Size = new Size(443, 37);
+            LblErrorPhone.TabIndex = 31;
+            LblErrorPhone.Text = "\"formato 8 digitos como miníno\"";
+            LblErrorPhone.Visible = false;
+            // 
             // FrmCustomer
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -401,5 +431,7 @@
         private DataGridViewTextBoxColumn FechaRegistro;
         private DataGridViewTextBoxColumn Estado;
         private DateTimePicker DtmRegistrationDate;
+        private Label lblErrorCode;
+        private Label LblErrorPhone;
     }
 }

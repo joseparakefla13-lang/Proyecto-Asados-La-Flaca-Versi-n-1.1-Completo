@@ -6,69 +6,62 @@ using System.Data;
 namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain
 {
     internal class Customer
-    {
-        #region Properties
+    {  
         public required string CustomerCode { get; set; }
         public required string Name { get; set; }
         public required string Phone { get; set; }
         public required string TypeOfCustomer { get; set; }
-        public bool Available { get; set; }
-        public DateTime RegistDate { get; set; }
-        #endregion
+        public bool IsEnable { get; set; }
+        public DateTime RegisterDate { get; set; }
 
-        #region Constructors
         public Customer()
         {
             CustomerCode = string.Empty;
             Name = string.Empty;
             Phone = string.Empty;
             TypeOfCustomer = string.Empty;
-            Available = true;
-            RegistDate = DateTime.Now;
-        }
-        public bool ValidateCurrentDate()
-        {
-            // Validar que la fecha de registro no sea futura
-            if (RegistDate.Date <= DateTime.Today)
-            {
-                return true; // La fecha de registro es válida (hoy o antes)
-            }
-            return false; // La fecha de registro es inválida (mañana o más adelante)
+            IsEnable = true;
+            RegisterDate = DateTime.Now;
         }
 
-        // Constructor para cargar desde BD
+        public bool ValidateCurrentDate()
+        {
+            return RegisterDate.Date <= DateTime.Today;
+        }
+
         public Customer(string customerCode)
         {
             LoadCustomerById(customerCode);
         }
 
-        public Customer(string customerCode, string name, string phone, string typeOfCustomer, bool available, DateTime registDate)
+        public Customer(string customerCode, string name, string phone, string typeOfCustomer, bool isEnable, DateTime registerDate)
         {
             CustomerCode = customerCode;
             Name = name;
             Phone = phone;
             TypeOfCustomer = typeOfCustomer;
-            Available = available;
-            RegistDate = registDate;
+            IsEnable = isEnable;
+            RegisterDate = registerDate;
         }
-        #endregion
+        
 
-        #region Methods
+    
         public bool IsUniqueCustomerCode(string customerCode)
         {
             string sql = @"SELECT CASE
-                               WHEN EXISTS(
-                                    SELECT 1
-                                    FROM Customer 
-                                    WHERE CustomerCode = @CustomerCode)
-                                    THEN 1 ELSE 0 END";
+                            WHEN EXISTS(
+                                 SELECT 1
+                                 FROM Customer 
+                                 WHERE CustomerCode = @CustomerCode)
+                                 THEN 1 ELSE 0 END";
 
             using SelectQuery select = new SelectQuery();
             SqlParameter[] parametros = {
-                new SqlParameter("@CustomerCode", SqlDbType.VarChar, 16) { Value = customerCode }
-            };
+            new SqlParameter("@CustomerCode", SqlDbType.VarChar, 16) { Value = customerCode }
+        };
 
-            return select.IsDuplicate(sql, parametros);
+            // Devuelve true si NO existe (es único)
+            return !select.IsDuplicate(sql, parametros);
         }
 
         public int InsertCustomer()
@@ -79,17 +72,17 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain
                 using InsertCommand insert = new InsertCommand();
 
                 string sql = @"INSERT INTO Customer (CustomerCode, Name, Phone, TypeOfCustomer, Available, RegisterDate)
-                               VALUES (@CustomerCode, @Name, @Phone, @TypeOfCustomer, @Available, @RegisterDate)";
+                           VALUES (@CustomerCode, @Name, @Phone, @TypeOfCustomer, @Available, @RegisterDate)";
 
                 SqlParameter[] parameters =
                 {
-                    new SqlParameter("@CustomerCode", SqlDbType.VarChar, 16) { Value = this.CustomerCode },
-                    new SqlParameter("@Name", SqlDbType.VarChar, 108) { Value = this.Name },
-                    new SqlParameter("@Phone", SqlDbType.VarChar, 16) { Value = this.Phone },
-                    new SqlParameter("@TypeOfCustomer", SqlDbType.VarChar, 16) { Value = this.TypeOfCustomer },
-                    new SqlParameter("@Available", SqlDbType.Bit) { Value = this.Available },
-                    new SqlParameter("@RegisterDate", SqlDbType.DateTime) { Value = this.RegistDate }
-                };
+                new SqlParameter("@CustomerCode", SqlDbType.VarChar, 16) { Value = this.CustomerCode },
+                new SqlParameter("@Name", SqlDbType.VarChar, 108) { Value = this.Name },
+                new SqlParameter("@Phone", SqlDbType.VarChar, 16) { Value = this.Phone },
+                new SqlParameter("@TypeOfCustomer", SqlDbType.VarChar, 16) { Value = this.TypeOfCustomer },
+                new SqlParameter("@Available", SqlDbType.Bit) { Value = this.IsEnable },
+                new SqlParameter("@RegisterDate", SqlDbType.DateTime) { Value = this.RegisterDate }
+            };
 
                 rows = insert.ExecuteInsert(sql, parameters);
             }
@@ -100,25 +93,25 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain
 
             return rows;
         }
+
         public DataTable GetAllCustomers()
         {
             string sql = @"SELECT CustomerCode, Name, Phone, TypeOfCustomer, Available, RegisterDate
-                   FROM Customer";
+                       FROM Customer";
 
             using SelectQuery select = new SelectQuery();
-            return select.ExecuteSelect(sql, null); // null porque no hay parámetros
+            return select.ExecuteSelect(sql, null);
         }
-
 
         private void LoadCustomerById(string customerCode)
         {
             string sql = @"SELECT CustomerCode, Name, Phone, TypeOfCustomer, Available, RegisterDate
-                           FROM Customer WHERE CustomerCode = @CustomerCode";
+                       FROM Customer WHERE CustomerCode = @CustomerCode";
 
             using SelectQuery select = new SelectQuery();
             SqlParameter[] parameters = {
-                new SqlParameter("@CustomerCode", SqlDbType.VarChar, 16) { Value = customerCode }
-            };
+            new SqlParameter("@CustomerCode", SqlDbType.VarChar, 16) { Value = customerCode }
+        };
 
             DataTable dt = select.ExecuteSelect(sql, parameters);
 
@@ -129,11 +122,13 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain
                 Name = row["Name"].ToString() ?? string.Empty;
                 Phone = row["Phone"].ToString() ?? string.Empty;
                 TypeOfCustomer = row["TypeOfCustomer"].ToString() ?? string.Empty;
-                Available = Convert.ToBoolean(row["Available"]);
-                RegistDate = Convert.ToDateTime(row["RegistDate"]);
+                IsEnable = Convert.ToBoolean(row["Available"]);
+                RegisterDate = Convert.ToDateTime(row["RegisterDate"]);
             }
         }
-        #endregion
-    }
+    
+    } 
 }
+
+
 
