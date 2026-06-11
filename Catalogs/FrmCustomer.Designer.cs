@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             GbxCliente = new GroupBox();
+            CbTypeCustomer = new ComboBox();
             LblErrorPhone = new Label();
             lblErrorCode = new Label();
             DtmRegistrationDate = new DateTimePicker();
@@ -54,7 +55,6 @@
             TipoCliente = new DataGridViewTextBoxColumn();
             FechaRegistro = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
-            CbTypeCustomer = new ComboBox();
             GbxCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvCustomer).BeginInit();
             SuspendLayout();
@@ -91,6 +91,14 @@
             GbxCliente.TabIndex = 1;
             GbxCliente.TabStop = false;
             GbxCliente.Text = "Registro de Cliente";
+            // 
+            // CbTypeCustomer
+            // 
+            CbTypeCustomer.FormattingEnabled = true;
+            CbTypeCustomer.Location = new Point(1233, 315);
+            CbTypeCustomer.Name = "CbTypeCustomer";
+            CbTypeCustomer.Size = new Size(365, 58);
+            CbTypeCustomer.TabIndex = 32;
             // 
             // LblErrorPhone
             // 
@@ -329,7 +337,7 @@
             DgvCustomer.Location = new Point(0, 845);
             DgvCustomer.Name = "DgvCustomer";
             DgvCustomer.RowHeadersWidth = 82;
-            DgvCustomer.Size = new Size(1748, 541);
+            DgvCustomer.Size = new Size(1748, 544);
             DgvCustomer.TabIndex = 2;
             // 
             // Codigo
@@ -373,14 +381,6 @@
             Estado.HeaderText = "Estado";
             Estado.MinimumWidth = 10;
             Estado.Name = "Estado";
-            // 
-            // CbTypeCustomer
-            // 
-            CbTypeCustomer.FormattingEnabled = true;
-            CbTypeCustomer.Location = new Point(1233, 315);
-            CbTypeCustomer.Name = "CbTypeCustomer";
-            CbTypeCustomer.Size = new Size(365, 58);
-            CbTypeCustomer.TabIndex = 32;
             // 
             // FrmCustomer
             // 

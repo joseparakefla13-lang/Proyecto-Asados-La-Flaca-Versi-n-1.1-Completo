@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
+using Microsoft.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
@@ -15,6 +16,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
     public partial class FrmCustomer : Form
     {
+        private readonly string connectionString = "Server=COQUETO;Database=Dev_Asado2.sql;Integrated Security=True;TrustServerCertificate=True;Encrypt=False;";
         public FrmCustomer()
         {
             InitializeComponent();
@@ -31,6 +33,68 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         {
 
         }
+        private void LoadCustomers()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = "SELECT ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate FROM Customer";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    DgvCustomer.AutoGenerateColumns = false; // evita duplicados
+                    DgvCustomer.DataSource = dt;
+
+                    // Configurar columnas manualmente
+                    DgvCustomer.Columns.Clear();
+
+                    DgvCustomer.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        DataPropertyName = "ClustomerCode",
+                        HeaderText = "Código"
+                    });
+                    DgvCustomer.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        DataPropertyName = "Names",
+                        HeaderText = "Nombre"
+                    });
+                    DgvCustomer.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        DataPropertyName = "Phone",
+                        HeaderText = "Teléfono"
+                    });
+                    DgvCustomer.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        DataPropertyName = "TypeCustomer",
+                        HeaderText = "Tipo"
+                    });
+                    DgvCustomer.Columns.Add(new DataGridViewCheckBoxColumn
+                    {
+                        DataPropertyName = "Available",
+                        HeaderText = "Activo"
+                    });
+                    DgvCustomer .Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        DataPropertyName = "RegistDate",
+                        HeaderText = "Fecha Registro"
+                    });
+
+                    DgvCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar clientes: " + ex.Message);
+            }
+        }
+
+        
+
+        
         private void LoadClientTypes()
         {
             try
@@ -81,7 +145,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 
         private void FrmCustomer_Load(object sender, EventArgs e)
         {
-           
+            LoadCustomers(); // carga al abrir el formulario
         }
 
 
