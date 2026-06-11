@@ -1,4 +1,6 @@
-﻿using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain;
+﻿using Microsoft.Data.SqlClient;
+using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain;
+using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services;
 using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic;
 using System;
 using System.Collections.Generic;
@@ -7,7 +9,6 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
-using Microsoft.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
@@ -20,6 +21,8 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         public FrmCustomer()
         {
             InitializeComponent();
+            DgvCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvCustomer.MultiSelect = false;
             LoadClientTypes();
             this.AutoValidate = AutoValidate.EnablePreventFocusChange;
         }
@@ -54,31 +57,37 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 
                     DgvCustomer.Columns.Add(new DataGridViewTextBoxColumn
                     {
+                        Name = "ClustomerCode",
                         DataPropertyName = "ClustomerCode",
                         HeaderText = "Código"
                     });
                     DgvCustomer.Columns.Add(new DataGridViewTextBoxColumn
                     {
+                        Name = "Names",
                         DataPropertyName = "Names",
                         HeaderText = "Nombre"
                     });
                     DgvCustomer.Columns.Add(new DataGridViewTextBoxColumn
                     {
+                        Name = "Phone",
                         DataPropertyName = "Phone",
                         HeaderText = "Teléfono"
                     });
                     DgvCustomer.Columns.Add(new DataGridViewTextBoxColumn
                     {
+                        Name = "TypeCustomer",
                         DataPropertyName = "TypeCustomer",
                         HeaderText = "Tipo"
                     });
                     DgvCustomer.Columns.Add(new DataGridViewCheckBoxColumn
                     {
+                        Name = "Available",
                         DataPropertyName = "Available",
                         HeaderText = "Activo"
                     });
-                    DgvCustomer .Columns.Add(new DataGridViewTextBoxColumn
+                    DgvCustomer.Columns.Add(new DataGridViewTextBoxColumn
                     {
+                        Name = "RegistDate",
                         DataPropertyName = "RegistDate",
                         HeaderText = "Fecha Registro"
                     });
@@ -92,9 +101,9 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
             }
         }
 
-        
 
-        
+
+
         private void LoadClientTypes()
         {
             try
@@ -146,6 +155,9 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         private void FrmCustomer_Load(object sender, EventArgs e)
         {
             LoadCustomers(); // carga al abrir el formulario
+            DgvCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvCustomer.MultiSelect = false;
+            DgvCustomer.AllowUserToAddRows = false; // evita fila vacía extra
         }
 
 
@@ -187,6 +199,65 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
             }
         }
 
-   
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+  
+            if (DgvCustomer.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = DgvCustomer.SelectedRows[0];
+                object codeValue = row.Cells["ClustomerCode"].Value;
+                string customerCode = codeValue?.ToString();
+
+                DialogResult result = MessageBox.Show(
+                    "¿Seguro que deseas eliminar esta fila?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrWhiteSpace(customerCode))
+                        {
+                            // Borrar en la BD
+                            DeleteCommand deleteService = new DeleteCommand();
+                            string query = "DELETE FROM Customer WHERE ClustomerCode = @ClustomerCode";
+                            SqlParameter[] parameters =
+                            {
+                        new SqlParameter("@ClustomerCode", customerCode)
+                    };
+                            deleteService.ExecuteDelete(query, parameters);
+                        }
+
+                        // Quitar la fila del grid inmediatamente
+                        DgvCustomer.Rows.Remove(row);
+
+                        // Refrescar desde la BD para confirmar
+                        LoadCustomers();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al eliminar: " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila completa para eliminar.");
+            }
+        }
+
+        
+        
+        
+
+        
+
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            LoadCustomers(); // recarga el grid para mostrar cambios
+        }
     }
 }
+

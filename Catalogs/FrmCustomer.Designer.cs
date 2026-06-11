@@ -2,6 +2,8 @@
 {
     partial class FrmCustomer
     {
+        private const string V = "FrmClientes";
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -37,8 +39,8 @@
             TxtPhone = new TextBox();
             LblFecha = new Label();
             BtnCerrarClient = new Button();
-            BtnLimpiarClient = new Button();
-            BtnEliminarClient = new Button();
+            BtnUpdate = new Button();
+            BtnDelete = new Button();
             BtnSaveClient = new Button();
             BtnAgregarClient = new Button();
             ChbStateCustomer = new CheckBox();
@@ -70,8 +72,8 @@
             GbxCliente.Controls.Add(TxtPhone);
             GbxCliente.Controls.Add(LblFecha);
             GbxCliente.Controls.Add(BtnCerrarClient);
-            GbxCliente.Controls.Add(BtnLimpiarClient);
-            GbxCliente.Controls.Add(BtnEliminarClient);
+            GbxCliente.Controls.Add(BtnUpdate);
+            GbxCliente.Controls.Add(BtnDelete);
             GbxCliente.Controls.Add(BtnSaveClient);
             GbxCliente.Controls.Add(BtnAgregarClient);
             GbxCliente.Controls.Add(ChbStateCustomer);
@@ -187,37 +189,39 @@
             BtnCerrarClient.TextAlign = ContentAlignment.MiddleRight;
             BtnCerrarClient.UseVisualStyleBackColor = true;
             // 
-            // BtnLimpiarClient
+            // BtnUpdate
             // 
-            BtnLimpiarClient.FlatAppearance.BorderSize = 0;
-            BtnLimpiarClient.FlatAppearance.MouseOverBackColor = Color.Gray;
-            BtnLimpiarClient.FlatStyle = FlatStyle.Flat;
-            BtnLimpiarClient.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnLimpiarClient.Image = Properties.Resources.escoba;
-            BtnLimpiarClient.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnLimpiarClient.Location = new Point(1107, 670);
-            BtnLimpiarClient.Name = "BtnLimpiarClient";
-            BtnLimpiarClient.Size = new Size(201, 70);
-            BtnLimpiarClient.TabIndex = 23;
-            BtnLimpiarClient.Text = "Limpiar";
-            BtnLimpiarClient.TextAlign = ContentAlignment.MiddleRight;
-            BtnLimpiarClient.UseVisualStyleBackColor = true;
+            BtnUpdate.FlatAppearance.BorderSize = 0;
+            BtnUpdate.FlatAppearance.MouseOverBackColor = Color.Gray;
+            BtnUpdate.FlatStyle = FlatStyle.Flat;
+            BtnUpdate.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnUpdate.Image = Properties.Resources.escoba;
+            BtnUpdate.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnUpdate.Location = new Point(1107, 670);
+            BtnUpdate.Name = "BtnUpdate";
+            BtnUpdate.Size = new Size(201, 70);
+            BtnUpdate.TabIndex = 23;
+            BtnUpdate.Text = "Actualizar";
+            BtnUpdate.TextAlign = ContentAlignment.MiddleRight;
+            BtnUpdate.UseVisualStyleBackColor = true;
+            BtnUpdate.Click += BtnUpdate_Click;
             // 
-            // BtnEliminarClient
+            // BtnDelete
             // 
-            BtnEliminarClient.FlatAppearance.BorderSize = 0;
-            BtnEliminarClient.FlatAppearance.MouseOverBackColor = Color.Red;
-            BtnEliminarClient.FlatStyle = FlatStyle.Flat;
-            BtnEliminarClient.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnEliminarClient.Image = Properties.Resources.basura;
-            BtnEliminarClient.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnEliminarClient.Location = new Point(845, 670);
-            BtnEliminarClient.Name = "BtnEliminarClient";
-            BtnEliminarClient.Size = new Size(201, 70);
-            BtnEliminarClient.TabIndex = 22;
-            BtnEliminarClient.Text = "Eliminar";
-            BtnEliminarClient.TextAlign = ContentAlignment.MiddleRight;
-            BtnEliminarClient.UseVisualStyleBackColor = true;
+            BtnDelete.FlatAppearance.BorderSize = 0;
+            BtnDelete.FlatAppearance.MouseOverBackColor = Color.Red;
+            BtnDelete.FlatStyle = FlatStyle.Flat;
+            BtnDelete.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnDelete.Image = Properties.Resources.basura;
+            BtnDelete.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnDelete.Location = new Point(845, 670);
+            BtnDelete.Name = "BtnDelete";
+            BtnDelete.Size = new Size(201, 70);
+            BtnDelete.TabIndex = 22;
+            BtnDelete.Text = "Eliminar";
+            BtnDelete.TextAlign = ContentAlignment.MiddleRight;
+            BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnSaveClient
             // 
@@ -346,6 +350,7 @@
             Codigo.HeaderText = "Código";
             Codigo.MinimumWidth = 10;
             Codigo.Name = "Codigo";
+            Codigo.DataPropertyName = "ClustomerCode"; // campo real en la BD
             // 
             // Nombres
             // 
@@ -353,6 +358,7 @@
             Nombres.HeaderText = "Nombres";
             Nombres.MinimumWidth = 10;
             Nombres.Name = "Nombres";
+            Nombres.DataPropertyName = "Names";
             // 
             // Teléfono
             // 
@@ -360,6 +366,7 @@
             Teléfono.HeaderText = "Teléfono";
             Teléfono.MinimumWidth = 10;
             Teléfono.Name = "Teléfono";
+            Teléfono.DataPropertyName = "Phone";
             // 
             // TipoCliente
             // 
@@ -367,6 +374,7 @@
             TipoCliente.HeaderText = "TipoCliente";
             TipoCliente.MinimumWidth = 10;
             TipoCliente.Name = "TipoCliente";
+            TipoCliente.DataPropertyName = "TypeCustomer";
             // 
             // FechaRegistro
             // 
@@ -374,6 +382,7 @@
             FechaRegistro.HeaderText = "FechaRegistro";
             FechaRegistro.MinimumWidth = 10;
             FechaRegistro.Name = "FechaRegistro";
+            FechaRegistro.DataPropertyName = "RegistDate";
             // 
             // Estado
             // 
@@ -381,6 +390,7 @@
             Estado.HeaderText = "Estado";
             Estado.MinimumWidth = 10;
             Estado.Name = "Estado";
+            Estado.DataPropertyName = "Available";
             // 
             // FrmCustomer
             // 
@@ -393,7 +403,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmCustomer";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmClientes";
             Load += FrmCustomer_Load;
             GbxCliente.ResumeLayout(false);
             GbxCliente.PerformLayout();
@@ -405,8 +414,8 @@
 
         private GroupBox GbxCliente;
         private Button BtnCerrarClient;
-        private Button BtnLimpiarClient;
-        private Button BtnEliminarClient;
+        private Button BtnUpdate;
+        private Button BtnDelete;
         private Button BtnSaveClient;
         private Button BtnAgregarClient;
         private CheckBox ChbStateCustomer;
