@@ -9,36 +9,53 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic
     internal class CustomerBusiness
     {
         /// <summary>
-        /// Inserta un cliente en la base de datos aplicando reglas de negocio:
+        /// Inserta un cliente aplicando reglas de negocio:
         /// - Código único
+        /// - Fecha de registro válida (hoy)
         /// - Cliente activo
-        /// - Fecha de registro válida
         /// </summary>
         public int InsertCustomer(Customer newCustomer)
         {
             // 1. Validar que el código sea único
-            bool esUnico = newCustomer.IsUniqueCustomerCode(newCustomer.ClustomerCode);
-            if (!esUnico)
+            if (!newCustomer.IsUniqueCustomerCode(newCustomer.ClustomerCode))
             {
                 throw new Exception("El código de cliente ya existe en la base de datos.");
             }
 
-            // 2. Validar que el cliente esté activo
+            // 2. Validar que la fecha de registro sea hoy
+            if (!newCustomer.ValidateRegisterDate())
+            {
+                throw new Exception("La fecha de registro debe ser la del día actual.");
+            }
+
+            // 3. Validar que el cliente esté activo
             if (!newCustomer.Available)
             {
-                throw new Exception("El cliente debe estar activo para poder registrarse.");
+                throw new Exception("El cliente debe estar marcado como disponible.");
             }
 
-            // 3. Validar que la fecha de registro no sea futura
-            if (!newCustomer.ValidateCurrentDate())
-            {
-                throw new Exception("La fecha de registro no puede ser futura.");
-            }
-
-            // 4. Si pasa las validaciones, insertar en la BD
+            // 4. Insertar en BD
             return newCustomer.InsertCustomer();
         }
 
-     
+        /// <summary>
+        /// Obtiene todos los clientes registrados
+        /// </summary>
+        public DataTable GetAllCustomers()
+        {
+            Customer c = new Customer();
+            return c.GetAllCustomers();
+        }
+
+        /// <summary>
+        /// Elimina un cliente por su código
+        /// </summary>
+        public int DeleteCustomer(string customerCode)
+        {
+            // Aquí puedes agregar validaciones antes de eliminar
+            // Ejemplo: verificar si el cliente tiene pedidos activos
+            return 0; // Pendiente de implementación
+        }
     }
+
 }

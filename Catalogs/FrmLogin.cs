@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;    
 using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs;
 using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Class;
+using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo
             registeredUsers.Add(new User("Jose", "1234"));
             registeredUsers.Add(new User("Admin", "adminpass"));
         }
+   
 
         private void PnlLogin_Paint(object sender, PaintEventArgs e)
         {

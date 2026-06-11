@@ -28,23 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             pictureBox1 = new PictureBox();
             PnlLogin = new Panel();
             LblOlvidarCintraseña = new Label();
             BtnLogin = new Button();
             TxtPassword = new TextBox();
             LblContraseña = new Label();
-            TxtEmail = new TextBox();
-            LblCorreo = new Label();
             TxtUserName = new TextBox();
             LblNombre = new Label();
             Lblinisiosesion = new Label();
-            errorProvider1 = new ErrorProvider(components);
-            btntest = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             PnlLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -63,13 +57,10 @@
             // 
             PnlLogin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             PnlLogin.BackColor = Color.FromArgb(243, 231, 211);
-            PnlLogin.Controls.Add(btntest);
             PnlLogin.Controls.Add(LblOlvidarCintraseña);
             PnlLogin.Controls.Add(BtnLogin);
             PnlLogin.Controls.Add(TxtPassword);
             PnlLogin.Controls.Add(LblContraseña);
-            PnlLogin.Controls.Add(TxtEmail);
-            PnlLogin.Controls.Add(LblCorreo);
             PnlLogin.Controls.Add(TxtUserName);
             PnlLogin.Controls.Add(LblNombre);
             PnlLogin.Controls.Add(Lblinisiosesion);
@@ -84,7 +75,7 @@
             LblOlvidarCintraseña.AutoSize = true;
             LblOlvidarCintraseña.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LblOlvidarCintraseña.ForeColor = Color.FromArgb(64, 64, 64);
-            LblOlvidarCintraseña.Location = new Point(255, 786);
+            LblOlvidarCintraseña.Location = new Point(271, 756);
             LblOlvidarCintraseña.Name = "LblOlvidarCintraseña";
             LblOlvidarCintraseña.Size = new Size(363, 45);
             LblOlvidarCintraseña.TabIndex = 8;
@@ -113,7 +104,7 @@
             TxtPassword.Cursor = Cursors.Hand;
             TxtPassword.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             TxtPassword.ForeColor = Color.Gray;
-            TxtPassword.Location = new Point(100, 662);
+            TxtPassword.Location = new Point(100, 607);
             TxtPassword.Multiline = true;
             TxtPassword.Name = "TxtPassword";
             TxtPassword.Size = new Size(702, 62);
@@ -126,35 +117,11 @@
             LblContraseña.AutoSize = true;
             LblContraseña.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LblContraseña.ForeColor = Color.FromArgb(45, 45, 45);
-            LblContraseña.Location = new Point(100, 602);
+            LblContraseña.Location = new Point(100, 493);
             LblContraseña.Name = "LblContraseña";
             LblContraseña.Size = new Size(235, 45);
             LblContraseña.TabIndex = 5;
             LblContraseña.Text = "CONTRASEÑA";
-            // 
-            // TxtEmail
-            // 
-            TxtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            TxtEmail.Cursor = Cursors.Hand;
-            TxtEmail.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            TxtEmail.ForeColor = Color.Gray;
-            TxtEmail.Location = new Point(100, 474);
-            TxtEmail.Multiline = true;
-            TxtEmail.Name = "TxtEmail";
-            TxtEmail.Size = new Size(702, 62);
-            TxtEmail.TabIndex = 4;
-            TxtEmail.Text = "Ingrese su Correo Electronico";
-            // 
-            // LblCorreo
-            // 
-            LblCorreo.AutoSize = true;
-            LblCorreo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblCorreo.ForeColor = Color.FromArgb(45, 45, 45);
-            LblCorreo.Location = new Point(100, 412);
-            LblCorreo.Name = "LblCorreo";
-            LblCorreo.Size = new Size(369, 45);
-            LblCorreo.TabIndex = 3;
-            LblCorreo.Text = "CORREO ELÉCTRONICO";
             // 
             // TxtUserName
             // 
@@ -162,7 +129,7 @@
             TxtUserName.Cursor = Cursors.Hand;
             TxtUserName.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             TxtUserName.ForeColor = Color.Gray;
-            TxtUserName.Location = new Point(100, 279);
+            TxtUserName.Location = new Point(100, 334);
             TxtUserName.Multiline = true;
             TxtUserName.Name = "TxtUserName";
             TxtUserName.Size = new Size(702, 62);
@@ -192,20 +159,6 @@
             Lblinisiosesion.TabIndex = 0;
             Lblinisiosesion.Text = "INICIAR SESIÓN";
             // 
-            // errorProvider1
-            // 
-            errorProvider1.ContainerControl = this;
-            // 
-            // btntest
-            // 
-            btntest.Location = new Point(99, 95);
-            btntest.Name = "btntest";
-            btntest.Size = new Size(150, 46);
-            btntest.TabIndex = 9;
-            btntest.Text = "button1";
-            btntest.UseVisualStyleBackColor = true;
-            btntest.Click += btntest_Click;
-            // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(192F, 192F);
@@ -224,7 +177,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             PnlLogin.ResumeLayout(false);
             PnlLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -235,13 +187,9 @@
         private Label Lblinisiosesion;
         private TextBox TxtUserName;
         private Label LblNombre;
-        private ErrorProvider errorProvider1;
         private TextBox TxtPassword;
         private Label LblContraseña;
-        private TextBox TxtEmail;
-        private Label LblCorreo;
         private Button BtnLogin;
         private Label LblOlvidarCintraseña;
-        private Button btntest;
     }
 }

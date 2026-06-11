@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             GbxCliente = new GroupBox();
+            LblErrorPhone = new Label();
             lblErrorCode = new Label();
             DtmRegistrationDate = new DateTimePicker();
-            TxtTypeOfCustomer = new TextBox();
             TxtName = new TextBox();
             TxtPhone = new TextBox();
             LblFecha = new Label();
@@ -54,7 +54,7 @@
             TipoCliente = new DataGridViewTextBoxColumn();
             FechaRegistro = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
-            LblErrorPhone = new Label();
+            CbTypeCustomer = new ComboBox();
             GbxCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvCustomer).BeginInit();
             SuspendLayout();
@@ -62,10 +62,10 @@
             // GbxCliente
             // 
             GbxCliente.BackColor = Color.FromArgb(243, 231, 211);
+            GbxCliente.Controls.Add(CbTypeCustomer);
             GbxCliente.Controls.Add(LblErrorPhone);
             GbxCliente.Controls.Add(lblErrorCode);
             GbxCliente.Controls.Add(DtmRegistrationDate);
-            GbxCliente.Controls.Add(TxtTypeOfCustomer);
             GbxCliente.Controls.Add(TxtName);
             GbxCliente.Controls.Add(TxtPhone);
             GbxCliente.Controls.Add(LblFecha);
@@ -92,6 +92,18 @@
             GbxCliente.TabStop = false;
             GbxCliente.Text = "Registro de Cliente";
             // 
+            // LblErrorPhone
+            // 
+            LblErrorPhone.AutoSize = true;
+            LblErrorPhone.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblErrorPhone.ForeColor = Color.Red;
+            LblErrorPhone.Location = new Point(1201, 238);
+            LblErrorPhone.Name = "LblErrorPhone";
+            LblErrorPhone.Size = new Size(443, 37);
+            LblErrorPhone.TabIndex = 31;
+            LblErrorPhone.Text = "\"formato 8 digitos como miníno\"";
+            LblErrorPhone.Visible = false;
+            // 
             // lblErrorCode
             // 
             lblErrorCode.AutoSize = true;
@@ -116,17 +128,6 @@
             DtmRegistrationDate.Size = new Size(547, 50);
             DtmRegistrationDate.TabIndex = 29;
             DtmRegistrationDate.ValueChanged += DtmFecha_ValueChanged;
-            // 
-            // TxtTypeOfCustomer
-            // 
-            TxtTypeOfCustomer.BackColor = Color.FromArgb(246, 246, 247);
-            TxtTypeOfCustomer.BorderStyle = BorderStyle.None;
-            TxtTypeOfCustomer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtTypeOfCustomer.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtTypeOfCustomer.Location = new Point(1233, 330);
-            TxtTypeOfCustomer.Name = "TxtTypeOfCustomer";
-            TxtTypeOfCustomer.Size = new Size(365, 43);
-            TxtTypeOfCustomer.TabIndex = 28;
             // 
             // TxtName
             // 
@@ -373,17 +374,13 @@
             Estado.MinimumWidth = 10;
             Estado.Name = "Estado";
             // 
-            // LblErrorPhone
+            // CbTypeCustomer
             // 
-            LblErrorPhone.AutoSize = true;
-            LblErrorPhone.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblErrorPhone.ForeColor = Color.Red;
-            LblErrorPhone.Location = new Point(1201, 238);
-            LblErrorPhone.Name = "LblErrorPhone";
-            LblErrorPhone.Size = new Size(443, 37);
-            LblErrorPhone.TabIndex = 31;
-            LblErrorPhone.Text = "\"formato 8 digitos como miníno\"";
-            LblErrorPhone.Visible = false;
+            CbTypeCustomer.FormattingEnabled = true;
+            CbTypeCustomer.Location = new Point(1233, 315);
+            CbTypeCustomer.Name = "CbTypeCustomer";
+            CbTypeCustomer.Size = new Size(365, 58);
+            CbTypeCustomer.TabIndex = 32;
             // 
             // FrmCustomer
             // 
@@ -419,7 +416,6 @@
         private Label LblTeléfono;
         private Label LblNombreCliente;
         private Label LblCodigoCliente;
-        private TextBox TxtTypeOfCustomer;
         private TextBox TxtName;
         private TextBox TxtPhone;
         private Label LblFecha;
@@ -433,5 +429,6 @@
         private DateTimePicker DtmRegistrationDate;
         private Label lblErrorCode;
         private Label LblErrorPhone;
+        private ComboBox CbTypeCustomer;
     }
 }

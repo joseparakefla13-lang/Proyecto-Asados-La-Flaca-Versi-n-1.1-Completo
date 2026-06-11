@@ -18,6 +18,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         public FrmCustomer()
         {
             InitializeComponent();
+            LoadClientTypes();
             this.AutoValidate = AutoValidate.EnablePreventFocusChange;
         }
 
@@ -30,54 +31,57 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         {
 
         }
-
-        private void BtnSaveClient_Click(object sender, EventArgs e)
+        private void LoadClientTypes()
         {
-            // Validar campos obligatorios
-            if (string.IsNullOrWhiteSpace(TxtCustomerCode.Text) ||
-                string.IsNullOrWhiteSpace(TxtName.Text) ||
-                string.IsNullOrWhiteSpace(TxtPhone.Text) ||
-                string.IsNullOrWhiteSpace(TxtTypeOfCustomer.Text))
-            {
-                MessageBox.Show("Por favor, complete todos los campos faltantes.", "Campos Incompletos",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             try
             {
-                // Crear instancia de cliente con todos los datos
-                Customer newCustomer = new Customer
-                {
-                    ClustomerCode = TxtCustomerCode.Text.Trim(),
-                    Names = TxtName.Text.Trim(),
-                    Phone = TxtPhone.Text.Trim(),
-                    TypeCustomer = TxtTypeOfCustomer.Text.Trim(),
-                    Available = ChbStateCustomer.Checked, // checkbox de tu formulario
-                    RegistDate = DtmRegistrationDate.Value // fecha del DateTimePicker
-                };
+                CustomerTypeBusiness business = new CustomerTypeBusiness();
+                DataTable dt = business.GetCustomerTypes();
 
-                CustomerBusiness customerBusiness = new CustomerBusiness();
-                int result = customerBusiness.InsertCustomer(newCustomer);
-
-                if (result > 0)
+                if (dt.Rows.Count > 0)
                 {
-                    MessageBox.Show("El nuevo Cliente fue registrado exitosamente.", "Operación Exitosa",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // clearInputs(); // limpiar campos si lo deseas
+                    // Verificamos el nombre real de la columna
+                    string columnName = dt.Columns[0].ColumnName;
+
+                    CbTypeCustomer.DataSource = dt;
+                    CbTypeCustomer.DisplayMember = columnName;   // lo que se muestra
+                    CbTypeCustomer.ValueMember = columnName;     // lo que se guarda
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ocurrió un error al registrar el Cliente: {ex.Message}", "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al cargar tipos de cliente: {ex.Message}");
             }
+        }
+        private void BtnSaveClient_Click(object sender, EventArgs e)
+        {
 
+            try
+            {
+                Customer nuevo = new Customer
+                {
+                    ClustomerCode = TxtCustomerCode.Text.Trim(),
+                    Names = TxtName.Text.Trim(),
+                    Phone = TxtPhone.Text.Trim(),
+                    TypeCustomer = CbTypeCustomer.Text,
+                    Available = true,
+                    RegistDate = DateTime.Today
+                };
+
+                CustomerBusiness business = new CustomerBusiness();
+                int rows = business.InsertCustomer(nuevo);
+
+                MessageBox.Show(rows > 0 ? "Cliente agregado correctamente." : "No se pudo agregar el cliente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al guardar cliente: {ex.Message}");
+            }
         }
 
         private void FrmCustomer_Load(object sender, EventArgs e)
         {
-
+           
         }
 
 
@@ -87,7 +91,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
             string input = TxtCustomerCode.Text.Trim().ToUpper(); // normalizar a mayúsculas
 
             // Formato: CL seguido de 3 dígitos
-            Regex regex = new Regex(@"^CL\d{3}$");
+            Regex regex = new Regex(@"^CLI\d{3}$");
 
             if (!regex.IsMatch(input))
             {
@@ -118,5 +122,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 LblErrorPhone.Visible = false; // oculta el mensaje si es válido
             }
         }
+
+   
     }
 }

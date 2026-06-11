@@ -1,67 +1,55 @@
 ﻿using Microsoft.Data.SqlClient;
+using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain.superclass;
 using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services;
 using System;
 using System.Data;
 
 namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain
-{
-    internal class Customer
-    {  
-        public  string ClustomerCode { get; set; }
-        public  string Names { get; set; }
-        public  string Phone { get; set; }
-        public  string TypeCustomer { get; set; }
-        public bool  Available { get; set; }
-        public DateTime RegistDate { get; set; }
+{  
+    internal class Customer : Person
+    {
+        public int CustomerId { get; set; }
+        public string TypeCustomer { get; set; }
 
-        public Customer()
+        // Constructor por defecto
+        public Customer() : base(string.Empty, string.Empty, string.Empty, true)
         {
-            ClustomerCode = string.Empty;
-            Names = string.Empty;
-            Phone = string.Empty;
             TypeCustomer = string.Empty;
-            Available = true;
-            RegistDate = DateTime.Now;
+            RegistDate = DateTime.Today; // siempre hoy
         }
 
-        public bool ValidateCurrentDate()
+        // Constructor para cargar desde BD
+        public Customer(string clustomerCode) : base(clustomerCode, string.Empty, string.Empty, true)
         {
-            return RegistDate.Date <= DateTime.Today;
+            LoadCustomerById(clustomerCode);
         }
 
-        public Customer (string customerCode)
+        // Constructor completo
+        public Customer(int customerId, string code, string names, string phone, bool available, string typeCustomer)
+            : base(code, names, phone, available)
         {
-            LoadCustomerById(customerCode);
-        }
-
-        public Customer(string clustomerCode, string name, string phone, string typeCustomer, bool available, DateTime registDate)
-        {
-            ClustomerCode = clustomerCode;
-            Names = name;
-            Phone = phone;
+            CustomerId = customerId;
             TypeCustomer = typeCustomer;
-            Available = available;
-            RegistDate = registDate ;
+            RegistDate = DateTime.Today; // fuerza fecha actual
         }
-        
 
-    
+        /* -------------------------------------------------------------------------- */
+        /*                               Métodos BD                                   */
+        /* -------------------------------------------------------------------------- */
+
         public bool IsUniqueCustomerCode(string clustomerCode)
         {
-            string sql = @"SELECT CASE
-                            WHEN EXISTS(
-                                 SELECT 1
-                                 FROM Customer 
-                                 WHERE ClustomerCode = @ClustomerCode)
-                                 THEN 1 ELSE 0 END";
+            string sql = @"SELECT COUNT(*) 
+                   FROM Customer 
+                   WHERE ClustomerCode = @ClustomerCode";
 
             using SelectQuery select = new SelectQuery();
             SqlParameter[] parametros = {
-            new SqlParameter("@ClustomerCode", SqlDbType.VarChar, 16) { Value = clustomerCode }
-        };
+        new SqlParameter("@ClustomerCode", SqlDbType.VarChar, 16) { Value = clustomerCode }
+    };
 
-            // Devuelve true si NO existe (es único)
-            return !select.IsDuplicate(sql, parametros);
+            int count = Convert.ToInt32(select.ExecuteScalar(sql, parametros));
+            return count == 0; // true si no existe
         }
 
         public int InsertCustomer()
@@ -72,17 +60,17 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain
                 using InsertCommand insert = new InsertCommand();
 
                 string sql = @"INSERT INTO Customer (ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate)
-                           VALUES (@ClustomerCode, @Names, @Phone, @TypeCustomer, @Available, @RegistDate)";
+                       VALUES (@ClustomerCode, @Names, @Phone, @TypeCustomer, @Available, @RegistDate)";
 
                 SqlParameter[] parameters =
                 {
-                new SqlParameter("@ClustomerCode", SqlDbType.VarChar, 16) { Value = this.ClustomerCode },
-                new SqlParameter("@Names", SqlDbType.VarChar, 108) { Value = this.Names },
-                new SqlParameter("@Phone", SqlDbType.VarChar, 16) { Value = this.Phone },
-                new SqlParameter("@TypeCustomer", SqlDbType.VarChar, 16) { Value = this.TypeCustomer },
-                new SqlParameter("@Available", SqlDbType.Bit) { Value = this.Available },
-                new SqlParameter("@RegistDate", SqlDbType.DateTime) { Value = this.RegistDate }
-            };
+            new SqlParameter("@ClustomerCode", SqlDbType.VarChar, 16) { Value = this.ClustomerCode },
+            new SqlParameter("@Names", SqlDbType.VarChar, 108) { Value = this.Names },
+            new SqlParameter("@Phone", SqlDbType.VarChar, 16) { Value = this.Phone },
+            new SqlParameter("@TypeCustomer", SqlDbType.VarChar, 16) { Value = this.TypeCustomer },
+            new SqlParameter("@Available", SqlDbType.Bit) { Value = this.Available },
+            new SqlParameter("@RegistDate", SqlDbType.DateTime) { Value = this.RegistDate }
+                };
 
                 rows = insert.ExecuteInsert(sql, parameters);
             }
@@ -103,14 +91,14 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain
             return select.ExecuteSelect(sql, null);
         }
 
-        private void LoadCustomerById(string customerCode)
+        private void LoadCustomerById(string clustomerCode)
         {
             string sql = @"SELECT ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate
                        FROM Customer WHERE ClustomerCode = @ClustomerCode";
 
             using SelectQuery select = new SelectQuery();
             SqlParameter[] parameters = {
-            new SqlParameter("@ClustomerCode", SqlDbType.VarChar, 16) { Value = customerCode }
+            new SqlParameter("@ClustomerCode", SqlDbType.VarChar, 16) { Value = clustomerCode }
         };
 
             DataTable dt = select.ExecuteSelect(sql, parameters);
@@ -118,7 +106,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain
             if (dt.Rows.Count > 0)
             {
                 DataRow row = dt.Rows[0];
-                ClustomerCode = row["ClustomerCode"].ToString() ?? string.Empty;
+                ClustomerCode = row["ClustomerCode"].ToString() ?? string.Empty; // heredado de Person
                 Names = row["Names"].ToString() ?? string.Empty;
                 Phone = row["Phone"].ToString() ?? string.Empty;
                 TypeCustomer = row["TypeCustomer"].ToString() ?? string.Empty;
@@ -126,9 +114,10 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain
                 RegistDate = Convert.ToDateTime(row["RegistDate"]);
             }
         }
-    
-    } 
+    }
+
 }
+
 
 
 
