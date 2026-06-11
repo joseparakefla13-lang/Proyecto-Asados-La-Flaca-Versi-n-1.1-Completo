@@ -201,15 +201,23 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-  
+    
             if (DgvCustomer.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = DgvCustomer.SelectedRows[0];
-                object codeValue = row.Cells["ClustomerCode"].Value;
-                string customerCode = codeValue?.ToString();
+
+                // Tomar valores de todas las columnas
+                string customerCode = row.Cells["ClustomerCode"].Value?.ToString() ?? string.Empty;
+                string names = row.Cells["Names"].Value?.ToString() ?? string.Empty;
+                string phone = row.Cells["Phone"].Value?.ToString() ?? string.Empty;
+                string typeCustomer = row.Cells["TypeCustomer"].Value?.ToString() ?? string.Empty;
+                bool available = row.Cells["Available"].Value != null && (bool)row.Cells["Available"].Value;
+                DateTime registDate = row.Cells["RegistDate"].Value != null
+                                        ? Convert.ToDateTime(row.Cells["RegistDate"].Value)
+                                        : DateTime.MinValue;
 
                 DialogResult result = MessageBox.Show(
-                    "¿Seguro que deseas eliminar esta fila?",
+                    $"¿Seguro que deseas eliminar el cliente {customerCode}?",
                     "Confirmar eliminación",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
@@ -218,27 +226,41 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 {
                     try
                     {
-                        if (!string.IsNullOrWhiteSpace(customerCode))
+                        DeleteCommand deleteService = new DeleteCommand();
+
+                        string query = @"DELETE FROM Customer 
+                                 WHERE ClustomerCode = @ClustomerCode
+                                   AND Names = @Names
+                                   AND Phone = @Phone
+                                   AND TypeCustomer = @TypeCustomer
+                                   AND Available = @Available
+                                   AND RegistDate = @RegistDate";
+
+                        SqlParameter[] parameters =
                         {
-                            // Borrar en la BD
-                            DeleteCommand deleteService = new DeleteCommand();
-                            string query = "DELETE FROM Customer WHERE ClustomerCode = @ClustomerCode";
-                            SqlParameter[] parameters =
-                            {
-                        new SqlParameter("@ClustomerCode", customerCode)
-                    };
-                            deleteService.ExecuteDelete(query, parameters);
+                    new SqlParameter("@ClustomerCode", customerCode),
+                    new SqlParameter("@Names", names),
+                    new SqlParameter("@Phone", phone),
+                    new SqlParameter("@TypeCustomer", typeCustomer),
+                    new SqlParameter("@Available", available),
+                    new SqlParameter("@RegistDate", registDate)
+                };
+
+                        int rows = deleteService.ExecuteDelete(query, parameters);
+
+                        if (rows > 0)
+                        {
+                            MessageBox.Show("Cliente eliminado correctamente.");
+                            LoadCustomers(); // refresca el grid
                         }
-
-                        // Quitar la fila del grid inmediatamente
-                        DgvCustomer.Rows.Remove(row);
-
-                        // Refrescar desde la BD para confirmar
-                        LoadCustomers();
+                        else
+                        {
+                            MessageBox.Show("No se encontró el cliente para eliminar.");
+                        }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error al eliminar: " + ex.Message);
+                        MessageBox.Show("Error al eliminar cliente: " + ex.Message);
                     }
                 }
             }
@@ -247,6 +269,8 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 MessageBox.Show("Seleccione una fila completa para eliminar.");
             }
         }
+
+        
 
         
         
