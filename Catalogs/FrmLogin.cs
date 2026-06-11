@@ -1,4 +1,6 @@
-﻿using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;    
+using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs;
 using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Class;
 using System;
 using System.Collections.Generic;
@@ -100,5 +102,10 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo
                 }
             }
         }
+
+        private void btntest_Click(object sender, EventArgs e)
+        {
+          
     }
+}
 }

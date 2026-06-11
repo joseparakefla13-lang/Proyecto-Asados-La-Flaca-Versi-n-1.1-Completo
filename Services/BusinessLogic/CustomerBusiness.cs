@@ -17,14 +17,14 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic
         public int InsertCustomer(Customer newCustomer)
         {
             // 1. Validar que el código sea único
-            bool esUnico = newCustomer.IsUniqueCustomerCode(newCustomer.CustomerCode);
+            bool esUnico = newCustomer.IsUniqueCustomerCode(newCustomer.ClustomerCode);
             if (!esUnico)
             {
                 throw new Exception("El código de cliente ya existe en la base de datos.");
             }
 
             // 2. Validar que el cliente esté activo
-            if (!newCustomer.IsEnable)
+            if (!newCustomer.Available)
             {
                 throw new Exception("El cliente debe estar activo para poder registrarse.");
             }

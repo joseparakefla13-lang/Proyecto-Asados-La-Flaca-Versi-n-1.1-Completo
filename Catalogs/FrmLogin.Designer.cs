@@ -41,6 +41,7 @@
             LblNombre = new Label();
             Lblinisiosesion = new Label();
             errorProvider1 = new ErrorProvider(components);
+            btntest = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             PnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
@@ -62,6 +63,7 @@
             // 
             PnlLogin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             PnlLogin.BackColor = Color.FromArgb(243, 231, 211);
+            PnlLogin.Controls.Add(btntest);
             PnlLogin.Controls.Add(LblOlvidarCintraseña);
             PnlLogin.Controls.Add(BtnLogin);
             PnlLogin.Controls.Add(TxtPassword);
@@ -194,6 +196,16 @@
             // 
             errorProvider1.ContainerControl = this;
             // 
+            // btntest
+            // 
+            btntest.Location = new Point(99, 95);
+            btntest.Name = "btntest";
+            btntest.Size = new Size(150, 46);
+            btntest.TabIndex = 9;
+            btntest.Text = "button1";
+            btntest.UseVisualStyleBackColor = true;
+            btntest.Click += btntest_Click;
+            // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(192F, 192F);
@@ -230,5 +242,6 @@
         private Label LblCorreo;
         private Button BtnLogin;
         private Label LblOlvidarCintraseña;
+        private Button btntest;
     }
 }

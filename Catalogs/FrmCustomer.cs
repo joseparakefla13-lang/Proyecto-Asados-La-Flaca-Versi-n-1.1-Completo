@@ -49,12 +49,12 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 // Crear instancia de cliente con todos los datos
                 Customer newCustomer = new Customer
                 {
-                    CustomerCode = TxtCustomerCode.Text.Trim(),
-                    Name = TxtName.Text.Trim(),
+                    ClustomerCode = TxtCustomerCode.Text.Trim(),
+                    Names = TxtName.Text.Trim(),
                     Phone = TxtPhone.Text.Trim(),
-                    TypeOfCustomer = TxtTypeOfCustomer.Text.Trim(),
-                    IsEnable = ChbStateCustomer.Checked, // checkbox de tu formulario
-                    RegisterDate = DtmRegistrationDate.Value // fecha del DateTimePicker
+                    TypeCustomer = TxtTypeOfCustomer.Text.Trim(),
+                    Available = ChbStateCustomer.Checked, // checkbox de tu formulario
+                    RegistDate = DtmRegistrationDate.Value // fecha del DateTimePicker
                 };
 
                 CustomerBusiness customerBusiness = new CustomerBusiness();
