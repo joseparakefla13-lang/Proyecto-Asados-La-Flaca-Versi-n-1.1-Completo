@@ -29,24 +29,27 @@
         private void InitializeComponent()
         {
             GbxEmpleado = new GroupBox();
-            TxtTelefono = new TextBox();
+            TxtSearch = new TextBox();
+            LblErrorPhone = new Label();
+            LbErrorCode = new Label();
+            TxtPhone = new TextBox();
             LblTeléfono = new Label();
             BtnCerrarEmpl = new Button();
-            BtnLimpiarEmpl = new Button();
-            BtnEliminarEmpl = new Button();
-            BtnGuardarEmpl = new Button();
-            BtnAgregarEmpl = new Button();
+            BtnUpdate = new Button();
+            BtnDelete = new Button();
+            BtnSave = new Button();
+            BtnSearch = new Button();
             CbAvailable = new CheckBox();
-            comboBox1 = new ComboBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            CbPosition = new ComboBox();
+            TxtSurname = new TextBox();
+            TxtName = new TextBox();
+            TxtCode = new TextBox();
             LblDisponible = new Label();
             LblCargo = new Label();
             LblApellidos = new Label();
             LblNombre = new Label();
             LblCodigo = new Label();
-            DtgEmpleado = new DataGridView();
+            DtgEmployee = new DataGridView();
             Codigo = new DataGridViewTextBoxColumn();
             Teléfono = new DataGridViewTextBoxColumn();
             Nombres = new DataGridViewTextBoxColumn();
@@ -54,24 +57,27 @@
             Cargo = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
             GbxEmpleado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)DtgEmpleado).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DtgEmployee).BeginInit();
             SuspendLayout();
             // 
             // GbxEmpleado
             // 
             GbxEmpleado.BackColor = Color.FromArgb(243, 231, 211);
-            GbxEmpleado.Controls.Add(TxtTelefono);
+            GbxEmpleado.Controls.Add(TxtSearch);
+            GbxEmpleado.Controls.Add(LblErrorPhone);
+            GbxEmpleado.Controls.Add(LbErrorCode);
+            GbxEmpleado.Controls.Add(TxtPhone);
             GbxEmpleado.Controls.Add(LblTeléfono);
             GbxEmpleado.Controls.Add(BtnCerrarEmpl);
-            GbxEmpleado.Controls.Add(BtnLimpiarEmpl);
-            GbxEmpleado.Controls.Add(BtnEliminarEmpl);
-            GbxEmpleado.Controls.Add(BtnGuardarEmpl);
-            GbxEmpleado.Controls.Add(BtnAgregarEmpl);
+            GbxEmpleado.Controls.Add(BtnUpdate);
+            GbxEmpleado.Controls.Add(BtnDelete);
+            GbxEmpleado.Controls.Add(BtnSave);
+            GbxEmpleado.Controls.Add(BtnSearch);
             GbxEmpleado.Controls.Add(CbAvailable);
-            GbxEmpleado.Controls.Add(comboBox1);
-            GbxEmpleado.Controls.Add(textBox3);
-            GbxEmpleado.Controls.Add(textBox2);
-            GbxEmpleado.Controls.Add(textBox1);
+            GbxEmpleado.Controls.Add(CbPosition);
+            GbxEmpleado.Controls.Add(TxtSurname);
+            GbxEmpleado.Controls.Add(TxtName);
+            GbxEmpleado.Controls.Add(TxtCode);
             GbxEmpleado.Controls.Add(LblDisponible);
             GbxEmpleado.Controls.Add(LblCargo);
             GbxEmpleado.Controls.Add(LblApellidos);
@@ -83,21 +89,57 @@
             GbxEmpleado.ForeColor = Color.FromArgb(45, 45, 45);
             GbxEmpleado.Location = new Point(0, 0);
             GbxEmpleado.Name = "GbxEmpleado";
-            GbxEmpleado.Size = new Size(1748, 848);
+            GbxEmpleado.Size = new Size(1748, 811);
             GbxEmpleado.TabIndex = 0;
             GbxEmpleado.TabStop = false;
             GbxEmpleado.Text = "Registrar Empleado";
             // 
-            // TxtTelefono
+            // TxtSearch
             // 
-            TxtTelefono.BackColor = Color.FromArgb(246, 246, 247);
-            TxtTelefono.BorderStyle = BorderStyle.None;
-            TxtTelefono.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtTelefono.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtTelefono.Location = new Point(1157, 336);
-            TxtTelefono.Name = "TxtTelefono";
-            TxtTelefono.Size = new Size(365, 43);
-            TxtTelefono.TabIndex = 29;
+            TxtSearch.BackColor = Color.FromArgb(246, 246, 247);
+            TxtSearch.BorderStyle = BorderStyle.None;
+            TxtSearch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtSearch.ForeColor = Color.FromArgb(45, 45, 45);
+            TxtSearch.Location = new Point(29, 692);
+            TxtSearch.Name = "TxtSearch";
+            TxtSearch.Size = new Size(365, 43);
+            TxtSearch.TabIndex = 32;
+            // 
+            // LblErrorPhone
+            // 
+            LblErrorPhone.AutoSize = true;
+            LblErrorPhone.BackColor = Color.Transparent;
+            LblErrorPhone.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblErrorPhone.ForeColor = Color.Red;
+            LblErrorPhone.Location = new Point(1117, 417);
+            LblErrorPhone.Name = "LblErrorPhone";
+            LblErrorPhone.Size = new Size(368, 37);
+            LblErrorPhone.TabIndex = 31;
+            LblErrorPhone.Text = "El digisto permitido es de 8";
+            LblErrorPhone.Visible = false;
+            // 
+            // LbErrorCode
+            // 
+            LbErrorCode.AutoSize = true;
+            LbErrorCode.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbErrorCode.ForeColor = Color.Red;
+            LbErrorCode.Location = new Point(142, 267);
+            LbErrorCode.Name = "LbErrorCode";
+            LbErrorCode.Size = new Size(601, 37);
+            LbErrorCode.TabIndex = 30;
+            LbErrorCode.Text = "El codigo debe de tener el formato \"EMP001\"";
+            LbErrorCode.Visible = false;
+            // 
+            // TxtPhone
+            // 
+            TxtPhone.BackColor = Color.FromArgb(246, 246, 247);
+            TxtPhone.BorderStyle = BorderStyle.None;
+            TxtPhone.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtPhone.ForeColor = Color.FromArgb(45, 45, 45);
+            TxtPhone.Location = new Point(1091, 334);
+            TxtPhone.Name = "TxtPhone";
+            TxtPhone.Size = new Size(431, 43);
+            TxtPhone.TabIndex = 29;
             // 
             // LblTeléfono
             // 
@@ -125,127 +167,130 @@
             BtnCerrarEmpl.TextAlign = ContentAlignment.MiddleRight;
             BtnCerrarEmpl.UseVisualStyleBackColor = true;
             // 
-            // BtnLimpiarEmpl
+            // BtnUpdate
             // 
-            BtnLimpiarEmpl.FlatAppearance.BorderSize = 0;
-            BtnLimpiarEmpl.FlatAppearance.MouseOverBackColor = Color.Gray;
-            BtnLimpiarEmpl.FlatStyle = FlatStyle.Flat;
-            BtnLimpiarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnLimpiarEmpl.Image = Properties.Resources.escoba;
-            BtnLimpiarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnLimpiarEmpl.Location = new Point(1157, 681);
-            BtnLimpiarEmpl.Name = "BtnLimpiarEmpl";
-            BtnLimpiarEmpl.Size = new Size(201, 70);
-            BtnLimpiarEmpl.TabIndex = 23;
-            BtnLimpiarEmpl.Text = "Limpiar";
-            BtnLimpiarEmpl.TextAlign = ContentAlignment.MiddleRight;
-            BtnLimpiarEmpl.UseVisualStyleBackColor = true;
+            BtnUpdate.FlatAppearance.BorderSize = 0;
+            BtnUpdate.FlatAppearance.MouseOverBackColor = Color.Gray;
+            BtnUpdate.FlatStyle = FlatStyle.Flat;
+            BtnUpdate.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnUpdate.Image = Properties.Resources.escoba;
+            BtnUpdate.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnUpdate.Location = new Point(1194, 681);
+            BtnUpdate.Name = "BtnUpdate";
+            BtnUpdate.Size = new Size(201, 70);
+            BtnUpdate.TabIndex = 23;
+            BtnUpdate.Text = "Limpiar";
+            BtnUpdate.TextAlign = ContentAlignment.MiddleRight;
+            BtnUpdate.UseVisualStyleBackColor = true;
             // 
-            // BtnEliminarEmpl
+            // BtnDelete
             // 
-            BtnEliminarEmpl.FlatAppearance.BorderSize = 0;
-            BtnEliminarEmpl.FlatAppearance.MouseOverBackColor = Color.Red;
-            BtnEliminarEmpl.FlatStyle = FlatStyle.Flat;
-            BtnEliminarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnEliminarEmpl.Image = Properties.Resources.basura;
-            BtnEliminarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnEliminarEmpl.Location = new Point(855, 681);
-            BtnEliminarEmpl.Name = "BtnEliminarEmpl";
-            BtnEliminarEmpl.Size = new Size(201, 70);
-            BtnEliminarEmpl.TabIndex = 22;
-            BtnEliminarEmpl.Text = "Eliminar";
-            BtnEliminarEmpl.TextAlign = ContentAlignment.MiddleRight;
-            BtnEliminarEmpl.UseVisualStyleBackColor = true;
+            BtnDelete.FlatAppearance.BorderSize = 0;
+            BtnDelete.FlatAppearance.MouseOverBackColor = Color.Red;
+            BtnDelete.FlatStyle = FlatStyle.Flat;
+            BtnDelete.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnDelete.Image = Properties.Resources.basura;
+            BtnDelete.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnDelete.Location = new Point(912, 681);
+            BtnDelete.Name = "BtnDelete";
+            BtnDelete.Size = new Size(201, 70);
+            BtnDelete.TabIndex = 22;
+            BtnDelete.Text = "Eliminar";
+            BtnDelete.TextAlign = ContentAlignment.MiddleRight;
+            BtnDelete.UseVisualStyleBackColor = true;
             // 
-            // BtnGuardarEmpl
+            // BtnSave
             // 
-            BtnGuardarEmpl.FlatAppearance.BorderSize = 0;
-            BtnGuardarEmpl.FlatAppearance.MouseOverBackColor = Color.Blue;
-            BtnGuardarEmpl.FlatStyle = FlatStyle.Flat;
-            BtnGuardarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnGuardarEmpl.Image = Properties.Resources.abajo;
-            BtnGuardarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnGuardarEmpl.Location = new Point(564, 681);
-            BtnGuardarEmpl.Name = "BtnGuardarEmpl";
-            BtnGuardarEmpl.Size = new Size(201, 70);
-            BtnGuardarEmpl.TabIndex = 21;
-            BtnGuardarEmpl.Text = "Guardar";
-            BtnGuardarEmpl.TextAlign = ContentAlignment.MiddleRight;
-            BtnGuardarEmpl.UseVisualStyleBackColor = true;
+            BtnSave.FlatAppearance.BorderSize = 0;
+            BtnSave.FlatAppearance.MouseOverBackColor = Color.Blue;
+            BtnSave.FlatStyle = FlatStyle.Flat;
+            BtnSave.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnSave.Image = Properties.Resources.abajo;
+            BtnSave.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnSave.Location = new Point(688, 681);
+            BtnSave.Name = "BtnSave";
+            BtnSave.Size = new Size(201, 70);
+            BtnSave.TabIndex = 21;
+            BtnSave.Text = "Guardar";
+            BtnSave.TextAlign = ContentAlignment.MiddleRight;
+            BtnSave.UseVisualStyleBackColor = true;
+            BtnSave.Click += BtnSave_Click;
             // 
-            // BtnAgregarEmpl
+            // BtnSearch
             // 
-            BtnAgregarEmpl.FlatAppearance.BorderSize = 0;
-            BtnAgregarEmpl.FlatAppearance.MouseOverBackColor = Color.Lime;
-            BtnAgregarEmpl.FlatStyle = FlatStyle.Flat;
-            BtnAgregarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnAgregarEmpl.Image = Properties.Resources.agregar_producto__1_;
-            BtnAgregarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnAgregarEmpl.Location = new Point(300, 681);
-            BtnAgregarEmpl.Name = "BtnAgregarEmpl";
-            BtnAgregarEmpl.Size = new Size(201, 70);
-            BtnAgregarEmpl.TabIndex = 20;
-            BtnAgregarEmpl.Text = "Agregar";
-            BtnAgregarEmpl.TextAlign = ContentAlignment.MiddleRight;
-            BtnAgregarEmpl.UseVisualStyleBackColor = true;
+            BtnSearch.FlatAppearance.BorderSize = 0;
+            BtnSearch.FlatAppearance.MouseOverBackColor = Color.Lime;
+            BtnSearch.FlatStyle = FlatStyle.Flat;
+            BtnSearch.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnSearch.Image = Properties.Resources.agregar_producto__1_;
+            BtnSearch.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnSearch.Location = new Point(431, 681);
+            BtnSearch.Name = "BtnSearch";
+            BtnSearch.Size = new Size(201, 70);
+            BtnSearch.TabIndex = 20;
+            BtnSearch.Text = "Agregar";
+            BtnSearch.TextAlign = ContentAlignment.MiddleRight;
+            BtnSearch.UseVisualStyleBackColor = true;
+            BtnSearch.Click += BtnSearch_Click;
             // 
             // CbAvailable
             // 
             CbAvailable.AutoSize = true;
             CbAvailable.FlatStyle = FlatStyle.Flat;
             CbAvailable.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CbAvailable.Location = new Point(1279, 491);
+            CbAvailable.Location = new Point(1229, 497);
             CbAvailable.Name = "CbAvailable";
             CbAvailable.Size = new Size(136, 49);
             CbAvailable.TabIndex = 9;
             CbAvailable.Text = "Activo";
             CbAvailable.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // CbPosition
             // 
-            comboBox1.BackColor = Color.FromArgb(246, 246, 247);
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBox1.ForeColor = Color.FromArgb(45, 45, 45);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(1157, 189);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(365, 53);
-            comboBox1.TabIndex = 8;
-            comboBox1.Text = "Seleccione Cargo";
+            CbPosition.BackColor = Color.FromArgb(246, 246, 247);
+            CbPosition.FlatStyle = FlatStyle.Flat;
+            CbPosition.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CbPosition.ForeColor = Color.FromArgb(45, 45, 45);
+            CbPosition.FormattingEnabled = true;
+            CbPosition.Location = new Point(1091, 189);
+            CbPosition.Name = "CbPosition";
+            CbPosition.Size = new Size(431, 53);
+            CbPosition.TabIndex = 8;
+            CbPosition.Text = "Seleccione Cargo";
             // 
-            // textBox3
+            // TxtSurname
             // 
-            textBox3.BackColor = Color.FromArgb(246, 246, 247);
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.ForeColor = Color.FromArgb(45, 45, 45);
-            textBox3.Location = new Point(259, 497);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(365, 43);
-            textBox3.TabIndex = 7;
+            TxtSurname.BackColor = Color.FromArgb(246, 246, 247);
+            TxtSurname.BorderStyle = BorderStyle.None;
+            TxtSurname.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtSurname.ForeColor = Color.FromArgb(45, 45, 45);
+            TxtSurname.Location = new Point(259, 497);
+            TxtSurname.Name = "TxtSurname";
+            TxtSurname.Size = new Size(365, 43);
+            TxtSurname.TabIndex = 7;
             // 
-            // textBox2
+            // TxtName
             // 
-            textBox2.BackColor = Color.FromArgb(246, 246, 247);
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox2.ForeColor = Color.FromArgb(45, 45, 45);
-            textBox2.Location = new Point(259, 336);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(373, 43);
-            textBox2.TabIndex = 6;
+            TxtName.BackColor = Color.FromArgb(246, 246, 247);
+            TxtName.BorderStyle = BorderStyle.None;
+            TxtName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TxtName.ForeColor = Color.FromArgb(45, 45, 45);
+            TxtName.Location = new Point(259, 336);
+            TxtName.Name = "TxtName";
+            TxtName.Size = new Size(373, 43);
+            TxtName.TabIndex = 6;
             // 
-            // textBox1
+            // TxtCode
             // 
-            textBox1.BackColor = Color.FromArgb(246, 246, 247);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.FromArgb(45, 45, 45);
-            textBox1.Location = new Point(265, 194);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(367, 43);
-            textBox1.TabIndex = 5;
+            TxtCode.BackColor = Color.FromArgb(246, 246, 247);
+            TxtCode.BorderStyle = BorderStyle.None;
+            TxtCode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtCode.ForeColor = Color.FromArgb(45, 45, 45);
+            TxtCode.Location = new Point(265, 194);
+            TxtCode.Name = "TxtCode";
+            TxtCode.Size = new Size(367, 43);
+            TxtCode.TabIndex = 5;
+            TxtCode.Validating += TxtCode_Validating;
             // 
             // LblDisponible
             // 
@@ -297,19 +342,19 @@
             LblCodigo.TabIndex = 0;
             LblCodigo.Text = "Código:";
             // 
-            // DtgEmpleado
+            // DtgEmployee
             // 
-            DtgEmpleado.AccessibleName = "";
-            DtgEmpleado.BackgroundColor = Color.FromArgb(243, 231, 211);
-            DtgEmpleado.BorderStyle = BorderStyle.None;
-            DtgEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DtgEmpleado.Columns.AddRange(new DataGridViewColumn[] { Codigo, Teléfono, Nombres, Apellido, Cargo, Estado });
-            DtgEmpleado.Dock = DockStyle.Top;
-            DtgEmpleado.Location = new Point(0, 848);
-            DtgEmpleado.Name = "DtgEmpleado";
-            DtgEmpleado.RowHeadersWidth = 82;
-            DtgEmpleado.Size = new Size(1748, 540);
-            DtgEmpleado.TabIndex = 1;
+            DtgEmployee.AccessibleName = "";
+            DtgEmployee.BackgroundColor = Color.FromArgb(243, 231, 211);
+            DtgEmployee.BorderStyle = BorderStyle.None;
+            DtgEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DtgEmployee.Columns.AddRange(new DataGridViewColumn[] { Codigo, Teléfono, Nombres, Apellido, Cargo, Estado });
+            DtgEmployee.Dock = DockStyle.Top;
+            DtgEmployee.Location = new Point(0, 811);
+            DtgEmployee.Name = "DtgEmployee";
+            DtgEmployee.RowHeadersWidth = 82;
+            DtgEmployee.Size = new Size(1748, 578);
+            DtgEmployee.TabIndex = 1;
             // 
             // Codigo
             // 
@@ -359,15 +404,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(109, 15, 15);
             ClientSize = new Size(1748, 1386);
-            Controls.Add(DtgEmpleado);
+            Controls.Add(DtgEmployee);
             Controls.Add(GbxEmpleado);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmEmployee";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmEmpleado";
+            Load += FrmEmployee_Load;
             GbxEmpleado.ResumeLayout(false);
             GbxEmpleado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)DtgEmpleado).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DtgEmployee).EndInit();
             ResumeLayout(false);
         }
 
@@ -380,17 +426,17 @@
         private Label LblCodigo;
         private Label LblDisponible;
         private CheckBox CbAvailable;
-        private ComboBox comboBox1;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private ComboBox CbPosition;
+        private TextBox TxtSurname;
+        private TextBox TxtName;
+        private TextBox TxtCode;
         private Button BtnCerrarEmpl;
-        private Button BtnLimpiarEmpl;
-        private Button BtnEliminarEmpl;
-        private Button BtnGuardarEmpl;
-        private Button BtnAgregarEmpl;
-        private DataGridView DtgEmpleado;
-        private TextBox TxtTelefono;
+        private Button BtnUpdate;
+        private Button BtnDelete;
+        private Button BtnSave;
+        private Button BtnSearch;
+        private DataGridView DtgEmployee;
+        private TextBox TxtPhone;
         private Label LblTeléfono;
         private DataGridViewTextBoxColumn Codigo;
         private DataGridViewTextBoxColumn Teléfono;
@@ -398,5 +444,8 @@
         private DataGridViewTextBoxColumn Apellido;
         private DataGridViewTextBoxColumn Cargo;
         private DataGridViewTextBoxColumn Estado;
+        private Label LblErrorPhone;
+        private Label LbErrorCode;
+        private TextBox TxtSearch;
     }
 }

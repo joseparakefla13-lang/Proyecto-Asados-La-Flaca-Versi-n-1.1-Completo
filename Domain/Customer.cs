@@ -37,60 +37,6 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain
         /*                               Métodos BD                                   */
         /* -------------------------------------------------------------------------- */
 
-        public bool IsUniqueCustomerCode(string clustomerCode)
-        {
-            string sql = @"SELECT COUNT(*) 
-                   FROM Customer 
-                   WHERE ClustomerCode = @ClustomerCode";
-
-            using SelectQuery select = new SelectQuery();
-            SqlParameter[] parametros = {
-        new SqlParameter("@ClustomerCode", SqlDbType.VarChar, 16) { Value = clustomerCode }
-    };
-
-            int count = Convert.ToInt32(select.ExecuteScalar(sql, parametros));
-            return count == 0; // true si no existe
-        }
-
-        public int InsertCustomer()
-        {
-            int rows = 0;
-            try
-            {
-                using InsertCommand insert = new InsertCommand();
-
-                string sql = @"INSERT INTO Customer (ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate)
-                       VALUES (@ClustomerCode, @Names, @Phone, @TypeCustomer, @Available, @RegistDate)";
-
-                SqlParameter[] parameters =
-                {
-            new SqlParameter("@ClustomerCode", SqlDbType.VarChar, 16) { Value = this.ClustomerCode },
-            new SqlParameter("@Names", SqlDbType.VarChar, 108) { Value = this.Names },
-            new SqlParameter("@Phone", SqlDbType.VarChar, 16) { Value = this.Phone },
-            new SqlParameter("@TypeCustomer", SqlDbType.VarChar, 16) { Value = this.TypeCustomer },
-            new SqlParameter("@Available", SqlDbType.Bit) { Value = this.Available },
-            new SqlParameter("@RegistDate", SqlDbType.DateTime) { Value = this.RegistDate }
-                };
-
-                rows = insert.ExecuteInsert(sql, parameters);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al agregar el cliente.", ex);
-            }
-
-            return rows;
-        }
-
-        public DataTable GetAllCustomers()
-        {
-            string sql = @"SELECT ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate
-                       FROM Customer";
-
-            using SelectQuery select = new SelectQuery();
-            return select.ExecuteSelect(sql, null);
-        }
-
         private void LoadCustomerById(string clustomerCode)
         {
             string sql = @"SELECT ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate
