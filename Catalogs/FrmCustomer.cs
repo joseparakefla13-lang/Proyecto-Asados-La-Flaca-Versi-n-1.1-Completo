@@ -2,40 +2,27 @@
 using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain;
 using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services;
 using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Runtime.Intrinsics.Arm;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
-
 namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
     public partial class FrmCustomer : Form
     {
+        
+                         // Cadena de conexión a la base de datos//
+
         private readonly string connectionString = "Server=COQUETO;Database=Dev_Asado2.sql;Integrated Security=True;TrustServerCertificate=True;Encrypt=False;";
         public FrmCustomer()
         {
             InitializeComponent();
-            DgvCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DgvCustomer.MultiSelect = false;
-            LoadClientTypes();
-            this.AutoValidate = AutoValidate.EnablePreventFocusChange;
+            // Configuración inicial del DataGridView//
+            DgvCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // selecciona fila completa//
+            DgvCustomer.MultiSelect = false; DgvCustomer.MultiSelect = false; // solo permite seleccionar una fila//
+            LoadClientTypes();// carga tipos de cliente en el combo//
+            this.AutoValidate = AutoValidate.EnablePreventFocusChange;// activa validaciones automáticas//
         }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DtmFecha_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        /* ------------------- CARGAR CLIENTES ACTIVOS ------------------- */
         private void LoadCustomers()
         {
             try
@@ -43,18 +30,23 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
+                             // Consulta que trae solo clientes activos//
+                    string query = @"SELECT ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate 
+                             FROM Customer
+                             WHERE Available = 1";   // solo clientes activos
 
-                    string query = "SELECT ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate FROM Customer";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
-
+                    // Configuración del DataGridView//
                     DgvCustomer.AutoGenerateColumns = false; // evita duplicados
+                    DgvCustomer.DataSource = null;           // limpia antes
+                    DgvCustomer.Rows.Clear();                // evita filas fantasma
                     DgvCustomer.DataSource = dt;
 
-                    // Configurar columnas manualmente
+                    // limpieza columnas automáticas y configura manualmente para controlar el orden y formato//
                     DgvCustomer.Columns.Clear();
-
+                    // Configurar columnas manualmente
                     DgvCustomer.Columns.Add(new DataGridViewTextBoxColumn
                     {
                         Name = "ClustomerCode",
@@ -100,9 +92,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 MessageBox.Show("Error al cargar clientes: " + ex.Message);
             }
         }
-
-
-
+        /* ------------------- CARGAR TIPOS DE CLIENTE ------------------- */
 
         private void LoadClientTypes()
         {
@@ -126,6 +116,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 MessageBox.Show($"Error al cargar tipos de cliente: {ex.Message}");
             }
         }
+        /* ------------------- GUARDAR NUEVO CLIENTE ------------------- */
         private void BtnSaveClient_Click(object sender, EventArgs e)
         {
 
@@ -137,7 +128,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                     Names = TxtName.Text.Trim(),
                     Phone = TxtPhone.Text.Trim(),
                     TypeCustomer = CbTypeCustomer.Text,
-                    Available = true,
+                    Available = true, // siempre activo al crear
                     RegistDate = DateTime.Today
                 };
 
@@ -151,17 +142,18 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 MessageBox.Show($"Error al guardar cliente: {ex.Message}");
             }
         }
-
+        /* ------------------- EVENTO LOAD DEL FORM ------------------- */
         private void FrmCustomer_Load(object sender, EventArgs e)
         {
             LoadCustomers(); // carga al abrir el formulario
             DgvCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DgvCustomer.MultiSelect = false;
             DgvCustomer.AllowUserToAddRows = false; // evita fila vacía extra
+            ConfigurarModoLectura(true); // por defecto solo lectura
         }
 
 
-
+        /* ------------------- VALIDACIONES ------------------- */
         private void TxtCustomerCode_Validating(object sender, CancelEventArgs e)
         {
             string input = TxtCustomerCode.Text.Trim().ToUpper(); // normalizar a mayúsculas
@@ -198,90 +190,140 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 LblErrorPhone.Visible = false; // oculta el mensaje si es válido
             }
         }
-
+        /* ------------------- DAR DE BAJA CLIENTE ------------------- */
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-    
             if (DgvCustomer.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = DgvCustomer.SelectedRows[0];
+                string customerCode = row.Cells["ClustomerCode"].Value?.ToString();
 
-                // Tomar valores de todas las columnas
-                string customerCode = row.Cells["ClustomerCode"].Value?.ToString() ?? string.Empty;
-                string names = row.Cells["Names"].Value?.ToString() ?? string.Empty;
-                string phone = row.Cells["Phone"].Value?.ToString() ?? string.Empty;
-                string typeCustomer = row.Cells["TypeCustomer"].Value?.ToString() ?? string.Empty;
-                bool available = row.Cells["Available"].Value != null && (bool)row.Cells["Available"].Value;
-                DateTime registDate = row.Cells["RegistDate"].Value != null
-                                        ? Convert.ToDateTime(row.Cells["RegistDate"].Value)
-                                        : DateTime.MinValue;
-
-                DialogResult result = MessageBox.Show(
-                    $"¿Seguro que deseas eliminar el cliente {customerCode}?",
-                    "Confirmar eliminación",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
+                if (!string.IsNullOrWhiteSpace(customerCode))
                 {
-                    try
+                    DialogResult result = MessageBox.Show(
+                        $"¿Seguro que deseas dar de baja al cliente {customerCode}?",
+                        "Confirmar baja",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
                     {
-                        DeleteCommand deleteService = new DeleteCommand();
-
-                        string query = @"DELETE FROM Customer 
-                                 WHERE ClustomerCode = @ClustomerCode
-                                   AND Names = @Names
-                                   AND Phone = @Phone
-                                   AND TypeCustomer = @TypeCustomer
-                                   AND Available = @Available
-                                   AND RegistDate = @RegistDate";
-
-                        SqlParameter[] parameters =
+                        try
                         {
-                    new SqlParameter("@ClustomerCode", customerCode),
-                    new SqlParameter("@Names", names),
-                    new SqlParameter("@Phone", phone),
-                    new SqlParameter("@TypeCustomer", typeCustomer),
-                    new SqlParameter("@Available", available),
-                    new SqlParameter("@RegistDate", registDate)
-                };
+                            DeleteCommand deleteService = new DeleteCommand();
 
-                        int rows = deleteService.ExecuteDelete(query, parameters);
+                            // UPDATE en vez de DELETE
+                            string query = "UPDATE Customer SET Available = 0 WHERE ClustomerCode = @ClustomerCode";
+                            SqlParameter[] parameters =
+                            {
+                        new SqlParameter("@ClustomerCode", customerCode)
+                    };
 
-                        if (rows > 0)
-                        {
-                            MessageBox.Show("Cliente eliminado correctamente.");
-                            LoadCustomers(); // refresca el grid
+                            int rows = deleteService.ExecuteDelete(query, parameters);
+
+                            if (rows > 0)
+                            {
+                                MessageBox.Show("Cliente dado de baja correctamente.");
+                                LoadCustomers(); // refresca el grid
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se encontró el cliente para dar de baja.");
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            MessageBox.Show("No se encontró el cliente para eliminar.");
+                            MessageBox.Show("Error al dar de baja cliente: " + ex.Message);
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al eliminar cliente: " + ex.Message);
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("La fila seleccionada no tiene un código válido.");
                 }
             }
             else
             {
-                MessageBox.Show("Seleccione una fila completa para eliminar.");
+                MessageBox.Show("Seleccione una fila completa para dar de baja.");
             }
         }
-
-        
-
-        
-        
-        
-
-        
-
+        /* ------------------- RECARGAR CLIENTES ------------------- */
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
             LoadCustomers(); // recarga el grid para mostrar cambios
         }
+        /* ------------------- VALIDAR CÓDIGO ------------------- */
+        private bool validateCode (string codigo)
+        {
+            return Regex.IsMatch(codigo, @"^CLI\d{3}$");
+        }
+        /* ------------------- BUSCAR CLIENTE POR CÓDIGO ------------------- */
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+
+            string codigo = TxtSearch.Text.Trim();
+
+            if (!validateCode(codigo))
+            {
+                MessageBox.Show("El código debe tener el formato CLI### (ejemplo: CLI876).");
+                return;
+            }
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = @"SELECT ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate 
+                             FROM Customer
+                             WHERE ClustomerCode = @ClustomerCode";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                    adapter.SelectCommand.Parameters.AddWithValue("@ClustomerCode", codigo);
+
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    DgvCustomer.DataSource = null;
+                    DgvCustomer.Rows.Clear();
+                    DgvCustomer.DataSource = dt;
+
+                    if (dt.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No se encontró un cliente con ese código.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar cliente: " + ex.Message);
+            }
+
+            // limpiar el textbox después de buscar
+            TxtSearch.Clear();
+        }
+        private void ConfigurarModoLectura(bool soloLectura)
+        {
+            foreach (DataGridViewColumn col in DgvCustomer.Columns)
+            {
+                col.ReadOnly = true; // todas bloqueadas
+            }
+
+            if (!soloLectura)
+            {
+                // habilitar edición solo en Nombre y Teléfono
+                DgvCustomer.Columns["Names"].ReadOnly = false;
+                DgvCustomer.Columns["Phone"].ReadOnly = false;
+                DgvCustomer.Columns["TypeCustomer"].ReadOnly = false; // también el tipo de cliente
+                DgvCustomer.Columns["Available"].ReadOnly = false; // y el estado de disponibilidad
+            }
+        }
+
     }
+
 }
+
+
 

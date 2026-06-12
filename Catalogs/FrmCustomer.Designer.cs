@@ -42,7 +42,7 @@
             BtnUpdate = new Button();
             BtnDelete = new Button();
             BtnSaveClient = new Button();
-            BtnAgregarClient = new Button();
+            BtnSearch = new Button();
             ChbStateCustomer = new CheckBox();
             TxtCustomerCode = new TextBox();
             LblDisponibleCliente = new Label();
@@ -57,6 +57,7 @@
             TipoCliente = new DataGridViewTextBoxColumn();
             FechaRegistro = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
+            TxtSearch = new TextBox();
             GbxCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvCustomer).BeginInit();
             SuspendLayout();
@@ -64,6 +65,7 @@
             // GbxCliente
             // 
             GbxCliente.BackColor = Color.FromArgb(243, 231, 211);
+            GbxCliente.Controls.Add(TxtSearch);
             GbxCliente.Controls.Add(CbTypeCustomer);
             GbxCliente.Controls.Add(LblErrorPhone);
             GbxCliente.Controls.Add(lblErrorCode);
@@ -75,7 +77,7 @@
             GbxCliente.Controls.Add(BtnUpdate);
             GbxCliente.Controls.Add(BtnDelete);
             GbxCliente.Controls.Add(BtnSaveClient);
-            GbxCliente.Controls.Add(BtnAgregarClient);
+            GbxCliente.Controls.Add(BtnSearch);
             GbxCliente.Controls.Add(ChbStateCustomer);
             GbxCliente.Controls.Add(TxtCustomerCode);
             GbxCliente.Controls.Add(LblDisponibleCliente);
@@ -137,7 +139,6 @@
             DtmRegistrationDate.Name = "DtmRegistrationDate";
             DtmRegistrationDate.Size = new Size(547, 50);
             DtmRegistrationDate.TabIndex = 29;
-            DtmRegistrationDate.ValueChanged += DtmFecha_ValueChanged;
             // 
             // TxtName
             // 
@@ -149,7 +150,6 @@
             TxtName.Name = "TxtName";
             TxtName.Size = new Size(365, 43);
             TxtName.TabIndex = 27;
-            TxtName.TextChanged += textBox3_TextChanged;
             // 
             // TxtPhone
             // 
@@ -181,7 +181,7 @@
             BtnCerrarClient.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnCerrarClient.Image = Properties.Resources.cerrar_ventana;
             BtnCerrarClient.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnCerrarClient.Location = new Point(1370, 670);
+            BtnCerrarClient.Location = new Point(1474, 670);
             BtnCerrarClient.Name = "BtnCerrarClient";
             BtnCerrarClient.Size = new Size(201, 70);
             BtnCerrarClient.TabIndex = 24;
@@ -197,7 +197,7 @@
             BtnUpdate.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnUpdate.Image = Properties.Resources.escoba;
             BtnUpdate.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnUpdate.Location = new Point(1107, 670);
+            BtnUpdate.Location = new Point(1201, 670);
             BtnUpdate.Name = "BtnUpdate";
             BtnUpdate.Size = new Size(201, 70);
             BtnUpdate.TabIndex = 23;
@@ -214,7 +214,7 @@
             BtnDelete.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnDelete.Image = Properties.Resources.basura;
             BtnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnDelete.Location = new Point(845, 670);
+            BtnDelete.Location = new Point(925, 670);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(201, 70);
             BtnDelete.TabIndex = 22;
@@ -231,7 +231,7 @@
             BtnSaveClient.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnSaveClient.Image = Properties.Resources.abajo;
             BtnSaveClient.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnSaveClient.Location = new Point(554, 670);
+            BtnSaveClient.Location = new Point(654, 670);
             BtnSaveClient.Name = "BtnSaveClient";
             BtnSaveClient.Size = new Size(201, 70);
             BtnSaveClient.TabIndex = 21;
@@ -240,21 +240,22 @@
             BtnSaveClient.UseVisualStyleBackColor = true;
             BtnSaveClient.Click += BtnSaveClient_Click;
             // 
-            // BtnAgregarClient
+            // BtnSearch
             // 
-            BtnAgregarClient.FlatAppearance.BorderSize = 0;
-            BtnAgregarClient.FlatAppearance.MouseOverBackColor = Color.Lime;
-            BtnAgregarClient.FlatStyle = FlatStyle.Flat;
-            BtnAgregarClient.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnAgregarClient.Image = Properties.Resources.agregar_producto__1_;
-            BtnAgregarClient.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnAgregarClient.Location = new Point(249, 670);
-            BtnAgregarClient.Name = "BtnAgregarClient";
-            BtnAgregarClient.Size = new Size(201, 70);
-            BtnAgregarClient.TabIndex = 20;
-            BtnAgregarClient.Text = "Agregar";
-            BtnAgregarClient.TextAlign = ContentAlignment.MiddleRight;
-            BtnAgregarClient.UseVisualStyleBackColor = true;
+            BtnSearch.FlatAppearance.BorderSize = 0;
+            BtnSearch.FlatAppearance.MouseOverBackColor = Color.Lime;
+            BtnSearch.FlatStyle = FlatStyle.Flat;
+            BtnSearch.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnSearch.Image = Properties.Resources.agregar_producto__1_;
+            BtnSearch.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnSearch.Location = new Point(408, 670);
+            BtnSearch.Name = "BtnSearch";
+            BtnSearch.Size = new Size(201, 70);
+            BtnSearch.TabIndex = 20;
+            BtnSearch.Text = "Buscar";
+            BtnSearch.TextAlign = ContentAlignment.MiddleRight;
+            BtnSearch.UseVisualStyleBackColor = true;
+            BtnSearch.Click += BtnSearch_Click;
             // 
             // ChbStateCustomer
             // 
@@ -347,50 +348,57 @@
             // Codigo
             // 
             Codigo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Codigo.DataPropertyName = "ClustomerCode";
             Codigo.HeaderText = "Código";
             Codigo.MinimumWidth = 10;
             Codigo.Name = "Codigo";
-            Codigo.DataPropertyName = "ClustomerCode"; // campo real en la BD
             // 
             // Nombres
             // 
             Nombres.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Nombres.DataPropertyName = "Names";
             Nombres.HeaderText = "Nombres";
             Nombres.MinimumWidth = 10;
             Nombres.Name = "Nombres";
-            Nombres.DataPropertyName = "Names";
             // 
             // Teléfono
             // 
             Teléfono.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Teléfono.DataPropertyName = "Phone";
             Teléfono.HeaderText = "Teléfono";
             Teléfono.MinimumWidth = 10;
             Teléfono.Name = "Teléfono";
-            Teléfono.DataPropertyName = "Phone";
             // 
             // TipoCliente
             // 
             TipoCliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            TipoCliente.DataPropertyName = "TypeCustomer";
             TipoCliente.HeaderText = "TipoCliente";
             TipoCliente.MinimumWidth = 10;
             TipoCliente.Name = "TipoCliente";
-            TipoCliente.DataPropertyName = "TypeCustomer";
             // 
             // FechaRegistro
             // 
             FechaRegistro.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            FechaRegistro.DataPropertyName = "RegistDate";
             FechaRegistro.HeaderText = "FechaRegistro";
             FechaRegistro.MinimumWidth = 10;
             FechaRegistro.Name = "FechaRegistro";
-            FechaRegistro.DataPropertyName = "RegistDate";
             // 
             // Estado
             // 
             Estado.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Estado.DataPropertyName = "Available";
             Estado.HeaderText = "Estado";
             Estado.MinimumWidth = 10;
             Estado.Name = "Estado";
-            Estado.DataPropertyName = "Available";
+            // 
+            // TxtSearch
+            // 
+            TxtSearch.Location = new Point(40, 683);
+            TxtSearch.Name = "TxtSearch";
+            TxtSearch.Size = new Size(342, 57);
+            TxtSearch.TabIndex = 33;
             // 
             // FrmCustomer
             // 
@@ -417,7 +425,7 @@
         private Button BtnUpdate;
         private Button BtnDelete;
         private Button BtnSaveClient;
-        private Button BtnAgregarClient;
+        private Button BtnSearch;
         private CheckBox ChbStateCustomer;
         private TextBox TxtCustomerCode;
         private Label LblDisponibleCliente;
@@ -439,5 +447,6 @@
         private Label lblErrorCode;
         private Label LblErrorPhone;
         private ComboBox CbTypeCustomer;
+        private TextBox TxtSearch;
     }
 }
