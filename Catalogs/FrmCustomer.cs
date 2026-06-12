@@ -219,19 +219,20 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         /* ------------------- VALIDACIONES ------------------- */
         private void TxtCustomerCode_Validating(object sender, CancelEventArgs e)
         {
-            string input = TxtCustomerCode.Text.Trim().ToUpper(); // normalizar a mayúsculas
 
-            // Formato: CL seguido de 3 dígitos
+            string input = TxtCustomerCode.Text.Trim().ToUpper();
+
             Regex regex = new Regex(@"^CLI\d{3}$");
 
             if (!regex.IsMatch(input))
             {
-                lblErrorCode.Visible = true;   // mostrar mensaje
-                e.Cancel = true;               // evita que el foco cambie
+                lblErrorCode.Text = "Formato inválido. Use CLI###";
+                lblErrorCode.Visible = true;
+                // e.Cancel = true;  <-- quítalo para no bloquear el foco
             }
             else
             {
-                lblErrorCode.Visible = false;  // ocultar mensaje si es válido
+                lblErrorCode.Visible = false;
             }
         }
 

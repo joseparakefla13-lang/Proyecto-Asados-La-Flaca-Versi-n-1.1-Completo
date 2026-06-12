@@ -1,11 +1,13 @@
-﻿using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain;
+﻿using Microsoft.Data.SqlClient;
+using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain;
+using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services;
 using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 
 namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
@@ -121,14 +123,12 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
             {
                 EmployeeBusiness business = new EmployeeBusiness();
 
-                // Generar código automático
-                string nextCode = business.GetNextEmployeeCode();
-
-                // Instancias locales (variables) con los valores de los controles
+                // Instancias locales
+                string codigo = TxtCode.Text.Trim();   // aquí ya puede venir de Buscar
                 string nombre = TxtName.Text.Trim();
                 string apellidos = TxtSurname.Text.Trim();
                 string telefono = TxtPhone.Text.Trim();
-                string puesto = CbPosition.Text;   // valor seleccionado en el ComboBox
+                string puesto = CbPosition.Text;
                 bool activo = CbAvailable.Checked;
 
                 // Validaciones básicas
@@ -137,41 +137,31 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                     MessageBox.Show("Debe ingresar un nombre.");
                     return;
                 }
-
                 if (string.IsNullOrEmpty(apellidos))
                 {
                     MessageBox.Show("Debe ingresar apellidos.");
                     return;
                 }
-
                 if (string.IsNullOrEmpty(puesto))
                 {
                     MessageBox.Show("Debe seleccionar un puesto laboral.");
                     return;
                 }
-
                 if (string.IsNullOrEmpty(telefono))
                 {
                     MessageBox.Show("Debe ingresar un número de teléfono.");
                     return;
                 }
-
-                if (!business.IsUniquePhone(telefono))
-                {
-                    MessageBox.Show("El número de teléfono ya está registrado.");
-                    return;
-                }
-
                 if (!activo)
                 {
                     MessageBox.Show("Debe marcar el estado Activo para poder guardar el empleado.");
                     return;
                 }
 
-                // Crear instancia de Employee con las variables locales
-                Employee nuevo = new Employee
+                // Crear instancia de Employee
+                Employee emp = new Employee
                 {
-                    EmployeeCode = nextCode,
+                    EmployeeCode = codigo,
                     Names = nombre,
                     SurNames = apellidos,
                     Phone = telefono,
@@ -179,18 +169,29 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                     Available = activo
                 };
 
-                // Guardar en BD
-                int rows = business.InsertEmployee(nuevo);
+                int rows;
+                if (string.IsNullOrEmpty(codigo)) // si no hay código, es nuevo
+                {
+                    string nextCode = business.GetNextEmployeeCode();
+                    emp.EmployeeCode = nextCode;
+                    rows = business.InsertEmployee(emp);
 
-                if (rows > 0)
-                {
-                    MessageBox.Show($"Empleado agregado correctamente con código {nextCode}.");
-                    LoadEmployee(); // refresca el DataGridView
+                    if (rows > 0)
+                        MessageBox.Show($"Empleado agregado correctamente con código {nextCode}.");
+                    else
+                        MessageBox.Show("No se pudo agregar el empleado.");
                 }
-                else
+                else // si ya hay código, actualizar
                 {
-                    MessageBox.Show("No se pudo agregar el empleado.");
+                    rows = business.UpdateEmployee(emp);
+
+                    if (rows > 0)
+                        MessageBox.Show("Empleado actualizado correctamente.");
+                    else
+                        MessageBox.Show("No se pudo actualizar el empleado.");
                 }
+
+                LoadEmployee(); // refresca el DataGridView
             }
             catch (Exception ex)
             {
@@ -198,35 +199,60 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
             }
         }
 
+
+
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            string codigo = TxtSearch.Text.Trim();
-
-            if (!codigo.StartsWith("EMP"))
-            {
-                MessageBox.Show("El código debe tener el formato EMP### (ejemplo: EMP001).");
-                return;
-            }
 
             EmployeeBusiness business = new EmployeeBusiness();
+            string codigo = TxtSearch.Text.Trim().ToUpper();
+
             DataTable dt = business.SearchEmployeeByCode(codigo);
 
-            DtgEmployee.DataSource = null;
-            DtgEmployee.Rows.Clear();
-            DtgEmployee.DataSource = dt;
-
-            if (dt.Rows.Count == 0)
+            if (dt.Rows.Count > 0)
             {
-                MessageBox.Show("No se encontró un empleado con ese código.");
+                TxtCode.Text = dt.Rows[0]["EmployeeCode"].ToString();
+                TxtName.Text = dt.Rows[0]["Names"].ToString();
+                TxtSurname.Text = dt.Rows[0]["SurNames"].ToString();
+                TxtPhone.Text = dt.Rows[0]["Phone"].ToString();
+                CbPosition.Text = dt.Rows[0]["Position"].ToString();
+                CbAvailable.Checked = Convert.ToBoolean(dt.Rows[0]["Available"]);
+
+                TxtCode.ReadOnly = true;   // se muestra pero no se puede editar
+
+                // habilitar edición
+                TxtName.Enabled = true;
+                TxtSurname.Enabled = true;
+                TxtPhone.Enabled = true;
+                CbPosition.Enabled = true;
+                CbAvailable.Enabled = true;
+
+                TxtSearch.Clear(); // también limpiar si no encuentra
+
+                // Mostrar también en el DataGridView solo el resultado de la búsqueda
+                DtgEmployee.AutoGenerateColumns = false;
+                DtgEmployee.DataSource = dt;
+
+                MessageBox.Show("Empleado encontrado. Puede editar los campos.");
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el empleado con ese código.");
+                TxtSearch.Clear(); // también limpiar si no encuentra
             }
         }
 
         private void TxtCode_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TxtPhone.Text))
+            string input = TxtCode.Text.Trim().ToUpper();
+
+            Regex regex = new Regex(@"^EMP\d{3}$");
+
+            if (!regex.IsMatch(input))
             {
+                LbErrorCode.Text = "Formato inválido. Use EMP###";
                 LbErrorCode.Visible = true;
-                e.Cancel = true;
+                // e.Cancel = true;  <-- quítalo para no bloquear el foco
             }
             else
             {
@@ -235,21 +261,22 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         }
         private void ConfigurarModoLectura(bool soloLectura)
         {
+
+            // Bloquear todas las columnas del DataGridView
             foreach (DataGridViewColumn col in DtgEmployee.Columns)
             {
-                col.ReadOnly = true; // todas bloqueadas
+                col.ReadOnly = true;
             }
 
-            if (!soloLectura)
-            {
-                // habilitar edición solo en Nombre y Teléfono
-                DtgEmployee.Columns["Names"].ReadOnly = false;
-                DtgEmployee.Columns["SurNames"].ReadOnly = false; // también apellidos
-                DtgEmployee.Columns["Phone"].ReadOnly = false;
-                DtgEmployee.Columns["Position"].ReadOnly = false; // también el tipo de cliente
-                DtgEmployee.Columns["Available"].ReadOnly = false; // y el estado de disponibilidad
-            }
+            // Bloquear o habilitar también los TextBox y combos
+            TxtCode.ReadOnly = true; // siempre bloqueado
+            TxtName.Enabled = !soloLectura;
+            TxtSurname.Enabled = !soloLectura;
+            TxtPhone.Enabled = !soloLectura;
+            CbPosition.Enabled = !soloLectura;
+            CbAvailable.Enabled = !soloLectura;
         }
+
         private void FrmEmployee_Load(object sender, EventArgs e)
         {
             LoadEmployee(); // carga al abrir el formulario
@@ -258,5 +285,126 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
             DtgEmployee.AllowUserToAddRows = false; // evita fila vacía extra
             ConfigurarModoLectura(true); // por defecto solo lectura
         }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+
+            if (DtgEmployee.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = DtgEmployee.SelectedRows[0];
+                string employeeCode = row.Cells["EmployeeCode"].Value?.ToString();
+
+                if (!string.IsNullOrWhiteSpace(employeeCode))
+                {
+                    DialogResult result = MessageBox.Show(
+                        $"¿Seguro que deseas dar de baja al empleado {employeeCode}?",
+                        "Confirmar baja",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            DeleteCommand deleteService = new DeleteCommand();
+
+                            // Baja lógica: Available = 0
+                            string query = "UPDATE Employee SET Available = 0 WHERE EmployeeCode = @EmployeeCode";
+                            SqlParameter[] parameters =
+                            {
+                        new SqlParameter("@EmployeeCode", employeeCode)
+                    };
+
+                            int rows = deleteService.ExecuteDelete(query, parameters);
+
+                            if (rows > 0)
+                            {
+                                MessageBox.Show("Empleado dado de baja correctamente.");
+                                LoadEmployee(); // refresca el DataGridView
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se encontró el empleado para dar de baja.");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al dar de baja empleado: " + ex.Message);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("La fila seleccionada no tiene un código válido.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila completa para dar de baja.");
+            }
+        }
+
+
+
+        private void TxtPhone_Validating(object sender, CancelEventArgs e)
+        {
+            string input = TxtPhone.Text.Trim();
+
+            // Validar que sean solo números
+            if (!System.Text.RegularExpressions.Regex.IsMatch(input, @"^\d*$"))
+            {
+                LblErrorPhone.Visible = true;
+                return;
+            }
+
+            // Validar longitud
+            if (input.Length == 8)
+            {
+                LblErrorPhone.Visible = false; // correcto, ocultar error
+            }
+            else
+            {
+                LblErrorPhone.Text = "El teléfono debe tener exactamente 8 dígitos.";
+                LblErrorPhone.Visible = true;
+            }
+        }
+
+        private void TxtPhone_TextChanged(object sender, EventArgs e)
+        {
+
+            string input = TxtPhone.Text.Trim();
+
+            // Si no hay nada, ocultar el label
+            if (string.IsNullOrEmpty(input))
+            {
+                LblErrorPhone.Visible = false;
+                return;
+            }
+
+            // Validar que sean solo números
+            if (!System.Text.RegularExpressions.Regex.IsMatch(input, @"^\d*$"))
+            {
+                LblErrorPhone.Text = "Solo se permiten números.";
+                LblErrorPhone.Visible = true;
+                return;
+            }
+
+            // Validar longitud
+            if (input.Length == 8)
+            {
+                LblErrorPhone.Visible = false; // correcto, ocultar error
+            }
+            else
+            {
+                LblErrorPhone.Text = "El teléfono debe tener exactamente 8 dígitos.";
+                LblErrorPhone.Visible = true;
+            }
+        }
+
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            LoadEmployee(); // recarga el DataGridView para mostrar los cambios
+        }
     }
 }
+

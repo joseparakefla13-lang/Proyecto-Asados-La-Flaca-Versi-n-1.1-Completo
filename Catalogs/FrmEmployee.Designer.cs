@@ -140,6 +140,8 @@
             TxtPhone.Name = "TxtPhone";
             TxtPhone.Size = new Size(431, 43);
             TxtPhone.TabIndex = 29;
+            TxtPhone.TextChanged += TxtPhone_TextChanged;
+            TxtPhone.Validating += TxtPhone_Validating;
             // 
             // LblTeléfono
             // 
@@ -182,6 +184,7 @@
             BtnUpdate.Text = "Limpiar";
             BtnUpdate.TextAlign = ContentAlignment.MiddleRight;
             BtnUpdate.UseVisualStyleBackColor = true;
+            BtnUpdate.Click += BtnUpdate_Click;
             // 
             // BtnDelete
             // 
@@ -198,6 +201,7 @@
             BtnDelete.Text = "Eliminar";
             BtnDelete.TextAlign = ContentAlignment.MiddleRight;
             BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnSave
             // 
@@ -228,7 +232,7 @@
             BtnSearch.Name = "BtnSearch";
             BtnSearch.Size = new Size(201, 70);
             BtnSearch.TabIndex = 20;
-            BtnSearch.Text = "Agregar";
+            BtnSearch.Text = "Buscar";
             BtnSearch.TextAlign = ContentAlignment.MiddleRight;
             BtnSearch.UseVisualStyleBackColor = true;
             BtnSearch.Click += BtnSearch_Click;
@@ -273,7 +277,7 @@
             // 
             TxtName.BackColor = Color.FromArgb(246, 246, 247);
             TxtName.BorderStyle = BorderStyle.None;
-            TxtName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TxtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtName.ForeColor = Color.FromArgb(45, 45, 45);
             TxtName.Location = new Point(259, 336);
             TxtName.Name = "TxtName";
