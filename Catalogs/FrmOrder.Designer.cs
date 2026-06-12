@@ -29,12 +29,18 @@
         private void InitializeComponent()
         {
             GbxPedido = new GroupBox();
-            textBox3 = new TextBox();
+            CbTitleEmployee = new ComboBox();
+            label4 = new Label();
+            CbProducts = new ComboBox();
+            label3 = new Label();
+            TxtQuantity = new TextBox();
+            label2 = new Label();
+            TxtCustomer = new TextBox();
+            TxtPrice = new TextBox();
             label1 = new Label();
-            DtmFecha = new DateTimePicker();
-            CmbxCliente = new ComboBox();
-            comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
+            DtmDateOrder = new DateTimePicker();
+            CbAvailable = new ComboBox();
+            TxtN_Order = new TextBox();
             LblEstado = new Label();
             LblFecha = new Label();
             LblCliente = new Label();
@@ -42,32 +48,42 @@
             GbxDellatePedido = new GroupBox();
             BtnCerrarEmpl = new Button();
             BtnLimpiarEmpl = new Button();
-            BtnEliminarEmpl = new Button();
-            BtnGuardarEmpl = new Button();
-            BtnAgregarEmpl = new Button();
-            DtgDetallePedido = new DataGridView();
+            BtnDeleteOrder = new Button();
+            BtnSaveOrder = new Button();
+            BtnInsertOrder = new Button();
+            DtgOrderDetail = new DataGridView();
             Producto = new DataGridViewTextBoxColumn();
             Precio = new DataGridViewTextBoxColumn();
             Cantidad = new DataGridViewTextBoxColumn();
             Subtotal = new DataGridViewTextBoxColumn();
-            textBox2 = new TextBox();
+            TxtTotal = new TextBox();
             LblTotal = new Label();
             TxtSubTotal = new TextBox();
             LblSubTotal = new Label();
+            N_Order = new DataGridViewTextBoxColumn();
+            Customer = new DataGridViewTextBoxColumn();
+            Date = new DataGridViewTextBoxColumn();
+            Employee = new DataGridViewTextBoxColumn();
             GbxPedido.SuspendLayout();
             GbxDellatePedido.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)DtgDetallePedido).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DtgOrderDetail).BeginInit();
             SuspendLayout();
             // 
             // GbxPedido
             // 
             GbxPedido.BackColor = Color.FromArgb(243, 231, 211);
-            GbxPedido.Controls.Add(textBox3);
+            GbxPedido.Controls.Add(CbTitleEmployee);
+            GbxPedido.Controls.Add(label4);
+            GbxPedido.Controls.Add(CbProducts);
+            GbxPedido.Controls.Add(label3);
+            GbxPedido.Controls.Add(TxtQuantity);
+            GbxPedido.Controls.Add(label2);
+            GbxPedido.Controls.Add(TxtCustomer);
+            GbxPedido.Controls.Add(TxtPrice);
             GbxPedido.Controls.Add(label1);
-            GbxPedido.Controls.Add(DtmFecha);
-            GbxPedido.Controls.Add(CmbxCliente);
-            GbxPedido.Controls.Add(comboBox1);
-            GbxPedido.Controls.Add(textBox1);
+            GbxPedido.Controls.Add(DtmDateOrder);
+            GbxPedido.Controls.Add(CbAvailable);
+            GbxPedido.Controls.Add(TxtN_Order);
             GbxPedido.Controls.Add(LblEstado);
             GbxPedido.Controls.Add(LblFecha);
             GbxPedido.Controls.Add(LblCliente);
@@ -77,89 +93,153 @@
             GbxPedido.ForeColor = Color.FromArgb(45, 45, 45);
             GbxPedido.Location = new Point(0, 0);
             GbxPedido.Name = "GbxPedido";
-            GbxPedido.Size = new Size(1748, 610);
+            GbxPedido.Size = new Size(1748, 617);
             GbxPedido.TabIndex = 0;
             GbxPedido.TabStop = false;
             GbxPedido.Text = "Datos del Pedido";
-            GbxPedido.Enter += GbxPedido_Enter;
             // 
-            // textBox3
+            // CbTitleEmployee
             // 
-            textBox3.BackColor = Color.FromArgb(246, 246, 247);
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.ForeColor = Color.FromArgb(45, 45, 45);
-            textBox3.Location = new Point(498, 466);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(278, 43);
-            textBox3.TabIndex = 32;
+            CbTitleEmployee.BackColor = Color.FromArgb(246, 246, 247);
+            CbTitleEmployee.FlatStyle = FlatStyle.Flat;
+            CbTitleEmployee.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CbTitleEmployee.ForeColor = Color.FromArgb(45, 45, 45);
+            CbTitleEmployee.FormattingEnabled = true;
+            CbTitleEmployee.Items.AddRange(new object[] { "Pediente", "Cancelado", "En proceso" });
+            CbTitleEmployee.Location = new Point(1068, 515);
+            CbTitleEmployee.Name = "CbTitleEmployee";
+            CbTitleEmployee.Size = new Size(552, 53);
+            CbTitleEmployee.TabIndex = 39;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(866, 515);
+            label4.Name = "label4";
+            label4.Size = new Size(169, 45);
+            label4.TabIndex = 38;
+            label4.Text = "Empleado";
+            // 
+            // CbProducts
+            // 
+            CbProducts.BackColor = Color.FromArgb(246, 246, 247);
+            CbProducts.FlatStyle = FlatStyle.Flat;
+            CbProducts.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CbProducts.ForeColor = Color.FromArgb(45, 45, 45);
+            CbProducts.FormattingEnabled = true;
+            CbProducts.Items.AddRange(new object[] { "Pediente", "Cancelado", "En proceso" });
+            CbProducts.Location = new Point(408, 386);
+            CbProducts.Name = "CbProducts";
+            CbProducts.Size = new Size(365, 53);
+            CbProducts.TabIndex = 37;
+            CbProducts.Text = "Seleccione Cargo";
+            CbProducts.SelectedIndexChanged += CbProducts_SelectedIndexChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(204, 513);
+            label3.Name = "label3";
+            label3.Size = new Size(114, 45);
+            label3.TabIndex = 36;
+            label3.Text = "Precio";
+            // 
+            // TxtQuantity
+            // 
+            TxtQuantity.BackColor = Color.FromArgb(246, 246, 247);
+            TxtQuantity.BorderStyle = BorderStyle.None;
+            TxtQuantity.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtQuantity.ForeColor = Color.FromArgb(45, 45, 45);
+            TxtQuantity.Location = new Point(1204, 386);
+            TxtQuantity.Name = "TxtQuantity";
+            TxtQuantity.Size = new Size(278, 43);
+            TxtQuantity.TabIndex = 35;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(881, 384);
+            label2.Name = "label2";
+            label2.Size = new Size(154, 45);
+            label2.TabIndex = 34;
+            label2.Text = "Cantidad";
+            // 
+            // TxtCustomer
+            // 
+            TxtCustomer.BackColor = Color.FromArgb(246, 246, 247);
+            TxtCustomer.BorderStyle = BorderStyle.None;
+            TxtCustomer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtCustomer.ForeColor = Color.FromArgb(45, 45, 45);
+            TxtCustomer.Location = new Point(408, 259);
+            TxtCustomer.Name = "TxtCustomer";
+            TxtCustomer.Size = new Size(278, 43);
+            TxtCustomer.TabIndex = 33;
+            // 
+            // TxtPrice
+            // 
+            TxtPrice.BackColor = Color.FromArgb(246, 246, 247);
+            TxtPrice.BorderStyle = BorderStyle.None;
+            TxtPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtPrice.ForeColor = Color.FromArgb(45, 45, 45);
+            TxtPrice.Location = new Point(408, 515);
+            TxtPrice.Name = "TxtPrice";
+            TxtPrice.Size = new Size(278, 43);
+            TxtPrice.TabIndex = 32;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(291, 466);
+            label1.Location = new Point(163, 389);
             label1.Name = "label1";
-            label1.Size = new Size(183, 45);
+            label1.Size = new Size(173, 45);
             label1.TabIndex = 31;
-            label1.Text = "N* Pedido:";
+            label1.Text = "Productos";
             // 
-            // DtmFecha
+            // DtmDateOrder
             // 
-            DtmFecha.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DtmFecha.CalendarForeColor = Color.FromArgb(45, 45, 45);
-            DtmFecha.CalendarMonthBackground = Color.FromArgb(109, 15, 15);
-            DtmFecha.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DtmFecha.Location = new Point(1093, 241);
-            DtmFecha.MinDate = new DateTime(2026, 6, 5, 0, 0, 0, 0);
-            DtmFecha.Name = "DtmFecha";
-            DtmFecha.Size = new Size(552, 50);
-            DtmFecha.TabIndex = 30;
+            DtmDateOrder.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DtmDateOrder.CalendarForeColor = Color.FromArgb(45, 45, 45);
+            DtmDateOrder.CalendarMonthBackground = Color.FromArgb(109, 15, 15);
+            DtmDateOrder.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DtmDateOrder.Location = new Point(1068, 134);
+            DtmDateOrder.MinDate = new DateTime(2026, 6, 5, 0, 0, 0, 0);
+            DtmDateOrder.Name = "DtmDateOrder";
+            DtmDateOrder.Size = new Size(552, 50);
+            DtmDateOrder.TabIndex = 30;
             // 
-            // CmbxCliente
+            // CbAvailable
             // 
-            CmbxCliente.BackColor = Color.FromArgb(246, 246, 247);
-            CmbxCliente.FlatStyle = FlatStyle.Flat;
-            CmbxCliente.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CmbxCliente.ForeColor = Color.FromArgb(45, 45, 45);
-            CmbxCliente.FormattingEnabled = true;
-            CmbxCliente.Items.AddRange(new object[] { "Publico General", "Juan Torrez", "Ricardo Mora", "Jose Lopez" });
-            CmbxCliente.Location = new Point(498, 327);
-            CmbxCliente.Name = "CmbxCliente";
-            CmbxCliente.Size = new Size(278, 53);
-            CmbxCliente.TabIndex = 17;
-            CmbxCliente.Text = "Clientes";
+            CbAvailable.BackColor = Color.FromArgb(246, 246, 247);
+            CbAvailable.FlatStyle = FlatStyle.Flat;
+            CbAvailable.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CbAvailable.ForeColor = Color.FromArgb(45, 45, 45);
+            CbAvailable.FormattingEnabled = true;
+            CbAvailable.Items.AddRange(new object[] { "Pediente", "Cancelado", "En proceso" });
+            CbAvailable.Location = new Point(1161, 254);
+            CbAvailable.Name = "CbAvailable";
+            CbAvailable.Size = new Size(365, 53);
+            CbAvailable.TabIndex = 16;
             // 
-            // comboBox1
+            // TxtN_Order
             // 
-            comboBox1.BackColor = Color.FromArgb(246, 246, 247);
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBox1.ForeColor = Color.FromArgb(45, 45, 45);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Pediente", "Cancelado", "En proceso" });
-            comboBox1.Location = new Point(1192, 425);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(365, 53);
-            comboBox1.TabIndex = 16;
-            comboBox1.Text = "Seleccione Cargo";
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.FromArgb(246, 246, 247);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.FromArgb(45, 45, 45);
-            textBox1.Location = new Point(498, 188);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(278, 43);
-            textBox1.TabIndex = 13;
+            TxtN_Order.BackColor = Color.FromArgb(246, 246, 247);
+            TxtN_Order.BorderStyle = BorderStyle.None;
+            TxtN_Order.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtN_Order.ForeColor = Color.FromArgb(45, 45, 45);
+            TxtN_Order.Location = new Point(408, 134);
+            TxtN_Order.Name = "TxtN_Order";
+            TxtN_Order.Size = new Size(278, 43);
+            TxtN_Order.TabIndex = 13;
             // 
             // LblEstado
             // 
             LblEstado.AutoSize = true;
             LblEstado.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblEstado.Location = new Point(959, 413);
+            LblEstado.Location = new Point(881, 257);
             LblEstado.Name = "LblEstado";
             LblEstado.Size = new Size(129, 45);
             LblEstado.TabIndex = 12;
@@ -169,7 +249,7 @@
             // 
             LblFecha.AutoSize = true;
             LblFecha.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblFecha.Location = new Point(959, 241);
+            LblFecha.Location = new Point(881, 132);
             LblFecha.Name = "LblFecha";
             LblFecha.Size = new Size(114, 45);
             LblFecha.TabIndex = 11;
@@ -179,7 +259,7 @@
             // 
             LblCliente.AutoSize = true;
             LblCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblCliente.Location = new Point(291, 327);
+            LblCliente.Location = new Point(204, 257);
             LblCliente.Name = "LblCliente";
             LblCliente.Size = new Size(132, 45);
             LblCliente.TabIndex = 10;
@@ -189,7 +269,7 @@
             // 
             LblCodigo.AutoSize = true;
             LblCodigo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblCodigo.Location = new Point(291, 188);
+            LblCodigo.Location = new Point(153, 132);
             LblCodigo.Name = "LblCodigo";
             LblCodigo.Size = new Size(183, 45);
             LblCodigo.TabIndex = 9;
@@ -200,20 +280,20 @@
             GbxDellatePedido.BackColor = Color.FromArgb(243, 231, 211);
             GbxDellatePedido.Controls.Add(BtnCerrarEmpl);
             GbxDellatePedido.Controls.Add(BtnLimpiarEmpl);
-            GbxDellatePedido.Controls.Add(BtnEliminarEmpl);
-            GbxDellatePedido.Controls.Add(BtnGuardarEmpl);
-            GbxDellatePedido.Controls.Add(BtnAgregarEmpl);
-            GbxDellatePedido.Controls.Add(DtgDetallePedido);
-            GbxDellatePedido.Controls.Add(textBox2);
+            GbxDellatePedido.Controls.Add(BtnDeleteOrder);
+            GbxDellatePedido.Controls.Add(BtnSaveOrder);
+            GbxDellatePedido.Controls.Add(BtnInsertOrder);
+            GbxDellatePedido.Controls.Add(DtgOrderDetail);
+            GbxDellatePedido.Controls.Add(TxtTotal);
             GbxDellatePedido.Controls.Add(LblTotal);
             GbxDellatePedido.Controls.Add(TxtSubTotal);
             GbxDellatePedido.Controls.Add(LblSubTotal);
             GbxDellatePedido.Dock = DockStyle.Top;
-            GbxDellatePedido.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GbxDellatePedido.Font = new Font("Segoe UI", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 0);
             GbxDellatePedido.ForeColor = Color.FromArgb(45, 45, 45);
-            GbxDellatePedido.Location = new Point(0, 610);
+            GbxDellatePedido.Location = new Point(0, 617);
             GbxDellatePedido.Name = "GbxDellatePedido";
-            GbxDellatePedido.Size = new Size(1748, 968);
+            GbxDellatePedido.Size = new Size(1748, 1107);
             GbxDellatePedido.TabIndex = 1;
             GbxDellatePedido.TabStop = false;
             GbxDellatePedido.Text = "Detalle de Pedido";
@@ -226,7 +306,7 @@
             BtnCerrarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnCerrarEmpl.Image = Properties.Resources.cerrar_ventana;
             BtnCerrarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnCerrarEmpl.Location = new Point(780, 611);
+            BtnCerrarEmpl.Location = new Point(1486, 591);
             BtnCerrarEmpl.Name = "BtnCerrarEmpl";
             BtnCerrarEmpl.Size = new Size(201, 70);
             BtnCerrarEmpl.TabIndex = 28;
@@ -242,7 +322,7 @@
             BtnLimpiarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnLimpiarEmpl.Image = Properties.Resources.escoba;
             BtnLimpiarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnLimpiarEmpl.Location = new Point(507, 611);
+            BtnLimpiarEmpl.Location = new Point(1486, 454);
             BtnLimpiarEmpl.Name = "BtnLimpiarEmpl";
             BtnLimpiarEmpl.Size = new Size(201, 70);
             BtnLimpiarEmpl.TabIndex = 27;
@@ -250,64 +330,68 @@
             BtnLimpiarEmpl.TextAlign = ContentAlignment.MiddleRight;
             BtnLimpiarEmpl.UseVisualStyleBackColor = true;
             // 
-            // BtnEliminarEmpl
+            // BtnDeleteOrder
             // 
-            BtnEliminarEmpl.FlatAppearance.BorderSize = 0;
-            BtnEliminarEmpl.FlatAppearance.MouseOverBackColor = Color.Red;
-            BtnEliminarEmpl.FlatStyle = FlatStyle.Flat;
-            BtnEliminarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnEliminarEmpl.Image = Properties.Resources.basura;
-            BtnEliminarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnEliminarEmpl.Location = new Point(1325, 314);
-            BtnEliminarEmpl.Name = "BtnEliminarEmpl";
-            BtnEliminarEmpl.Size = new Size(201, 70);
-            BtnEliminarEmpl.TabIndex = 26;
-            BtnEliminarEmpl.Text = "Eliminar";
-            BtnEliminarEmpl.TextAlign = ContentAlignment.MiddleRight;
-            BtnEliminarEmpl.UseVisualStyleBackColor = true;
+            BtnDeleteOrder.FlatAppearance.BorderSize = 0;
+            BtnDeleteOrder.FlatAppearance.MouseOverBackColor = Color.Red;
+            BtnDeleteOrder.FlatStyle = FlatStyle.Flat;
+            BtnDeleteOrder.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnDeleteOrder.Image = Properties.Resources.basura;
+            BtnDeleteOrder.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnDeleteOrder.Location = new Point(1486, 312);
+            BtnDeleteOrder.Name = "BtnDeleteOrder";
+            BtnDeleteOrder.Size = new Size(201, 70);
+            BtnDeleteOrder.TabIndex = 26;
+            BtnDeleteOrder.Text = "Eliminar";
+            BtnDeleteOrder.TextAlign = ContentAlignment.MiddleRight;
+            BtnDeleteOrder.UseVisualStyleBackColor = true;
             // 
-            // BtnGuardarEmpl
+            // BtnSaveOrder
             // 
-            BtnGuardarEmpl.FlatAppearance.BorderSize = 0;
-            BtnGuardarEmpl.FlatAppearance.MouseOverBackColor = Color.Blue;
-            BtnGuardarEmpl.FlatStyle = FlatStyle.Flat;
-            BtnGuardarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnGuardarEmpl.Image = Properties.Resources.abajo;
-            BtnGuardarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnGuardarEmpl.Location = new Point(1325, 194);
-            BtnGuardarEmpl.Name = "BtnGuardarEmpl";
-            BtnGuardarEmpl.Size = new Size(201, 70);
-            BtnGuardarEmpl.TabIndex = 25;
-            BtnGuardarEmpl.Text = "Guardar";
-            BtnGuardarEmpl.TextAlign = ContentAlignment.MiddleRight;
-            BtnGuardarEmpl.UseVisualStyleBackColor = true;
+            BtnSaveOrder.FlatAppearance.BorderSize = 0;
+            BtnSaveOrder.FlatAppearance.MouseOverBackColor = Color.Blue;
+            BtnSaveOrder.FlatStyle = FlatStyle.Flat;
+            BtnSaveOrder.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnSaveOrder.Image = Properties.Resources.abajo;
+            BtnSaveOrder.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnSaveOrder.Location = new Point(1486, 183);
+            BtnSaveOrder.Name = "BtnSaveOrder";
+            BtnSaveOrder.Size = new Size(201, 70);
+            BtnSaveOrder.TabIndex = 25;
+            BtnSaveOrder.Text = "Guardar";
+            BtnSaveOrder.TextAlign = ContentAlignment.MiddleRight;
+            BtnSaveOrder.UseVisualStyleBackColor = true;
+            BtnSaveOrder.Click += BtnSaveOrder_Click;
             // 
-            // BtnAgregarEmpl
+            // BtnInsertOrder
             // 
-            BtnAgregarEmpl.FlatAppearance.BorderSize = 0;
-            BtnAgregarEmpl.FlatAppearance.MouseOverBackColor = Color.Lime;
-            BtnAgregarEmpl.FlatStyle = FlatStyle.Flat;
-            BtnAgregarEmpl.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnAgregarEmpl.Image = Properties.Resources.agregar_producto__1_;
-            BtnAgregarEmpl.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnAgregarEmpl.Location = new Point(1325, 84);
-            BtnAgregarEmpl.Name = "BtnAgregarEmpl";
-            BtnAgregarEmpl.Size = new Size(201, 70);
-            BtnAgregarEmpl.TabIndex = 21;
-            BtnAgregarEmpl.Text = "Agregar";
-            BtnAgregarEmpl.TextAlign = ContentAlignment.MiddleRight;
-            BtnAgregarEmpl.UseVisualStyleBackColor = true;
+            BtnInsertOrder.FlatAppearance.BorderSize = 0;
+            BtnInsertOrder.FlatAppearance.MouseOverBackColor = Color.Lime;
+            BtnInsertOrder.FlatStyle = FlatStyle.Flat;
+            BtnInsertOrder.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnInsertOrder.Image = Properties.Resources.agregar_producto__1_;
+            BtnInsertOrder.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnInsertOrder.Location = new Point(1486, 42);
+            BtnInsertOrder.Name = "BtnInsertOrder";
+            BtnInsertOrder.Size = new Size(201, 70);
+            BtnInsertOrder.TabIndex = 21;
+            BtnInsertOrder.Text = "Agregar";
+            BtnInsertOrder.TextAlign = ContentAlignment.MiddleRight;
+            BtnInsertOrder.UseVisualStyleBackColor = true;
+            BtnInsertOrder.Click += BtnInsertOrder_Click;
             // 
-            // DtgDetallePedido
+            // DtgOrderDetail
             // 
-            DtgDetallePedido.BackgroundColor = Color.FromArgb(243, 231, 211);
-            DtgDetallePedido.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DtgDetallePedido.Columns.AddRange(new DataGridViewColumn[] { Producto, Precio, Cantidad, Subtotal });
-            DtgDetallePedido.Location = new Point(24, 70);
-            DtgDetallePedido.Name = "DtgDetallePedido";
-            DtgDetallePedido.RowHeadersWidth = 82;
-            DtgDetallePedido.Size = new Size(1056, 517);
-            DtgDetallePedido.TabIndex = 16;
+            DtgOrderDetail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DtgOrderDetail.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            DtgOrderDetail.BackgroundColor = Color.FromArgb(243, 231, 211);
+            DtgOrderDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DtgOrderDetail.Columns.AddRange(new DataGridViewColumn[] { Producto, Precio, Cantidad, Subtotal, N_Order, Customer, Date, Employee });
+            DtgOrderDetail.Location = new Point(24, 70);
+            DtgOrderDetail.Name = "DtgOrderDetail";
+            DtgOrderDetail.RowHeadersWidth = 82;
+            DtgOrderDetail.Size = new Size(1431, 564);
+            DtgOrderDetail.TabIndex = 16;
             // 
             // Producto
             // 
@@ -337,22 +421,22 @@
             Subtotal.MinimumWidth = 10;
             Subtotal.Name = "Subtotal";
             // 
-            // textBox2
+            // TxtTotal
             // 
-            textBox2.BackColor = Color.FromArgb(246, 246, 247);
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.ForeColor = Color.FromArgb(45, 45, 45);
-            textBox2.Location = new Point(1288, 587);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(278, 43);
-            textBox2.TabIndex = 15;
+            TxtTotal.BackColor = Color.FromArgb(246, 246, 247);
+            TxtTotal.BorderStyle = BorderStyle.None;
+            TxtTotal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtTotal.ForeColor = Color.FromArgb(45, 45, 45);
+            TxtTotal.Location = new Point(698, 681);
+            TxtTotal.Name = "TxtTotal";
+            TxtTotal.Size = new Size(278, 43);
+            TxtTotal.TabIndex = 15;
             // 
             // LblTotal
             // 
             LblTotal.AutoSize = true;
             LblTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblTotal.Location = new Point(1122, 585);
+            LblTotal.Location = new Point(569, 679);
             LblTotal.Name = "LblTotal";
             LblTotal.Size = new Size(103, 45);
             LblTotal.TabIndex = 14;
@@ -364,7 +448,7 @@
             TxtSubTotal.BorderStyle = BorderStyle.None;
             TxtSubTotal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtSubTotal.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtSubTotal.Location = new Point(1288, 506);
+            TxtSubTotal.Location = new Point(190, 679);
             TxtSubTotal.Name = "TxtSubTotal";
             TxtSubTotal.Size = new Size(278, 43);
             TxtSubTotal.TabIndex = 13;
@@ -373,11 +457,35 @@
             // 
             LblSubTotal.AutoSize = true;
             LblSubTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblSubTotal.Location = new Point(1122, 504);
+            LblSubTotal.Location = new Point(24, 679);
             LblSubTotal.Name = "LblSubTotal";
             LblSubTotal.Size = new Size(160, 45);
             LblSubTotal.TabIndex = 9;
             LblSubTotal.Text = "SubTotal:";
+            // 
+            // N_Order
+            // 
+            N_Order.HeaderText = "N*Pedido";
+            N_Order.MinimumWidth = 10;
+            N_Order.Name = "N_Order";
+            // 
+            // Customer
+            // 
+            Customer.HeaderText = "Cliente";
+            Customer.MinimumWidth = 10;
+            Customer.Name = "Customer";
+            // 
+            // Date
+            // 
+            Date.HeaderText = "Date";
+            Date.MinimumWidth = 10;
+            Date.Name = "Date";
+            // 
+            // Employee
+            // 
+            Employee.HeaderText = "Empleado";
+            Employee.MinimumWidth = 10;
+            Employee.Name = "Employee";
             // 
             // FrmOrder
             // 
@@ -391,41 +499,52 @@
             Name = "FrmOrder";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmOrder";
+            Load += FrmOrder_Load;
             GbxPedido.ResumeLayout(false);
             GbxPedido.PerformLayout();
             GbxDellatePedido.ResumeLayout(false);
             GbxDellatePedido.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)DtgDetallePedido).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DtgOrderDetail).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private GroupBox GbxPedido;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
+        private ComboBox CbAvailable;
+        private TextBox TxtN_Order;
         private Label LblEstado;
         private Label LblFecha;
         private Label LblCliente;
         private Label LblCodigo;
-        private ComboBox CmbxCliente;
-        private DateTimePicker DtmFecha;
+        private DateTimePicker DtmDateOrder;
         private GroupBox GbxDellatePedido;
         private TextBox TxtSubTotal;
         private Label LblSubTotal;
-        private DataGridView DtgDetallePedido;
-        private TextBox textBox2;
+        private DataGridView DtgOrderDetail;
+        private TextBox TxtTotal;
         private Label LblTotal;
-        private TextBox textBox3;
+        private TextBox TxtPrice;
         private Label label1;
         private DataGridViewTextBoxColumn Producto;
         private DataGridViewTextBoxColumn Precio;
         private DataGridViewTextBoxColumn Cantidad;
         private DataGridViewTextBoxColumn Subtotal;
-        private Button BtnAgregarEmpl;
+        private Button BtnInsertOrder;
         private Button BtnCerrarEmpl;
         private Button BtnLimpiarEmpl;
-        private Button BtnEliminarEmpl;
-        private Button BtnGuardarEmpl;
+        private Button BtnDeleteOrder;
+        private Button BtnSaveOrder;
+        private TextBox TxtCustomer;
+        private ComboBox CbProducts;
+        private Label label3;
+        private TextBox TxtQuantity;
+        private Label label2;
+        private ComboBox CbTitleEmployee;
+        private Label label4;
+        private DataGridViewTextBoxColumn N_Order;
+        private DataGridViewTextBoxColumn Customer;
+        private DataGridViewTextBoxColumn Date;
+        private DataGridViewTextBoxColumn Employee;
     }
 }
