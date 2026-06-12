@@ -119,45 +119,71 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         /* ------------------- GUARDAR NUEVO CLIENTE ------------------- */
         private void BtnSaveClient_Click(object sender, EventArgs e)
         {
-     
+
             try
             {
                 CustomerBusiness business = new CustomerBusiness();
 
-                // Obtener el siguiente código disponible
+                // 1. Generar el siguiente código disponible
                 string nextCode = business.GetNextCustomerCode();
                 TxtCustomerCode.Text = nextCode;
 
-                // Validar teléfono único
+                // 2. Validar nombre
+                string nombre = TxtName.Text.Trim();
+                if (string.IsNullOrEmpty(nombre))
+                {
+                    MessageBox.Show("Debe ingresar un nombre.");
+                    return;
+                }
+
+                // 3. Validar teléfono
                 string telefono = TxtPhone.Text.Trim();
+                if (string.IsNullOrEmpty(telefono))
+                {
+                    MessageBox.Show("Debe ingresar un número de teléfono.");
+                    return;
+                }
                 if (!business.IsUniquePhone(telefono))
                 {
                     MessageBox.Show("El número de teléfono ya está registrado. Ingrese uno diferente.");
                     return;
                 }
 
-                // Tomar la fecha del control (ejemplo: DtmFecha.Value)
-                DateTime fechaRegistro = DtmRegistrationDate.Value.Date;
+                // 4. Validar tipo de cliente
+                string tipoCliente = CbTypeCustomer.Text;
+                if (string.IsNullOrEmpty(tipoCliente))
+                {
+                    MessageBox.Show("Debe seleccionar un tipo de cliente.");
+                    return;
+                }
 
-                // Validar que sea exactamente hoy
+                // 5. Validar fecha (solo hoy)
+                DateTime fechaRegistro = DtmRegistrationDate.Value.Date;
                 if (!business.IsValidRegisterDate(fechaRegistro))
                 {
                     MessageBox.Show("La fecha de registro debe ser la de hoy.");
-                    return; // detiene el guardado
+                    return;
                 }
 
-                // Crear objeto cliente
+                // 6. Validar estado activo (CheckBox)
+                if (!ChAvailable.Checked)
+                {
+                    MessageBox.Show("Debe marcar el estado Activo para poder guardar el cliente.");
+                    return;
+                }
+
+                // 7. Crear objeto cliente con todos los datos validados
                 Customer nuevo = new Customer
                 {
                     ClustomerCode = nextCode,
-                    Names = TxtName.Text.Trim(),
+                    Names = nombre,
                     Phone = telefono,
-                    TypeCustomer = CbTypeCustomer.Text,
-                    Available = true,
-                    RegistDate = fechaRegistro // ahora sí validado
+                    TypeCustomer = tipoCliente,
+                    Available = true,              // se guarda activo solo si el CheckBox está marcado
+                    RegistDate = fechaRegistro
                 };
 
-                // Insertar en BD
+                // 8. Guardar en BD
                 int rows = business.InsertCustomer(nuevo);
 
                 if (rows > 0)
@@ -176,7 +202,8 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
             }
         }
 
-        
+    
+    
         
         /* ------------------- EVENTO LOAD DEL FORM ------------------- */
         private void FrmCustomer_Load(object sender, EventArgs e)
@@ -297,9 +324,9 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-
             string codigo = TxtSearch.Text.Trim();
 
+            // Validar formato CLI###
             if (!validateCode(codigo))
             {
                 MessageBox.Show("El código debe tener el formato CLI### (ejemplo: CLI876).");
@@ -308,28 +335,20 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                CustomerBusiness business = new CustomerBusiness();
+                DataTable dt = business.SearchCustomerByCode(codigo);
+
+                DgvCustomer.DataSource = null;
+                DgvCustomer.Rows.Clear();
+                DgvCustomer.DataSource = dt;
+
+                if (dt.Rows.Count == 0)
                 {
-                    conn.Open();
-
-                    string query = @"SELECT ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate 
-                             FROM Customer
-                             WHERE ClustomerCode = @ClustomerCode";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
-                    adapter.SelectCommand.Parameters.AddWithValue("@ClustomerCode", codigo);
-
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
-                    DgvCustomer.DataSource = null;
-                    DgvCustomer.Rows.Clear();
-                    DgvCustomer.DataSource = dt;
-
-                    if (dt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("No se encontró un cliente con ese código.");
-                    }
+                    MessageBox.Show("No se encontró un cliente con ese código.");
+                }
+                else
+                {
+                    ConfigurarModoLectura(false); // habilita edición en Nombre y Teléfono
                 }
             }
             catch (Exception ex)
@@ -337,8 +356,8 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 MessageBox.Show("Error al buscar cliente: " + ex.Message);
             }
 
-            // limpiar el textbox después de buscar
-            TxtSearch.Clear();
+            TxtSearch.Clear(); // limpiar textbox después de buscar
+
         }
         private void ConfigurarModoLectura(bool soloLectura)
         {

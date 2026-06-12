@@ -36,7 +36,7 @@
             BtnEliminarEmpl = new Button();
             BtnGuardarEmpl = new Button();
             BtnAgregarEmpl = new Button();
-            checkBox1 = new CheckBox();
+            CbAvailable = new CheckBox();
             comboBox1 = new ComboBox();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
@@ -67,7 +67,7 @@
             GbxEmpleado.Controls.Add(BtnEliminarEmpl);
             GbxEmpleado.Controls.Add(BtnGuardarEmpl);
             GbxEmpleado.Controls.Add(BtnAgregarEmpl);
-            GbxEmpleado.Controls.Add(checkBox1);
+            GbxEmpleado.Controls.Add(CbAvailable);
             GbxEmpleado.Controls.Add(comboBox1);
             GbxEmpleado.Controls.Add(textBox3);
             GbxEmpleado.Controls.Add(textBox2);
@@ -189,17 +189,17 @@
             BtnAgregarEmpl.TextAlign = ContentAlignment.MiddleRight;
             BtnAgregarEmpl.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // CbAvailable
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.FlatStyle = FlatStyle.Flat;
-            checkBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            checkBox1.Location = new Point(1279, 491);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(136, 49);
-            checkBox1.TabIndex = 9;
-            checkBox1.Text = "Activo";
-            checkBox1.UseVisualStyleBackColor = true;
+            CbAvailable.AutoSize = true;
+            CbAvailable.FlatStyle = FlatStyle.Flat;
+            CbAvailable.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CbAvailable.Location = new Point(1279, 491);
+            CbAvailable.Name = "CbAvailable";
+            CbAvailable.Size = new Size(136, 49);
+            CbAvailable.TabIndex = 9;
+            CbAvailable.Text = "Activo";
+            CbAvailable.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
@@ -379,7 +379,7 @@
         private Label LblNombre;
         private Label LblCodigo;
         private Label LblDisponible;
-        private CheckBox checkBox1;
+        private CheckBox CbAvailable;
         private ComboBox comboBox1;
         private TextBox textBox3;
         private TextBox textBox2;

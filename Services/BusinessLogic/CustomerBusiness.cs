@@ -27,29 +27,37 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic
             return date.Date == DateTime.Today;
         }
 
-        public int InsertCustomer(Customer newCustomer)
+        public int InsertCustomer(Customer cliente)
         {
-            // 1. Validar que el código sea único
-            if (!newCustomer.IsUniqueCustomerCode(newCustomer.ClustomerCode))
-            {
-                throw new Exception("El código de cliente ya existe en la base de datos.");
-            }
 
-            // 2. Validar que la fecha de registro sea hoy
-            if (!newCustomer.ValidateRegisterDate())
-            {
-                throw new Exception("La fecha de registro debe ser la del día actual.");
-            }
+            if (string.IsNullOrEmpty(cliente.Phone))
+                throw new ArgumentException("El teléfono no puede estar vacío.");
+            if (string.IsNullOrEmpty(cliente.Names))
+                throw new ArgumentException("El nombre no puede estar vacío.");
+            if (string.IsNullOrEmpty(cliente.TypeCustomer))
+                throw new ArgumentException("Debe seleccionar un tipo de cliente.");
 
-            // 3. Validar que el cliente esté activo
-            if (!newCustomer.Available)
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                throw new Exception("El cliente debe estar marcado como disponible.");
-            }
+                conn.Open();
 
-            // 4. Insertar en BD
-            return newCustomer.InsertCustomer();
+                string query = @"INSERT INTO Customer 
+                         (ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate) 
+                         VALUES (@ClustomerCode, @Names, @Phone, @TypeCustomer, @Available, @RegistDate)";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ClustomerCode", cliente.ClustomerCode);
+                cmd.Parameters.AddWithValue("@Names", cliente.Names);
+                cmd.Parameters.AddWithValue("@Phone", cliente.Phone);
+                cmd.Parameters.AddWithValue("@TypeCustomer", cliente.TypeCustomer);
+                cmd.Parameters.AddWithValue("@Available", cliente.Available); // ahora depende del CheckBox
+                cmd.Parameters.AddWithValue("@RegistDate", cliente.RegistDate);
+
+                return cmd.ExecuteNonQuery();
+            }
         }
+
+        
         public bool IsUniquePhone(string phone)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -66,6 +74,26 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic
                 return count == 0;
             }
         }
+        public DataTable SearchCustomerByCode(string codigo)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"SELECT ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate 
+                         FROM Customer
+                         WHERE ClustomerCode = @ClustomerCode";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                adapter.SelectCommand.Parameters.AddWithValue("@ClustomerCode", codigo);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                return dt;
+            }
+        }
+
 
         public string GetNextCustomerCode()
         {

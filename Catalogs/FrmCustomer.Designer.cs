@@ -31,6 +31,7 @@
         private void InitializeComponent()
         {
             GbxCliente = new GroupBox();
+            TxtSearch = new TextBox();
             CbTypeCustomer = new ComboBox();
             LblErrorPhone = new Label();
             lblErrorCode = new Label();
@@ -43,7 +44,7 @@
             BtnDelete = new Button();
             BtnSaveClient = new Button();
             BtnSearch = new Button();
-            ChbStateCustomer = new CheckBox();
+            ChAvailable = new CheckBox();
             TxtCustomerCode = new TextBox();
             LblDisponibleCliente = new Label();
             LblTipoDeCliente = new Label();
@@ -57,7 +58,6 @@
             TipoCliente = new DataGridViewTextBoxColumn();
             FechaRegistro = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
-            TxtSearch = new TextBox();
             GbxCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvCustomer).BeginInit();
             SuspendLayout();
@@ -78,7 +78,7 @@
             GbxCliente.Controls.Add(BtnDelete);
             GbxCliente.Controls.Add(BtnSaveClient);
             GbxCliente.Controls.Add(BtnSearch);
-            GbxCliente.Controls.Add(ChbStateCustomer);
+            GbxCliente.Controls.Add(ChAvailable);
             GbxCliente.Controls.Add(TxtCustomerCode);
             GbxCliente.Controls.Add(LblDisponibleCliente);
             GbxCliente.Controls.Add(LblTipoDeCliente);
@@ -95,6 +95,13 @@
             GbxCliente.TabIndex = 1;
             GbxCliente.TabStop = false;
             GbxCliente.Text = "Registro de Cliente";
+            // 
+            // TxtSearch
+            // 
+            TxtSearch.Location = new Point(40, 683);
+            TxtSearch.Name = "TxtSearch";
+            TxtSearch.Size = new Size(342, 57);
+            TxtSearch.TabIndex = 33;
             // 
             // CbTypeCustomer
             // 
@@ -257,17 +264,17 @@
             BtnSearch.UseVisualStyleBackColor = true;
             BtnSearch.Click += BtnSearch_Click;
             // 
-            // ChbStateCustomer
+            // ChAvailable
             // 
-            ChbStateCustomer.AutoSize = true;
-            ChbStateCustomer.FlatStyle = FlatStyle.Flat;
-            ChbStateCustomer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ChbStateCustomer.Location = new Point(1334, 510);
-            ChbStateCustomer.Name = "ChbStateCustomer";
-            ChbStateCustomer.Size = new Size(136, 49);
-            ChbStateCustomer.TabIndex = 9;
-            ChbStateCustomer.Text = "Activo";
-            ChbStateCustomer.UseVisualStyleBackColor = true;
+            ChAvailable.AutoSize = true;
+            ChAvailable.FlatStyle = FlatStyle.Flat;
+            ChAvailable.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ChAvailable.Location = new Point(1334, 510);
+            ChAvailable.Name = "ChAvailable";
+            ChAvailable.Size = new Size(136, 49);
+            ChAvailable.TabIndex = 9;
+            ChAvailable.Text = "Activo";
+            ChAvailable.UseVisualStyleBackColor = true;
             // 
             // TxtCustomerCode
             // 
@@ -393,13 +400,6 @@
             Estado.MinimumWidth = 10;
             Estado.Name = "Estado";
             // 
-            // TxtSearch
-            // 
-            TxtSearch.Location = new Point(40, 683);
-            TxtSearch.Name = "TxtSearch";
-            TxtSearch.Size = new Size(342, 57);
-            TxtSearch.TabIndex = 33;
-            // 
             // FrmCustomer
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -426,7 +426,7 @@
         private Button BtnDelete;
         private Button BtnSaveClient;
         private Button BtnSearch;
-        private CheckBox ChbStateCustomer;
+        private CheckBox ChAvailable;
         private TextBox TxtCustomerCode;
         private Label LblDisponibleCliente;
         private Label LblTipoDeCliente;
