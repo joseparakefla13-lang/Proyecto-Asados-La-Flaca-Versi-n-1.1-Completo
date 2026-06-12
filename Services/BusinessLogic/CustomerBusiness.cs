@@ -3,17 +3,30 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using Microsoft.Data.SqlClient;
 
 namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic
 {
+
     internal class CustomerBusiness
     {
+        // Cadena de conexión definida dentro de la clase
+        private readonly string connectionString =
+            "Server=COQUETO;Database=Dev_Asado2.sql;Integrated Security=True;TrustServerCertificate=True;Encrypt=False;";
+
         /// <summary>
         /// Inserta un cliente aplicando reglas de negocio:
         /// - Código único
         /// - Fecha de registro válida (hoy)
         /// - Cliente activo
         /// </summary>
+        /// 
+        public bool IsValidRegisterDate(DateTime date)
+        {
+            // Solo se permite la fecha de hoy, ni antes ni después
+            return date.Date == DateTime.Today;
+        }
+
         public int InsertCustomer(Customer newCustomer)
         {
             // 1. Validar que el código sea único
@@ -37,25 +50,56 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic
             // 4. Insertar en BD
             return newCustomer.InsertCustomer();
         }
-
-        /// <summary>
-        /// Obtiene todos los clientes registrados
-        /// </summary>
-        public DataTable GetAllCustomers()
+        public bool IsUniquePhone(string phone)
         {
-            Customer c = new Customer();
-            return c.GetAllCustomers();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "SELECT COUNT(*) FROM Customer WHERE Phone = @Phone";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Phone", phone);
+
+                int count = (int)cmd.ExecuteScalar();
+
+                // Si count > 0, ya existe ese número
+                return count == 0;
+            }
         }
 
-        /// <summary>
-        /// Elimina un cliente por su código
-        /// </summary>
-        public int DeleteCustomer(string customerCode)
+        public string GetNextCustomerCode()
         {
-            // Aquí puedes agregar validaciones antes de eliminar
-            // Ejemplo: verificar si el cliente tiene pedidos activos
-            return 0; // Pendiente de implementación
+            string nextCode = "CLI001"; // valor inicial por defecto
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                // Trae el último código ordenado numéricamente
+                string query = @"SELECT TOP 1 ClustomerCode 
+                         FROM Customer 
+                         ORDER BY ClustomerCode DESC";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                object result = cmd.ExecuteScalar();
+
+                if (result != null)
+                {
+                    string lastCode = result.ToString(); // ejemplo: CLI100
+
+                    // Extraer la parte numérica
+                    int number = int.Parse(lastCode.Substring(3));
+
+                    // Incrementar en 1
+                    number++;
+
+                    // Formatear con 3 dígitos
+                    nextCode = "CLI" + number.ToString("D3");
+                }
+            }
+
+            return nextCode;
         }
-    }
+    }       
 
 }

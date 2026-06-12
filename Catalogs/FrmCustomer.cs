@@ -119,29 +119,65 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         /* ------------------- GUARDAR NUEVO CLIENTE ------------------- */
         private void BtnSaveClient_Click(object sender, EventArgs e)
         {
-
+     
             try
             {
+                CustomerBusiness business = new CustomerBusiness();
+
+                // Obtener el siguiente código disponible
+                string nextCode = business.GetNextCustomerCode();
+                TxtCustomerCode.Text = nextCode;
+
+                // Validar teléfono único
+                string telefono = TxtPhone.Text.Trim();
+                if (!business.IsUniquePhone(telefono))
+                {
+                    MessageBox.Show("El número de teléfono ya está registrado. Ingrese uno diferente.");
+                    return;
+                }
+
+                // Tomar la fecha del control (ejemplo: DtmFecha.Value)
+                DateTime fechaRegistro = DtmRegistrationDate.Value.Date;
+
+                // Validar que sea exactamente hoy
+                if (!business.IsValidRegisterDate(fechaRegistro))
+                {
+                    MessageBox.Show("La fecha de registro debe ser la de hoy.");
+                    return; // detiene el guardado
+                }
+
+                // Crear objeto cliente
                 Customer nuevo = new Customer
                 {
-                    ClustomerCode = TxtCustomerCode.Text.Trim(),
+                    ClustomerCode = nextCode,
                     Names = TxtName.Text.Trim(),
-                    Phone = TxtPhone.Text.Trim(),
+                    Phone = telefono,
                     TypeCustomer = CbTypeCustomer.Text,
-                    Available = true, // siempre activo al crear
-                    RegistDate = DateTime.Today
+                    Available = true,
+                    RegistDate = fechaRegistro // ahora sí validado
                 };
 
-                CustomerBusiness business = new CustomerBusiness();
+                // Insertar en BD
                 int rows = business.InsertCustomer(nuevo);
 
-                MessageBox.Show(rows > 0 ? "Cliente agregado correctamente." : "No se pudo agregar el cliente.");
+                if (rows > 0)
+                {
+                    MessageBox.Show($"Cliente agregado correctamente con código {nextCode}.");
+                    LoadCustomers(); // refresca grid
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo agregar el cliente.");
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al guardar cliente: {ex.Message}");
             }
         }
+
+        
+        
         /* ------------------- EVENTO LOAD DEL FORM ------------------- */
         private void FrmCustomer_Load(object sender, EventArgs e)
         {
