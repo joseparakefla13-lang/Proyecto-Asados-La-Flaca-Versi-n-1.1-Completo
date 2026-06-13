@@ -95,25 +95,25 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic
         }
 
 
-        public string GetNextCustomerCode()
+        public string GetNextEmployeeCode()
         {
-            string nextCode = "CLI001"; // valor inicial por defecto
+            string nextCode = "EMP001"; // valor inicial por defecto
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
                 // Trae el último código ordenado numéricamente
-                string query = @"SELECT TOP 1 ClustomerCode 
-                         FROM Customer 
-                         ORDER BY ClustomerCode DESC";
+                string query = @"SELECT TOP 1 EmployeeCode 
+                         FROM Employee 
+                         ORDER BY EmployeeCode DESC";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 object result = cmd.ExecuteScalar();
 
-                if (result != null)
+                if (result != null && result != DBNull.Value)
                 {
-                    string lastCode = result.ToString(); // ejemplo: CLI100
+                    string lastCode = result.ToString(); // ejemplo: EMP010
 
                     // Extraer la parte numérica
                     int number = int.Parse(lastCode.Substring(3));
@@ -122,12 +122,39 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic
                     number++;
 
                     // Formatear con 3 dígitos
-                    nextCode = "CLI" + number.ToString("D3");
+                    nextCode = "EMP" + number.ToString("D3");
                 }
             }
 
             return nextCode;
         }
-    }       
+        public int UpdateEmployee(Employee emp)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = @"UPDATE Employee 
+                         SET Names = @Names,
+                             SurNames = @SurNames,
+                             Phone = @Phone,
+                             Position = @Position,
+                             Available = @Available
+                         WHERE EmployeeCode = @Code";
 
-}
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Code", emp.EmployeeCode);
+                cmd.Parameters.AddWithValue("@Names", emp.Names);
+                cmd.Parameters.AddWithValue("@SurNames", emp.SurNames);
+                cmd.Parameters.AddWithValue("@Phone", emp.Phone);
+                cmd.Parameters.AddWithValue("@Position", emp.Position);
+                cmd.Parameters.AddWithValue("@Available", emp.Available);
+
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
+
+    }
+}       
+
+

@@ -125,7 +125,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 CustomerBusiness business = new CustomerBusiness();
 
                 // 1. Generar el siguiente código disponible
-                string nextCode = business.GetNextCustomerCode();
+                string nextCode = business.GetNextEmployeeCode();
                 TxtCustomerCode.Text = nextCode;
 
                 // 2. Validar nombre

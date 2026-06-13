@@ -89,7 +89,7 @@
             GbxEmpleado.ForeColor = Color.FromArgb(45, 45, 45);
             GbxEmpleado.Location = new Point(0, 0);
             GbxEmpleado.Name = "GbxEmpleado";
-            GbxEmpleado.Size = new Size(1748, 811);
+            GbxEmpleado.Size = new Size(1748, 784);
             GbxEmpleado.TabIndex = 0;
             GbxEmpleado.TabStop = false;
             GbxEmpleado.Text = "Registrar Empleado";
@@ -235,7 +235,7 @@
             BtnSearch.Text = "Buscar";
             BtnSearch.TextAlign = ContentAlignment.MiddleRight;
             BtnSearch.UseVisualStyleBackColor = true;
-            BtnSearch.Click += BtnSearch_Click;
+            BtnSearch.Click += BtnSearch_Click_1;
             // 
             // CbAvailable
             // 
@@ -354,10 +354,10 @@
             DtgEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DtgEmployee.Columns.AddRange(new DataGridViewColumn[] { Codigo, Teléfono, Nombres, Apellido, Cargo, Estado });
             DtgEmployee.Dock = DockStyle.Top;
-            DtgEmployee.Location = new Point(0, 811);
+            DtgEmployee.Location = new Point(0, 784);
             DtgEmployee.Name = "DtgEmployee";
             DtgEmployee.RowHeadersWidth = 82;
-            DtgEmployee.Size = new Size(1748, 578);
+            DtgEmployee.Size = new Size(1748, 708);
             DtgEmployee.TabIndex = 1;
             // 
             // Codigo
@@ -419,6 +419,11 @@
             GbxEmpleado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DtgEmployee).EndInit();
             ResumeLayout(false);
+        }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+
         }
 
         #endregion

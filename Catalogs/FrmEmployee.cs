@@ -116,49 +116,29 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         }
 
 
-
         private void BtnSave_Click(object sender, EventArgs e)
         {
+
+
             try
             {
                 EmployeeBusiness business = new EmployeeBusiness();
 
-                // Instancias locales
-                string codigo = TxtCode.Text.Trim();   // aquí ya puede venir de Buscar
+                string codigo = TxtCode.Text.Trim();
                 string nombre = TxtName.Text.Trim();
                 string apellidos = TxtSurname.Text.Trim();
                 string telefono = TxtPhone.Text.Trim();
                 string puesto = CbPosition.Text;
                 bool activo = CbAvailable.Checked;
 
-                // Validaciones básicas
-                if (string.IsNullOrEmpty(nombre))
+                // Validaciones
+                if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(apellidos) ||
+                    string.IsNullOrEmpty(puesto) || string.IsNullOrEmpty(telefono))
                 {
-                    MessageBox.Show("Debe ingresar un nombre.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(apellidos))
-                {
-                    MessageBox.Show("Debe ingresar apellidos.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(puesto))
-                {
-                    MessageBox.Show("Debe seleccionar un puesto laboral.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(telefono))
-                {
-                    MessageBox.Show("Debe ingresar un número de teléfono.");
-                    return;
-                }
-                if (!activo)
-                {
-                    MessageBox.Show("Debe marcar el estado Activo para poder guardar el empleado.");
+                    MessageBox.Show("Debe completar todos los campos.");
                     return;
                 }
 
-                // Crear instancia de Employee
                 Employee emp = new Employee
                 {
                     EmployeeCode = codigo,
@@ -170,77 +150,43 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 };
 
                 int rows;
-                if (string.IsNullOrEmpty(codigo)) // si no hay código, es nuevo
-                {
-                    string nextCode = business.GetNextEmployeeCode();
-                    emp.EmployeeCode = nextCode;
-                    rows = business.InsertEmployee(emp);
 
-                    if (rows > 0)
-                        MessageBox.Show($"Empleado agregado correctamente con código {nextCode}.");
-                    else
-                        MessageBox.Show("No se pudo agregar el empleado.");
-                }
-                else // si ya hay código, actualizar
+                // 🔹 Si el código ya existe en la BD → UPDATE
+                DataTable dt = business.SearchEmployeeByCode(codigo);
+                if (dt.Rows.Count > 0)
                 {
                     rows = business.UpdateEmployee(emp);
-
                     if (rows > 0)
-                        MessageBox.Show("Empleado actualizado correctamente.");
-                    else
-                        MessageBox.Show("No se pudo actualizar el empleado.");
+                        MessageBox.Show($"Empleado {codigo} actualizado correctamente.");
+                }
+                else
+                {
+                    // 🔹 Si no existe → INSERT
+                    rows = business.InsertEmployee(emp);
+                    if (rows > 0)
+                        MessageBox.Show($"Empleado agregado correctamente con código {codigo}.");
                 }
 
-                LoadEmployee(); // refresca el DataGridView
+                // Limpiar campos después de guardar/actualizar
+                TxtName.Clear();
+                TxtSurname.Clear();
+                TxtPhone.Clear();
+                CbPosition.SelectedIndex = -1;
+                CbAvailable.Checked = false;
+
+                // Generar y mostrar el próximo código automáticamente
+                TxtCode.Text = business.GetNextEmployeeCode();
+
+                // Refrescar el DataGridView
+                LoadEmployee();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al guardar empleado: {ex.Message}");
+                MessageBox.Show($"Error al guardar/actualizar empleado: {ex.Message}");
             }
         }
 
 
-
-        private void BtnSearch_Click(object sender, EventArgs e)
-        {
-
-            EmployeeBusiness business = new EmployeeBusiness();
-            string codigo = TxtSearch.Text.Trim().ToUpper();
-
-            DataTable dt = business.SearchEmployeeByCode(codigo);
-
-            if (dt.Rows.Count > 0)
-            {
-                TxtCode.Text = dt.Rows[0]["EmployeeCode"].ToString();
-                TxtName.Text = dt.Rows[0]["Names"].ToString();
-                TxtSurname.Text = dt.Rows[0]["SurNames"].ToString();
-                TxtPhone.Text = dt.Rows[0]["Phone"].ToString();
-                CbPosition.Text = dt.Rows[0]["Position"].ToString();
-                CbAvailable.Checked = Convert.ToBoolean(dt.Rows[0]["Available"]);
-
-                TxtCode.ReadOnly = true;   // se muestra pero no se puede editar
-
-                // habilitar edición
-                TxtName.Enabled = true;
-                TxtSurname.Enabled = true;
-                TxtPhone.Enabled = true;
-                CbPosition.Enabled = true;
-                CbAvailable.Enabled = true;
-
-                TxtSearch.Clear(); // también limpiar si no encuentra
-
-                // Mostrar también en el DataGridView solo el resultado de la búsqueda
-                DtgEmployee.AutoGenerateColumns = false;
-                DtgEmployee.DataSource = dt;
-
-                MessageBox.Show("Empleado encontrado. Puede editar los campos.");
-            }
-            else
-            {
-                MessageBox.Show("No se encontró el empleado con ese código.");
-                TxtSearch.Clear(); // también limpiar si no encuentra
-            }
-        }
 
         private void TxtCode_Validating(object sender, CancelEventArgs e)
         {
@@ -259,32 +205,49 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 LbErrorCode.Visible = false;
             }
         }
-        private void ConfigurarModoLectura(bool soloLectura)
+        private void ConfigurarModoLectura()
         {
-
-            // Bloquear todas las columnas del DataGridView
+            // Bloquear todas las columnas del DataGridView (siempre lectura)
             foreach (DataGridViewColumn col in DtgEmployee.Columns)
             {
                 col.ReadOnly = true;
             }
 
-            // Bloquear o habilitar también los TextBox y combos
-            TxtCode.ReadOnly = true; // siempre bloqueado
-            TxtName.Enabled = !soloLectura;
-            TxtSurname.Enabled = !soloLectura;
-            TxtPhone.Enabled = !soloLectura;
-            CbPosition.Enabled = !soloLectura;
-            CbAvailable.Enabled = !soloLectura;
+            // El código siempre bloqueado (se genera automático)
+            TxtCode.ReadOnly = true;
+
+            // Los demás campos SIEMPRE habilitados para agregar
+            TxtName.Enabled = true;
+            TxtSurname.Enabled = true;
+            TxtPhone.Enabled = true;
+            CbPosition.Enabled = true;
+            CbAvailable.Enabled = true;
         }
+
 
         private void FrmEmployee_Load(object sender, EventArgs e)
         {
-            LoadEmployee(); // carga al abrir el formulario
+            EmployeeBusiness business = new EmployeeBusiness();
+
+            // Mostrar el próximo código disponible al abrir
+            TxtCode.Text = business.GetNextEmployeeCode();
+            TxtCode.ReadOnly = true; // el usuario no lo edita
+
+            // Configuración del DataGridView (solo lectura)
+            LoadEmployee();
             DtgEmployee.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DtgEmployee.MultiSelect = false;
-            DtgEmployee.AllowUserToAddRows = false; // evita fila vacía extra
-            ConfigurarModoLectura(true); // por defecto solo lectura
+            DtgEmployee.AllowUserToAddRows = false;
+
+            // Limpiar valores iniciales de los demás campos
+            TxtName.Clear();
+            TxtSurname.Clear();
+            TxtPhone.Clear();
+            CbPosition.SelectedIndex = -1;
+            CbAvailable.Checked = false;
+
         }
+
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
@@ -405,6 +368,60 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
         {
             LoadEmployee(); // recarga el DataGridView para mostrar los cambios
         }
+
+        private void BtnSearch_Click_1(object sender, EventArgs e)
+        {
+
+            string codigo = TxtSearch.Text.Trim();
+
+            // Validar formato EMP###
+            if (!Regex.IsMatch(codigo, @"^EMP\d{3}$"))
+            {
+                MessageBox.Show("El código debe tener el formato EMP### (ejemplo: EMP001).");
+                return;
+            }
+
+            try
+            {
+                EmployeeBusiness business = new EmployeeBusiness();
+                DataTable dt = business.SearchEmployeeByCode(codigo);
+
+                DtgEmployee.DataSource = null;
+                DtgEmployee.Rows.Clear();
+                DtgEmployee.DataSource = dt;
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No se encontró un empleado con ese código.");
+                }
+                else
+                {
+                    // Cargar datos en los TextBox para edición
+                    DataRow row = dt.Rows[0];
+                    TxtCode.Text = row["EmployeeCode"].ToString();
+                    TxtName.Text = row["Names"].ToString();
+                    TxtSurname.Text = row["SurNames"].ToString();
+                    TxtPhone.Text = row["Phone"].ToString();
+                    CbPosition.Text = row["Position"].ToString();
+                    CbAvailable.Checked = Convert.ToBoolean(row["Available"]);
+
+                    // Habilitar edición en los campos
+                    TxtName.Enabled = true;
+                    TxtSurname.Enabled = true;
+                    TxtPhone.Enabled = true;
+                    CbPosition.Enabled = true;
+                    CbAvailable.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar empleado: " + ex.Message);
+            }
+
+            TxtSearch.Clear(); // limpiar textbox después de buscar
+        }
+
     }
 }
+
 
