@@ -76,83 +76,125 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic
         }
         public DataTable SearchCustomerByCode(string codigo)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+ using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
-                string query = @"SELECT ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate 
+                string query = @"SELECT ClustomerCode, Names, Phone, TypeCustomer, Available, RegistDate
                          FROM Customer
-                         WHERE ClustomerCode = @ClustomerCode";
+                         WHERE ClustomerCode = @Code";
 
-                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
-                adapter.SelectCommand.Parameters.AddWithValue("@ClustomerCode", codigo);
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Code", codigo);
 
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
-                adapter.Fill(dt);
+                da.Fill(dt);
 
                 return dt;
             }
         }
 
+        
 
-        public string GetNextEmployeeCode()
+
+        public string GetNextCustomerCode()
         {
-            string nextCode = "EMP001"; // valor inicial por defecto
+
+            string nextCode = "CLI001"; // valor inicial por defecto
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
                 // Trae el último código ordenado numéricamente
-                string query = @"SELECT TOP 1 EmployeeCode 
-                         FROM Employee 
-                         ORDER BY EmployeeCode DESC";
-
+                string query = @"SELECT MAX(ClustomerCode) FROM Customer";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 object result = cmd.ExecuteScalar();
 
-                if (result != null && result != DBNull.Value)
+                if (result != DBNull.Value && result != null)
                 {
-                    string lastCode = result.ToString(); // ejemplo: EMP010
-
-                    // Extraer la parte numérica
-                    int number = int.Parse(lastCode.Substring(3));
-
-                    // Incrementar en 1
+                    string lastCode = result.ToString(); // ejemplo: CLI100
+                    int number = int.Parse(lastCode.Substring(3)); // extrae los dígitos
                     number++;
-
-                    // Formatear con 3 dígitos
-                    nextCode = "EMP" + number.ToString("D3");
+                    nextCode = "CLI" + number.ToString("D3"); // CLI101
                 }
             }
 
             return nextCode;
         }
-        public int UpdateEmployee(Employee emp)
+        public int SaveCustomer(string codigo, string nombre, string telefono, string tipo, bool activo)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = @"UPDATE Employee 
-                         SET Names = @Names,
-                             SurNames = @SurNames,
-                             Phone = @Phone,
-                             Position = @Position,
-                             Available = @Available
-                         WHERE EmployeeCode = @Code";
 
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Code", emp.EmployeeCode);
-                cmd.Parameters.AddWithValue("@Names", emp.Names);
-                cmd.Parameters.AddWithValue("@SurNames", emp.SurNames);
-                cmd.Parameters.AddWithValue("@Phone", emp.Phone);
-                cmd.Parameters.AddWithValue("@Position", emp.Position);
-                cmd.Parameters.AddWithValue("@Available", emp.Available);
+                // Verificar si el cliente ya existe
+                string checkQuery = "SELECT COUNT(*) FROM Customer WHERE ClustomerCode = @Code";
+                SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+                checkCmd.Parameters.AddWithValue("@Code", codigo);
+                int exists = (int)checkCmd.ExecuteScalar();
 
-                return cmd.ExecuteNonQuery();
+                if (exists > 0)
+                {
+                    // UPDATE
+                    string updateQuery = @"UPDATE Customer
+                                   SET CustomerName = @Name,
+                                       Phone = @Phone,
+                                       CustomerType = @Type,
+                                       Available = @Available
+                                   WHERE ClustomerCode = @Code";
+
+                    SqlCommand updateCmd = new SqlCommand(updateQuery, conn);
+                    updateCmd.Parameters.AddWithValue("@Clustomer", codigo);
+                    updateCmd.Parameters.AddWithValue("@Name", nombre);
+                    updateCmd.Parameters.AddWithValue("@Phone", telefono);
+                    updateCmd.Parameters.AddWithValue("@Type", tipo);
+                    updateCmd.Parameters.AddWithValue("@Available", activo);
+
+                    return updateCmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    // INSERT
+                    string insertQuery = @"INSERT INTO Customer (ClustomerCode, CustomerName, Phone, CustomerType, Available)
+                                   VALUES (@Code, @Name, @Phone, @Type, @Available)";
+
+                    SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
+                    insertCmd.Parameters.AddWithValue("@Clustomer", codigo);
+                    insertCmd.Parameters.AddWithValue("@Name", nombre);
+                    insertCmd.Parameters.AddWithValue("@Phone", telefono);
+                    insertCmd.Parameters.AddWithValue("@Type", tipo);
+                    insertCmd.Parameters.AddWithValue("@Available", activo);
+
+                    return insertCmd.ExecuteNonQuery();
+                }
             }
         }
 
+        public int UpdateCustomer(string codigo, string nombre, string telefono, string tipo, bool activo)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"UPDATE Customer
+                         SET CustomerName = @Name,
+                             Phone = @Phone,
+                             CustomerType = @Type,
+                             Available = @Available
+                         WHERE ClustomerCode = @Code";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ClustomerCode", codigo);
+                cmd.Parameters.AddWithValue("@Name", nombre);
+                cmd.Parameters.AddWithValue("@Phone", telefono);
+                cmd.Parameters.AddWithValue("@Type", tipo);
+                cmd.Parameters.AddWithValue("@Available", activo);
+
+                return cmd.ExecuteNonQuery(); // devuelve filas afectadas
+            }
+        }
 
     }
 }       

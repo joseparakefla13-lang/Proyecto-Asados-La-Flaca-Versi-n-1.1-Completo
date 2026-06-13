@@ -5,6 +5,7 @@ using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic;
 using System.ComponentModel;
 using System.Data;
 using System.Text.RegularExpressions;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 {
     public partial class FrmCustomer : Form
@@ -124,97 +125,70 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
             {
                 CustomerBusiness business = new CustomerBusiness();
 
-                // 1. Generar el siguiente código disponible
-                string nextCode = business.GetNextEmployeeCode();
-                TxtCustomerCode.Text = nextCode;
-
-                // 2. Validar nombre
+                string codigo = TxtCustomerCode.Text.Trim();
                 string nombre = TxtName.Text.Trim();
+                string telefono = TxtPhone.Text.Trim();
+                string tipo = CbTypeCustomer.Text;
+                bool activo = ChAvailable.Checked;
+
                 if (string.IsNullOrEmpty(nombre))
                 {
                     MessageBox.Show("Debe ingresar un nombre.");
                     return;
                 }
 
-                // 3. Validar teléfono
-                string telefono = TxtPhone.Text.Trim();
-                if (string.IsNullOrEmpty(telefono))
-                {
-                    MessageBox.Show("Debe ingresar un número de teléfono.");
-                    return;
-                }
-                if (!business.IsUniquePhone(telefono))
-                {
-                    MessageBox.Show("El número de teléfono ya está registrado. Ingrese uno diferente.");
-                    return;
-                }
-
-                // 4. Validar tipo de cliente
-                string tipoCliente = CbTypeCustomer.Text;
-                if (string.IsNullOrEmpty(tipoCliente))
-                {
-                    MessageBox.Show("Debe seleccionar un tipo de cliente.");
-                    return;
-                }
-
-                // 5. Validar fecha (solo hoy)
-                DateTime fechaRegistro = DtmRegistrationDate.Value.Date;
-                if (!business.IsValidRegisterDate(fechaRegistro))
-                {
-                    MessageBox.Show("La fecha de registro debe ser la de hoy.");
-                    return;
-                }
-
-                // 6. Validar estado activo (CheckBox)
-                if (!ChAvailable.Checked)
-                {
-                    MessageBox.Show("Debe marcar el estado Activo para poder guardar el cliente.");
-                    return;
-                }
-
-                // 7. Crear objeto cliente con todos los datos validados
-                Customer nuevo = new Customer
-                {
-                    ClustomerCode = nextCode,
-                    Names = nombre,
-                    Phone = telefono,
-                    TypeCustomer = tipoCliente,
-                    Available = true,              // se guarda activo solo si el CheckBox está marcado
-                    RegistDate = fechaRegistro
-                };
-
-                // 8. Guardar en BD
-                int rows = business.InsertCustomer(nuevo);
+                int rows = business.SaveCustomer(codigo, nombre, telefono, tipo, activo);
 
                 if (rows > 0)
                 {
-                    MessageBox.Show($"Cliente agregado correctamente con código {nextCode}.");
-                    LoadCustomers(); // refresca grid
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo agregar el cliente.");
+                    MessageBox.Show($"Cliente {codigo} guardado/actualizado correctamente.");
+
+                    LoadCustomers();
+
+                    // Limpiar campos y volver a modo lectura
+                    TxtName.Clear();
+                    TxtPhone.Clear();
+                    CbTypeCustomer.SelectedIndex = -1;
+                    ChAvailable.Checked = false;
+
+                    TxtCustomerCode.Text = business.GetNextCustomerCode();
+                    ConfigurarModoLectura(true);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al guardar cliente: {ex.Message}");
+                MessageBox.Show("Error al guardar cliente: " + ex.Message);
             }
         }
 
     
-    
-        
         /* ------------------- EVENTO LOAD DEL FORM ------------------- */
         private void FrmCustomer_Load(object sender, EventArgs e)
         {
-            LoadCustomers(); // carga al abrir el formulario
+   
+            CustomerBusiness business = new CustomerBusiness();
+
+            // Mostrar el próximo código disponible
+            TxtCustomerCode.Text = business.GetNextCustomerCode();
+            TxtCustomerCode.Enabled = false; // no editable
+
+            // Configuración del DataGridView
+            LoadCustomers();
             DgvCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DgvCustomer.MultiSelect = false;
-            DgvCustomer.AllowUserToAddRows = false; // evita fila vacía extra
-            ConfigurarModoLectura(true); // por defecto solo lectura
+            DgvCustomer.AllowUserToAddRows = false;
+
+            // Bloquear todo al inicio
+            ConfigurarModoLectura(true);
+
+            // Limpiar los demás campos
+            TxtName.Clear();
+            TxtPhone.Clear();
+            CbTypeCustomer.SelectedIndex = -1;
+            ChAvailable.Checked = false;
         }
 
+  
 
         /* ------------------- VALIDACIONES ------------------- */
         private void TxtCustomerCode_Validating(object sender, CancelEventArgs e)
@@ -325,12 +299,12 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            string codigo = TxtSearch.Text.Trim();
 
-            // Validar formato CLI###
+             string codigo = TxtSearch.Text.Trim();
+
             if (!validateCode(codigo))
             {
-                MessageBox.Show("El código debe tener el formato CLI### (ejemplo: CLI876).");
+                MessageBox.Show("El código debe tener el formato CLI### (ejemplo: CLI001).");
                 return;
             }
 
@@ -339,17 +313,27 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 CustomerBusiness business = new CustomerBusiness();
                 DataTable dt = business.SearchCustomerByCode(codigo);
 
-                DgvCustomer.DataSource = null;
-                DgvCustomer.Rows.Clear();
-                DgvCustomer.DataSource = dt;
-
-                if (dt.Rows.Count == 0)
+                if (dt.Rows.Count > 0)
                 {
-                    MessageBox.Show("No se encontró un cliente con ese código.");
+                    // Mostrar en los TextBox y ComboBox
+                    TxtCustomerCode.Text = dt.Rows[0]["ClustomerCode"].ToString();
+                    TxtName.Text = dt.Rows[0]["Names"].ToString();
+                    TxtPhone.Text = dt.Rows[0]["Phone"].ToString();
+                    CbTypeCustomer.Text = dt.Rows[0]["TypeCustomer"].ToString();
+                    ChAvailable.Checked = Convert.ToBoolean(dt.Rows[0]["Available"]);
+
+                    // Mostrar SOLO ese cliente en el DataGridView
+                    DgvCustomer.DataSource = null;
+                    DgvCustomer.Rows.Clear();
+                    DgvCustomer.DataSource = dt;
+
+                    // Habilitar edición de campos (excepto código)
+                    ConfigurarModoLectura(false);
                 }
                 else
                 {
-                    ConfigurarModoLectura(false); // habilita edición en Nombre y Teléfono
+                    MessageBox.Show("No se encontró el cliente.");
+                    ConfigurarModoLectura(true);
                 }
             }
             catch (Exception ex)
@@ -357,9 +341,11 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Catalogs
                 MessageBox.Show("Error al buscar cliente: " + ex.Message);
             }
 
-            TxtSearch.Clear(); // limpiar textbox después de buscar
-
+            TxtSearch.Clear();
         }
+
+        
+
         private void ConfigurarModoLectura(bool soloLectura)
         {
             foreach (DataGridViewColumn col in DgvCustomer.Columns)
