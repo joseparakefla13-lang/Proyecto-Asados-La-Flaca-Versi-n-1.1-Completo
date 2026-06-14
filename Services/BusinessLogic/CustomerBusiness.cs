@@ -76,7 +76,7 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic
         }
         public DataTable SearchCustomerByCode(string codigo)
         {
- using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
@@ -171,6 +171,33 @@ namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic
                 }
             }
         }
+        public string GetCustomerNameByCode(string codigo)
+        {
+            string query = @"SELECT Names
+                     FROM Customer
+                     WHERE ClustomerCode = @codigo";
+
+            SelectQuery select = new SelectQuery();
+
+            // Usamos SqlParameter[] en lugar de Dictionary
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+             new SqlParameter("@codigo", codigo)
+            };
+
+            DataTable dt = select.ExecuteSelect(query, parameters);
+
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["Names"].ToString();
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+
 
         public int UpdateCustomer(string codigo, string nombre, string telefono, string tipo, bool activo)
         {

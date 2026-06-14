@@ -1,99 +1,94 @@
-﻿using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain;
+﻿using Microsoft.Data.SqlClient;
+using Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Domain;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
-using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace Proyecto_Asados_La_Flaca_Versión_1._1_Completo.Services.BusinessLogic
 {
-    public class OrderBusiness   // cámbialo de internal a public
+    public class OrderBusiness
     {
-            private readonly string connectionString =
-                "Server=COQUETO;Database=Dev_Asado2;Integrated Security=True;TrustServerCertificate=True;Encrypt=False;";
 
-            // Guardar cabecera del pedido y devolver el ID generado
-            public int InsertOrder(Order order)
+            private readonly string connectionString = "Server=COQUETO;Database=Dev_Asado2.sql;Integrated Security=True;TrustServerCertificate=True;Encrypt=False;";
+
+
+
+        public string GetNextOrderCode()
+        {
+            string query = "SELECT ISNULL(MAX(OrderCode), 0) + 1 FROM OrderDetail";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                conn.Open();
+                return cmd.ExecuteScalar().ToString();
+            }
+        }
+
+
+
+        public void CompleteOrder(Order order)
+        { 
+          using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlTransaction transaction = conn.BeginTransaction();
+
+                try
                 {
-                    conn.Open();
-                    string query = @"INSERT INTO Orde (Empleado_id, Clustomer_id, OrderDate, State, Observations, Available)
-                             VALUES (@Empleado_id, @Clustomer_id, @OrderDate, @State, @Observations, @Available);
-                             SELECT SCOPE_IDENTITY();";
+                    // Insertar cabecera en Order (solo fecha, estado y disponible)
+                    string insertOrder = @"INSERT INTO [Order] (State, Date, Available) 
+                                   VALUES (@State, @Date, @Available)";
 
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Empleado_id", order.EmployeeId);
-                    cmd.Parameters.AddWithValue("@Clustomer_id", order.CustomerId);
-                    cmd.Parameters.AddWithValue("@OrderDate", order.Date);
-                    cmd.Parameters.AddWithValue("@State", order.State);
-                    cmd.Parameters.AddWithValue("@Observations", order.Observations ?? "");
-                    cmd.Parameters.AddWithValue("@Available", order.Available);
+                    using (SqlCommand cmdOrder = new SqlCommand(insertOrder, conn, transaction))
+                    {
+                        cmdOrder.Parameters.AddWithValue("@State", order.State);
+                        cmdOrder.Parameters.AddWithValue("@Date", order.Date);
+                        cmdOrder.Parameters.AddWithValue("@Available", order.Available);
+                        cmdOrder.ExecuteNonQuery();
+                    }
 
-                    return Convert.ToInt32(cmd.ExecuteScalar()); // devuelve el ID generado
+                    // Insertar detalles en OrderDetail
+                    foreach (var detail in order.Detalles)
+                    {
+                        detail.CalcularSubTotal();
+
+                        string insertDetail = @"INSERT INTO OrderDetail 
+                    (OrderCode, ProductName, Cuantity, UnitPrice, SubTotal, Customer, OrderEmployee, Available) 
+                    VALUES (@OrderCode, @ProductName, @Cuantity, @UnitPrice, @SubTotal, @Customer, @OrderEmployee, @Available)";
+
+                        using (SqlCommand cmdDetail = new SqlCommand(insertDetail, conn, transaction))
+                        {
+                            cmdDetail.Parameters.AddWithValue("@OrderCode", detail.OrderCode);
+                            cmdDetail.Parameters.AddWithValue("@ProductName", detail.ProductName);
+                            cmdDetail.Parameters.AddWithValue("@Cuantity", detail.Quantity);
+                            cmdDetail.Parameters.AddWithValue("@UnitPrice", detail.UnitPrice);
+                            cmdDetail.Parameters.AddWithValue("@SubTotal", detail.SubTotal);
+                            cmdDetail.Parameters.AddWithValue("@Customer", detail.Customer);
+                            cmdDetail.Parameters.AddWithValue("@OrderEmployee", detail.OrderEmployee);
+                            cmdDetail.Parameters.AddWithValue("@Available", detail.Available);
+                            cmdDetail.ExecuteNonQuery();
+                        }
+                    }
+
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new Exception("Error al guardar el pedido completo. Detalle: " + ex.Message);
                 }
             }
+        }
 
-            // Guardar detalle del pedido con parámetros sueltos
-            public void InsertOrderDetail(int orderId, string productName, int quantity, decimal price)
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    string query = @"INSERT INTO OrderDetail (Order_id, ProductName, Quantity, UnitPrice, SubTotal)
-                             VALUES (@Order_id, @ProductName, @Quantity, @UnitPrice, @SubTotal)";
-
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Order_id", orderId);
-                    cmd.Parameters.AddWithValue("@ProductName", productName);
-                    cmd.Parameters.AddWithValue("@Quantity", quantity);
-                    cmd.Parameters.AddWithValue("@UnitPrice", price);
-                    cmd.Parameters.AddWithValue("@SubTotal", price * quantity);
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
-
-            // Guardar detalle del pedido usando objeto OrderDetail
-            public void InsertOrderDetail(OrderDetail detail)
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    string query = @"INSERT INTO OrderDetail (Order_id, ProductName, Quantity, UnitPrice, SubTotal)
-                             VALUES (@Order_id, @ProductName, @Quantity, @UnitPrice, @SubTotal)";
-
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Order_id", detail.OrderId);
-                    cmd.Parameters.AddWithValue("@ProductName", detail.ProductName);
-                    cmd.Parameters.AddWithValue("@Quantity", detail.Quantity);
-                    cmd.Parameters.AddWithValue("@UnitPrice", detail.UnitPrice);
-                    cmd.Parameters.AddWithValue("@SubTotal", detail.SubTotal);
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
-
-            // Método completo: guarda cabecera y todos los detalles
-            public void CompleteOrder(Order order)
-            {
-                if (order.CustomerId <= 0) throw new Exception("Debe seleccionar un cliente.");
-                if (order.EmployeeId <= 0) throw new Exception("Debe seleccionar un empleado.");
-                if (order.Detalles == null || order.Detalles.Count == 0)
-                    throw new Exception("El pedido debe tener al menos un detalle.");
-
-                int orderId = InsertOrder(order);
-
-                foreach (var d in order.Detalles)
-                {
-                    d.OrderId = orderId;
-                    d.CalcularSubTotal();
-                    if (!d.EsValido())
-                        throw new Exception($"Detalle inválido para producto {d.ProductName}");
-                    InsertOrderDetail(d);
-                }
-            }
-        
 
     }
 
-}
+
+
+} 
+
+
+

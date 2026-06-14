@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             GbxPedido = new GroupBox();
+            BtsSearchCustomer = new Button();
+            label5 = new Label();
+            TxtSearchCustomer = new TextBox();
             CbTitleEmployee = new ComboBox();
             label4 = new Label();
             CbProducts = new ComboBox();
@@ -52,18 +55,18 @@
             BtnSaveOrder = new Button();
             BtnInsertOrder = new Button();
             DtgOrderDetail = new DataGridView();
-            Producto = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            Subtotal = new DataGridViewTextBoxColumn();
             TxtTotal = new TextBox();
             LblTotal = new Label();
             TxtSubTotal = new TextBox();
             LblSubTotal = new Label();
+            ProductName = new DataGridViewTextBoxColumn();
+            UnitPrice = new DataGridViewTextBoxColumn();
+            Cuantity = new DataGridViewTextBoxColumn();
+            Subtotal = new DataGridViewTextBoxColumn();
             N_Order = new DataGridViewTextBoxColumn();
             Customer = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
-            Employee = new DataGridViewTextBoxColumn();
+            OrderEmployee = new DataGridViewTextBoxColumn();
             GbxPedido.SuspendLayout();
             GbxDellatePedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DtgOrderDetail).BeginInit();
@@ -72,6 +75,9 @@
             // GbxPedido
             // 
             GbxPedido.BackColor = Color.FromArgb(243, 231, 211);
+            GbxPedido.Controls.Add(BtsSearchCustomer);
+            GbxPedido.Controls.Add(label5);
+            GbxPedido.Controls.Add(TxtSearchCustomer);
             GbxPedido.Controls.Add(CbTitleEmployee);
             GbxPedido.Controls.Add(label4);
             GbxPedido.Controls.Add(CbProducts);
@@ -98,6 +104,44 @@
             GbxPedido.TabStop = false;
             GbxPedido.Text = "Datos del Pedido";
             // 
+            // BtsSearchCustomer
+            // 
+            BtsSearchCustomer.FlatAppearance.BorderSize = 0;
+            BtsSearchCustomer.FlatAppearance.MouseOverBackColor = Color.Lime;
+            BtsSearchCustomer.FlatStyle = FlatStyle.Flat;
+            BtsSearchCustomer.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtsSearchCustomer.Image = Properties.Resources.agregar_producto__1_;
+            BtsSearchCustomer.ImageAlign = ContentAlignment.MiddleLeft;
+            BtsSearchCustomer.Location = new Point(1076, 106);
+            BtsSearchCustomer.Name = "BtsSearchCustomer";
+            BtsSearchCustomer.Size = new Size(201, 70);
+            BtsSearchCustomer.TabIndex = 30;
+            BtsSearchCustomer.Text = "Buscar";
+            BtsSearchCustomer.TextAlign = ContentAlignment.MiddleRight;
+            BtsSearchCustomer.UseVisualStyleBackColor = true;
+            BtsSearchCustomer.Click += BtsSearchCustomer_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(650, 53);
+            label5.Name = "label5";
+            label5.Size = new Size(440, 45);
+            label5.TabIndex = 41;
+            label5.Text = "Buscar Por Codigo al cliente";
+            // 
+            // TxtSearchCustomer
+            // 
+            TxtSearchCustomer.BackColor = Color.FromArgb(246, 246, 247);
+            TxtSearchCustomer.BorderStyle = BorderStyle.None;
+            TxtSearchCustomer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtSearchCustomer.ForeColor = Color.FromArgb(45, 45, 45);
+            TxtSearchCustomer.Location = new Point(650, 133);
+            TxtSearchCustomer.Name = "TxtSearchCustomer";
+            TxtSearchCustomer.Size = new Size(393, 43);
+            TxtSearchCustomer.TabIndex = 40;
+            // 
             // CbTitleEmployee
             // 
             CbTitleEmployee.BackColor = Color.FromArgb(246, 246, 247);
@@ -106,7 +150,7 @@
             CbTitleEmployee.ForeColor = Color.FromArgb(45, 45, 45);
             CbTitleEmployee.FormattingEnabled = true;
             CbTitleEmployee.Items.AddRange(new object[] { "Pediente", "Cancelado", "En proceso" });
-            CbTitleEmployee.Location = new Point(1068, 515);
+            CbTitleEmployee.Location = new Point(1076, 558);
             CbTitleEmployee.Name = "CbTitleEmployee";
             CbTitleEmployee.Size = new Size(552, 53);
             CbTitleEmployee.TabIndex = 39;
@@ -115,7 +159,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(866, 515);
+            label4.Location = new Point(874, 558);
             label4.Name = "label4";
             label4.Size = new Size(169, 45);
             label4.TabIndex = 38;
@@ -129,7 +173,7 @@
             CbProducts.ForeColor = Color.FromArgb(45, 45, 45);
             CbProducts.FormattingEnabled = true;
             CbProducts.Items.AddRange(new object[] { "Pediente", "Cancelado", "En proceso" });
-            CbProducts.Location = new Point(408, 386);
+            CbProducts.Location = new Point(408, 453);
             CbProducts.Name = "CbProducts";
             CbProducts.Size = new Size(365, 53);
             CbProducts.TabIndex = 37;
@@ -140,7 +184,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(204, 513);
+            label3.Location = new Point(222, 574);
             label3.Name = "label3";
             label3.Size = new Size(114, 45);
             label3.TabIndex = 36;
@@ -152,7 +196,7 @@
             TxtQuantity.BorderStyle = BorderStyle.None;
             TxtQuantity.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtQuantity.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtQuantity.Location = new Point(1204, 386);
+            TxtQuantity.Location = new Point(1215, 461);
             TxtQuantity.Name = "TxtQuantity";
             TxtQuantity.Size = new Size(278, 43);
             TxtQuantity.TabIndex = 35;
@@ -161,7 +205,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(881, 384);
+            label2.Location = new Point(889, 461);
             label2.Name = "label2";
             label2.Size = new Size(154, 45);
             label2.TabIndex = 34;
@@ -173,7 +217,7 @@
             TxtCustomer.BorderStyle = BorderStyle.None;
             TxtCustomer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtCustomer.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtCustomer.Location = new Point(408, 259);
+            TxtCustomer.Location = new Point(408, 344);
             TxtCustomer.Name = "TxtCustomer";
             TxtCustomer.Size = new Size(278, 43);
             TxtCustomer.TabIndex = 33;
@@ -184,7 +228,7 @@
             TxtPrice.BorderStyle = BorderStyle.None;
             TxtPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtPrice.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtPrice.Location = new Point(408, 515);
+            TxtPrice.Location = new Point(420, 574);
             TxtPrice.Name = "TxtPrice";
             TxtPrice.Size = new Size(278, 43);
             TxtPrice.TabIndex = 32;
@@ -193,7 +237,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(163, 389);
+            label1.Location = new Point(163, 461);
             label1.Name = "label1";
             label1.Size = new Size(173, 45);
             label1.TabIndex = 31;
@@ -205,7 +249,7 @@
             DtmDateOrder.CalendarForeColor = Color.FromArgb(45, 45, 45);
             DtmDateOrder.CalendarMonthBackground = Color.FromArgb(109, 15, 15);
             DtmDateOrder.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DtmDateOrder.Location = new Point(1068, 134);
+            DtmDateOrder.Location = new Point(1076, 219);
             DtmDateOrder.MinDate = new DateTime(2026, 6, 5, 0, 0, 0, 0);
             DtmDateOrder.Name = "DtmDateOrder";
             DtmDateOrder.Size = new Size(552, 50);
@@ -219,7 +263,7 @@
             CbAvailable.ForeColor = Color.FromArgb(45, 45, 45);
             CbAvailable.FormattingEnabled = true;
             CbAvailable.Items.AddRange(new object[] { "Pediente", "Cancelado", "En proceso" });
-            CbAvailable.Location = new Point(1161, 254);
+            CbAvailable.Location = new Point(1160, 339);
             CbAvailable.Name = "CbAvailable";
             CbAvailable.Size = new Size(365, 53);
             CbAvailable.TabIndex = 16;
@@ -230,7 +274,7 @@
             TxtN_Order.BorderStyle = BorderStyle.None;
             TxtN_Order.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtN_Order.ForeColor = Color.FromArgb(45, 45, 45);
-            TxtN_Order.Location = new Point(408, 134);
+            TxtN_Order.Location = new Point(408, 219);
             TxtN_Order.Name = "TxtN_Order";
             TxtN_Order.Size = new Size(278, 43);
             TxtN_Order.TabIndex = 13;
@@ -239,7 +283,7 @@
             // 
             LblEstado.AutoSize = true;
             LblEstado.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblEstado.Location = new Point(881, 257);
+            LblEstado.Location = new Point(889, 342);
             LblEstado.Name = "LblEstado";
             LblEstado.Size = new Size(129, 45);
             LblEstado.TabIndex = 12;
@@ -249,7 +293,7 @@
             // 
             LblFecha.AutoSize = true;
             LblFecha.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblFecha.Location = new Point(881, 132);
+            LblFecha.Location = new Point(889, 219);
             LblFecha.Name = "LblFecha";
             LblFecha.Size = new Size(114, 45);
             LblFecha.TabIndex = 11;
@@ -259,7 +303,7 @@
             // 
             LblCliente.AutoSize = true;
             LblCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblCliente.Location = new Point(204, 257);
+            LblCliente.Location = new Point(204, 342);
             LblCliente.Name = "LblCliente";
             LblCliente.Size = new Size(132, 45);
             LblCliente.TabIndex = 10;
@@ -269,7 +313,7 @@
             // 
             LblCodigo.AutoSize = true;
             LblCodigo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblCodigo.Location = new Point(153, 132);
+            LblCodigo.Location = new Point(153, 217);
             LblCodigo.Name = "LblCodigo";
             LblCodigo.Size = new Size(183, 45);
             LblCodigo.TabIndex = 9;
@@ -354,7 +398,7 @@
             BtnSaveOrder.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnSaveOrder.Image = Properties.Resources.abajo;
             BtnSaveOrder.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnSaveOrder.Location = new Point(1486, 183);
+            BtnSaveOrder.Location = new Point(1486, 185);
             BtnSaveOrder.Name = "BtnSaveOrder";
             BtnSaveOrder.Size = new Size(201, 70);
             BtnSaveOrder.TabIndex = 25;
@@ -386,40 +430,12 @@
             DtgOrderDetail.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             DtgOrderDetail.BackgroundColor = Color.FromArgb(243, 231, 211);
             DtgOrderDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DtgOrderDetail.Columns.AddRange(new DataGridViewColumn[] { Producto, Precio, Cantidad, Subtotal, N_Order, Customer, Date, Employee });
+            DtgOrderDetail.Columns.AddRange(new DataGridViewColumn[] { ProductName, UnitPrice, Cuantity, Subtotal, N_Order, Customer, Date, OrderEmployee });
             DtgOrderDetail.Location = new Point(24, 70);
             DtgOrderDetail.Name = "DtgOrderDetail";
             DtgOrderDetail.RowHeadersWidth = 82;
             DtgOrderDetail.Size = new Size(1431, 564);
             DtgOrderDetail.TabIndex = 16;
-            // 
-            // Producto
-            // 
-            Producto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Producto.HeaderText = "Producto";
-            Producto.MinimumWidth = 10;
-            Producto.Name = "Producto";
-            // 
-            // Precio
-            // 
-            Precio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 10;
-            Precio.Name = "Precio";
-            // 
-            // Cantidad
-            // 
-            Cantidad.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 10;
-            Cantidad.Name = "Cantidad";
-            // 
-            // Subtotal
-            // 
-            Subtotal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Subtotal.HeaderText = "SubTotal";
-            Subtotal.MinimumWidth = 10;
-            Subtotal.Name = "Subtotal";
             // 
             // TxtTotal
             // 
@@ -463,6 +479,34 @@
             LblSubTotal.TabIndex = 9;
             LblSubTotal.Text = "SubTotal:";
             // 
+            // ProductName
+            // 
+            ProductName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ProductName.HeaderText = "Producto";
+            ProductName.MinimumWidth = 10;
+            ProductName.Name = "ProductName";
+            // 
+            // UnitPrice
+            // 
+            UnitPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            UnitPrice.HeaderText = "Precio";
+            UnitPrice.MinimumWidth = 10;
+            UnitPrice.Name = "UnitPrice";
+            // 
+            // Cuantity
+            // 
+            Cuantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Cuantity.HeaderText = "Cantidad";
+            Cuantity.MinimumWidth = 10;
+            Cuantity.Name = "Cuantity";
+            // 
+            // Subtotal
+            // 
+            Subtotal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Subtotal.HeaderText = "SubTotal";
+            Subtotal.MinimumWidth = 10;
+            Subtotal.Name = "Subtotal";
+            // 
             // N_Order
             // 
             N_Order.HeaderText = "N*Pedido";
@@ -481,11 +525,11 @@
             Date.MinimumWidth = 10;
             Date.Name = "Date";
             // 
-            // Employee
+            // OrderEmployee
             // 
-            Employee.HeaderText = "Empleado";
-            Employee.MinimumWidth = 10;
-            Employee.Name = "Employee";
+            OrderEmployee.HeaderText = "Empleado";
+            OrderEmployee.MinimumWidth = 10;
+            OrderEmployee.Name = "OrderEmployee";
             // 
             // FrmOrder
             // 
@@ -526,10 +570,6 @@
         private Label LblTotal;
         private TextBox TxtPrice;
         private Label label1;
-        private DataGridViewTextBoxColumn Producto;
-        private DataGridViewTextBoxColumn Precio;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn Subtotal;
         private Button BtnInsertOrder;
         private Button BtnCerrarEmpl;
         private Button BtnLimpiarEmpl;
@@ -542,9 +582,19 @@
         private Label label2;
         private ComboBox CbTitleEmployee;
         private Label label4;
+        private Button BtsSearchCustomer;
+        private Label label5;
+        private TextBox TxtSearchCustomer;
+        private DataGridViewTextBoxColumn ProductName;
+        private DataGridViewTextBoxColumn Precio;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn Subtotal;
         private DataGridViewTextBoxColumn N_Order;
         private DataGridViewTextBoxColumn Customer;
         private DataGridViewTextBoxColumn Date;
         private DataGridViewTextBoxColumn Employee;
+        private DataGridViewTextBoxColumn UnitPrice;
+        private DataGridViewTextBoxColumn Cuantity;
+        private DataGridViewTextBoxColumn OrderEmployee;
     }
 }
